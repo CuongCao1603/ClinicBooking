@@ -9,6 +9,7 @@ package model;
  * @author doans
  */
 public class Setting {
+
     private int setting_id;
     private String setting_name;
     private int id;
@@ -16,17 +17,13 @@ public class Setting {
     private boolean status;
     private String note;
     private int order;
-    
-    public Setting(){}
 
-    public Setting(int setting_id, String setting_name, int id, String name, boolean status, String note, int order) {
+    public Setting() {
+    }
+
+    public Setting(int setting_id, String setting_name) {
         this.setting_id = setting_id;
         this.setting_name = setting_name;
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.note = note;
-        this.order = order;
     }
 
     public Setting(int id, String name, int setting_id, boolean status) {
@@ -36,6 +33,18 @@ public class Setting {
         this.status = status;
     }
 
+    public Setting(int id, String name, int setting_id, boolean status, String note, int order) {
+        this.id = id;
+        this.name = name;
+        this.setting_id = setting_id;
+        this.status = status;
+        this.note = note;
+        this.order = order;
+    }
+
+    public Setting(String name) {
+        this.name = name;
+    }
 
     public int getSetting_id() {
         return setting_id;
@@ -92,7 +101,5 @@ public class Setting {
     public void setOrder(int order) {
         this.order = order;
     }
-    
-    
 
 }

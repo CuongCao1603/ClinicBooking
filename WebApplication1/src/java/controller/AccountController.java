@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.AccountDAO;
+import dal.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,8 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
 import config.EncodeData;
-import jakarta.servlet.http.Part;
-import java.io.InputStream;
+import config.Validate;
 
 /**
  *
@@ -92,35 +91,10 @@ public class AccountController extends HttpServlet {
                 request.getRequestDispatcher("profile.jsp").forward(request, response);
             }
 
-            if (action.equals("update_image")) {
-                String username = user.getUsername();
-                Part image = request.getPart("image");
-                if (image != null) {
-                    try {
-                        Account acc = userdao.getAccountByUsername(username);
-                        userdao.UpdateImage(username, image);
-                        session.setAttribute("user", acc);
-                    } catch (Exception e) {
-                    }
-                }
-                alert = "success";
-                message = "Cập nhật ảnh thành công";
-                request.setAttribute("alert", alert);
-                request.setAttribute("message", message);
-                request.getRequestDispatcher("user?action=profile").forward(request, response);
-            }
-
-
-            if (action.equals("updateprofile")) {
-                String username = request.getParameter("username");
-                String name = request.getParameter("name");
-                int phone = Integer.parseInt(request.getParameter("phone"));
-                boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-                userdao.UpdateProfile(username, name, phone, gender);
-                Account a = new Account(username, user.getRole(), name, gender, phone, user.getEmail(), user.getImg(), user.isStatus());
-                session.setAttribute("user", a);
-                request.setAttribute("updatesuccess", "Thông tin đã được cập nhật!");
-                response.sendRedirect("user?action=profile");
+            if (action.equals("logout")) {
+                session.invalidate();
+                response.sendRedirect("home");
+                return;
             }
 
             if (action.equals("changepassword")) {

@@ -46,31 +46,6 @@ public class Doctor {
         this.position = position;
     }
 
-    public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name, Account account, boolean gender, Date DOB, int phone, String description, boolean status, String img, RateStar rateStar, double fee, String position) {
-        this.setting = setting;
-        this.doctor_id = doctor_id;
-        this.role_id = role_id;
-        this.doctor_name = doctor_name;
-        this.account = account;
-        this.gender = gender;
-        this.DOB = DOB;
-        this.phone = phone;
-        this.description = description;
-        this.status = status;
-        this.img = img;
-        this.rateStar = rateStar;
-        this.fee = fee;
-        this.position = position;
-    }
-    
-    public Doctor(String img, String doctor_name, int phone, boolean gender, String description) {
-        this.doctor_name = doctor_name;
-        this.gender = gender;
-        this.phone = phone;
-        this.description = description;
-        this.img = img;
-    }
-
     public Doctor(Setting setting, int doctor_id, String doctor_name, boolean gender, boolean status) {
         this.setting = setting;
         this.doctor_id = doctor_id;
@@ -98,9 +73,6 @@ public class Doctor {
         return setting;
     }
 
-    public void setSettingdetails(Setting settingdetails) {
-        this.setting = setting;
-    }
 
     public int getDoctor_id() {
         return doctor_id;

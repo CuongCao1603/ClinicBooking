@@ -5,6 +5,8 @@
  */
 package controller;
 
+import dal.DoctorDAO;
+import dal.ServiceDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -12,12 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import model.*;
-import dao.*;
 import java.util.List;
 
 /**
  *
- * @author Khuong Hung
+ * @author doans
  */
 public class HomeController extends HttpServlet {
 
@@ -36,7 +37,6 @@ public class HomeController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         ServiceDAO servicedao = new ServiceDAO();
-        String action = request.getParameter("action");
         try {
             DoctorDAO doctordao = new DoctorDAO();
             List<Service> servicelist = servicedao.getRandomTop6Service();
