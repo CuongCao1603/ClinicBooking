@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dal.AccountDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ import config.Validate;
  *
  * @author doans
  */
-public class AccountController extends HttpServlet {
+public class UserController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +40,7 @@ public class AccountController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-        AccountDAO userdao = new AccountDAO();
+        UserDAO userdao = new UserDAO();
         Account user = (Account) session.getAttribute("user");
         String alert = null;
         String message = null;
@@ -134,7 +134,7 @@ public class AccountController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AccountController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -152,7 +152,7 @@ public class AccountController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AccountController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
