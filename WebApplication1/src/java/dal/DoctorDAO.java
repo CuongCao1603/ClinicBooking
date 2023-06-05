@@ -40,8 +40,7 @@ public class DoctorDAO extends DBContext {
                 + " cs.name, cs.setting_id ,cs.status,"
                 + "d.doctor_id,d.role_id,d.doctor_name,d.username,"
                 + "d.gender,d.DOB,d.phone,d.description,d.status,d.img,d.fee,d.position "
-                + "from doctris_system.doctor d "
-                + "inner join doctris_system.category_service cs "
+                + "from doctris_system.doctor d inner join doctris_system.category_service cs "
                 + "on d.category_id = cs.id ORDER BY RAND() LIMIT 8";
         try {
             connection = dbc.getConnection();
