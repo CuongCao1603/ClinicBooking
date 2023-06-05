@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package context;
+package config;
 
 /**
  *
  * @author doans
-*/
+ */
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,17 +28,17 @@ public class InsertBase64ToBlob {
         String password = "123456";
 
         // Base64-encoded data
-        File imageFile = new File("C:\\Users\\doans\\Downloads\\WebApplication1\\web\\assets\\images\\doctors\\bs-an.png");
+        File imageFile = new File("C:\\Users\\doans\\Downloads\\ClinicBooking\\ClinicBooking\\WebApplication1\\web\\assets\\images\\service\\03.png");
         InputStream inputStream = new FileInputStream(imageFile);
         byte[] imageBytes = new byte[inputStream.available()];
         inputStream.read(imageBytes);
 
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
             // Prepare the SQL statement
-            String sql = "UPDATE doctor SET img = ?, phone = ?";
+            String sql = "UPDATE service SET img = ?, category_id = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setBytes(1, imageBytes);
-            statement.setInt(2, 888195318);
+            statement.setInt(2, 2);
 
             // Execute the SQL statement
             int rowsUpdated = statement.executeUpdate();
