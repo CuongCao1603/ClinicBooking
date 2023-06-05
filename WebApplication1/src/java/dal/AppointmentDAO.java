@@ -48,12 +48,14 @@ public class AppointmentDAO extends DBContext {
                 list.add(new Appointment(rs.getInt(1), patient, doctor, rs.getDate(4), rs.getTime(5), rs.getString(6)));
             }
         } catch (SQLException e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();
             }
         }
         return list;
+
     }
 
 }

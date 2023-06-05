@@ -69,6 +69,7 @@ public class DoctorDAO extends DBContext {
                 list.add(new Doctor(s, rs.getInt(5), rs.getInt(6), rs.getString(7), a, rs.getBoolean(9), rs.getDate(10), rs.getInt(11), rs.getString(12), rs.getBoolean(13), base64Image, rs.getDouble(15), rs.getString(16)));
             }
         } catch (SQLException e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();
@@ -92,6 +93,7 @@ public class DoctorDAO extends DBContext {
                 list.add(new Doctor(s, rs.getInt(2), rs.getString(3), rs.getBoolean(4), rs.getBoolean(5)));
             }
         } catch (SQLException e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();
@@ -99,8 +101,6 @@ public class DoctorDAO extends DBContext {
         }
         return list;
     }
-
-   
 
     public List<Doctor> Search(String text) throws SQLException, IOException {
         List<Doctor> list = new ArrayList<>();
@@ -118,6 +118,7 @@ public class DoctorDAO extends DBContext {
                 list.add(new Doctor(s, rs.getInt(2), rs.getString(3), rs.getBoolean(4), rs.getBoolean(5)));
             }
         } catch (SQLException e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();
@@ -125,7 +126,8 @@ public class DoctorDAO extends DBContext {
         }
         return list;
     }
-        public List<Doctor> getListByPage(List<Doctor> list,
+
+    public List<Doctor> getListByPage(List<Doctor> list,
             int start, int end) {
         ArrayList<Doctor> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {

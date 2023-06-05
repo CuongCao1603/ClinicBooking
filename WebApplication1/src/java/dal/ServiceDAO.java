@@ -54,11 +54,13 @@ public class ServiceDAO extends DBContext {
                 list.add(new Service(s, rs.getInt(5), rs.getString(6), rs.getDouble(7), rs.getString(8), base64Image));
             }
         } catch (SQLException e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();
             }
         }
         return list;
+
     }
 }

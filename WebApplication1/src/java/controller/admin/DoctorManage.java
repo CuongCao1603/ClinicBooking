@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import model.Doctor;
-import model.RateStar;
 import model.Setting;
 
 /**
@@ -60,7 +59,7 @@ public class DoctorManage extends HttpServlet {
                 int page, numperpage = 8;
                 int type = 0;
                 int size = doctorlist.size();
-                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                int num = size % 8 == 0 ? size / 8 : size / 8 + 1;
                 String xpage = request.getParameter("page");
                 if (xpage == null) {
                     page = 1;
