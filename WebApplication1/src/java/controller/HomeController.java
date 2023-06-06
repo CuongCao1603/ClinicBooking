@@ -45,7 +45,7 @@ public class HomeController extends HttpServlet {
             request.setAttribute("doctor", doctorlist);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } catch (IOException | SQLException | ServletException e) {
-            System.out.println(e);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }

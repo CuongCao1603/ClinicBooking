@@ -115,7 +115,7 @@ public class UserController extends HttpServlet {
                 }
             }
         } catch (IOException | SQLException | ServletException e) {
-            System.out.println(e);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

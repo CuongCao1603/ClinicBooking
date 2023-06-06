@@ -55,10 +55,11 @@ public class UserDAO extends DBContext {
                     base64Image = "default";
                 }
                 Role r = new Role(rs.getInt(2));
-                return new Account(rs.getString(1), r, rs.getString(3), rs.getString(4), rs.getBoolean(5), rs.getInt(6), rs.getString(7), base64Image, rs.getBoolean(9));
+                return new Account(rs.getString(1), r, rs.getString(3), rs.getString(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), base64Image, rs.getBoolean(9));
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             if (connection != null) {
                 connection.close();
@@ -78,6 +79,7 @@ public class UserDAO extends DBContext {
             ps.setString(4, username);
             ps.executeUpdate();
         } catch (Exception e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();
@@ -94,6 +96,7 @@ public class UserDAO extends DBContext {
             ps.setString(1, password);
             ps.executeUpdate();
         } catch (Exception e) {
+            // Handle SQLException if needed
         } finally {
             if (connection != null) {
                 connection.close();

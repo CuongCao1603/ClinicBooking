@@ -79,7 +79,7 @@ public class DoctorManage extends HttpServlet {
                 request.getRequestDispatcher("admin/doctor.jsp").forward(request, response);
             }
         } catch (IOException | SQLException e) {
-            System.out.println(e);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
