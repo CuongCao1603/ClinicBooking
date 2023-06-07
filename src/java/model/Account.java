@@ -56,7 +56,129 @@ public class Account {
         this.img = img;
     }
     
+     public Account(String username, String name, boolean gender) {
+        this.username = username;
+        this.name = name;
+        this.gender = gender;
+     }
     
+     public Account(String username){
+         this.username=username;
+     }
+     
+     public Account(String username,String email,String captcha,String img){
+         if(username!=null){
+             this.username=username;
+         }
+         if(email!=null){
+             this.email=email;
+         }
+         if(captcha!=null){
+             this.captcha=captcha;
+         }
+         if(img!=null){
+             this.img=img;
+         }
+     }
+     
+     public Account(String img,String name,int phone,boolean gender,String email){
+         this.name=name;
+         this.gender=gender;
+         this.phone=phone;
+         if(img!=null){
+             this.img=img;
+         }
+         if(email!=null){
+             this.email=email;
+         }
+     }
+     
+     public  Account(String username,String name){
+         this.username=username;
+         this.name=name;
+     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getCaptcha() {
+        return captcha;
+    }
+
+    public void setCaptcha(String captcha) {
+        this.captcha = captcha;
+    }
+    
+     
     
     
     

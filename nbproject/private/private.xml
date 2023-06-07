@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/web/assets/scss/_animated.scss</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/web/index.html</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Role.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Setting.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/controller/home/DoctorController.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Account.java</file>
         </group>
     </open-files>
 </project-private>
