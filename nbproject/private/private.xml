@@ -5,8 +5,13 @@
         <group>
             <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Role.java</file>
             <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Setting.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/dal/PatientDAO.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Appointment.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Patient.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Doctor.java</file>
             <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/controller/home/DoctorController.java</file>
             <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/Account.java</file>
+            <file>file:/D:/SWP391_PROJECT/Doctris_System/src/java/model/RateStar.java</file>
         </group>
     </open-files>
 </project-private>

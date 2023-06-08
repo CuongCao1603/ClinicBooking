@@ -19,6 +19,7 @@ import java.util.List;
 import model.Account;
 import model.Appointment;
 import model.Doctor;
+import model.Patient;
 import model.RateStar;
 import model.Setting;
 
