@@ -1,8 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : May 22, 2023, 9:34:35 AM
-    Author     : doans
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -44,6 +39,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Mật khẩu <span class="text-danger">*</span></label>
                                                 <input type="password" oninvalid="CheckPassword(this);" oninput="CheckPassword(this);" value="${cookie.pass.value}" class="form-control" name="password" placeholder="Password" required="">
+                                            <!--Từ khóa 'this' trả về đối tượng mà nó đang thuộc về -->
                                             </div>
                                         </div>
 

@@ -4,10 +4,6 @@
  */
 package config;
 
-/**
- *
- * @author DELL
- */
 public class Validate {
 
     public static String capitalizeFirstLetter(String s) {
@@ -15,6 +11,7 @@ public class Validate {
         String[] ss;
         String s2 = "";
         ss = s.split(" ");
+        
         for (int i = 0; i < ss.length; i++) {
             String s1 = "";
             if (ss[i].length() != 0) {
@@ -28,6 +25,7 @@ public class Validate {
                 }
             }
         }
+        
         if (s2.charAt(s2.length() - 1) == ' ') {
             s2 += "";
         }

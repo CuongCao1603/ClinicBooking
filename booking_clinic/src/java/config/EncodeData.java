@@ -4,11 +4,6 @@
  */
 package config;
 
-/**
- *
- * @author doans
- */
-
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

@@ -327,7 +327,14 @@ function CheckUserName(text) {
 
 
 function CheckEmail(text) {
+    // vanhkeg2301@gmail.com
     var email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+//  /^: indicates the start of a string
+//  [\w-\.]+: matches one or more word characters, hyphens, or periods (which are escaped with a backslash) before the "@" symbol
+//  @: matches the "@" symbol
+//  ([\w-]+\.)+: matches one or more groups of one or more word characters or hyphens followed by a period (this group is repeated one or more times)
+//  [\w-]{2,4}: matches two to four word characters or hyphens after the last period in the domain name
+//  $/: indicates the end of the string  
     if(!email.test(text.value)){
         text.setCustomValidity('Email không hợp lệ');
     }    
@@ -339,6 +346,13 @@ function CheckEmail(text) {
 
 function CheckPassword(text) {
     var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+//  /^: indicates the start of a string
+//  (?=.*\d): positive lookahead for at least one digit
+//  (?=.*[a-z]): positive lookahead for at least one lowercase letter
+//  (?=.*[A-Z]): positive lookahead for at least one uppercase letter
+//  (?=.*[a-zA-Z]): positive lookahead for at least one letter (case insensitive)
+//  .{8,}: matches any character (except newline) at least 8 times
+//  $/: indicates the end of the string
     if(!pass.test(text.value)){
         text.setCustomValidity('Mật khẩu không hợp lệ (Cần có ít nhất 8 ký tự bao gồm viết hoa và ký tự đặc biệt)!');
     }    
@@ -347,8 +361,6 @@ function CheckPassword(text) {
     }
     return true;
 }
-
-
 
 function CheckRePassword(text) {
     var password = document.getElementById('password').value;

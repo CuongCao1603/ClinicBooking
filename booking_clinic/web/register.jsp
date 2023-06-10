@@ -1,8 +1,3 @@
-<%-- 
-    Document   : register
-    Created on : May 29, 2023, 9:41:13 PM
-    Author     : DELL
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

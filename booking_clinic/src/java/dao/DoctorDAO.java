@@ -18,6 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Base64;
 import model.Account;
+import model.Appointment;
+import model.Patient;
 import model.Setting;
 
 /**
@@ -65,6 +67,50 @@ public class DoctorDAO extends DBContext {
                 Account a = new Account(rs.getString(8));
                 Setting s = new Setting(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getBoolean(4));
                 list.add(new Doctor(s, rs.getInt(5), rs.getInt(6), rs.getString(7), a, rs.getBoolean(9), rs.getDate(10), rs.getInt(11), rs.getString(12), rs.getBoolean(13), base64Image, rs.getDouble(15), rs.getString(16)));
+            }
+        } catch (SQLException e) {
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return list;
+    }
+
+    public int getDoctorIDByUsername(String username) {
+        int doctor_id = 0;
+        String sql = "select doctor_id from doctor  where username = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                doctor_id = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return doctor_id;
+    }
+
+    public List<Appointment> getAllAppointment(int id) throws SQLException {
+        List<Appointment> list = new ArrayList<>();
+        String sql = "SELECT a.appointment_id, p.patient_id,  u.name,a.date, a.time,a.status from appointments a\n"
+                + "INNER JOIN patient p\n"
+                + "ON a.patient_id = p.patient_id\n"
+                + "INNER JOIN users u \n"
+                + "ON p.username = u.username\n"
+                + "WHERE a.doctor_id = ?\n"
+                + "group by a.appointment_id, p.patient_id, u.name,a.date, a.time,a.status\n"
+                + "order by CAST(a.date AS DATETIME) + CAST(a.time AS DATETIME) desc";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Appointment a = new Appointment(rs.getInt(1), new Patient(rs.getInt(2), rs.getString(3)), rs.getDate(4), rs.getTime(5), rs.getString(6));
+                list.add(a);
             }
         } catch (SQLException e) {
         } finally {

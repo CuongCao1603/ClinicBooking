@@ -4,55 +4,6 @@
  */
 package connect;
 
-/**
- *
- * @author doans
- */
-//import java.io.File;
-//import java.io.FileInputStream;
-//import java.io.IOException;
-//import java.io.InputStream;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.SQLException;
-//import java.util.Base64;
-//
-//public class InsertBase64ToBlob {
-//
-//    public static void main(String[] args) throws IOException {
-//        // MySQL database connection details
-//        String url = "jdbc:mysql://localhost:3306/doctris_system";
-//        String username = "root";
-//        String password = "123456";
-//
-//        // Base64-encoded data
-//        File imageFile = new File("C:\\Users\\doans\\Downloads\\WebApplication1\\web\\assets\\images\\doctors\\bs-an.png");
-//        InputStream inputStream = new FileInputStream(imageFile);
-//        byte[] imageBytes = new byte[inputStream.available()];
-//        inputStream.read(imageBytes);
-//
-//        try (Connection conn = DriverManager.getConnection(url, username, password)) {
-//            // Prepare the SQL statement
-//            String sql = "UPDATE doctor (img, role_id, username, Category_id) VALUES (?, ?, ?, ?)";
-//            PreparedStatement statement = conn.prepareStatement(sql);
-//            statement.setBytes(1, imageBytes);
-//            statement.setInt(2, 3);
-//            statement.setString(3, "anhong");
-//            statement.setInt(4, 2);
-//
-//            // Execute the SQL statement
-//            int rowsInserted = statement.executeUpdate();
-//            if (rowsInserted > 0) {
-//                System.out.println("Image inserted successfully.");
-//            } else {
-//                System.out.println("Failed to insert image.");
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//}
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,12 +18,12 @@ public class InsertBase64ToBlob {
 
     public static void main(String[] args) throws IOException {
         // MySQL database connection details
-        String url = "jdbc:mysql://localhost:3306/doctris_system";
+        String url = "jdbc:mysql://localhost:3306/g3_cbs_db_final";
         String username = "sa";
         String password = "vanhleg2301";
 
         // Base64-encoded data
-        File imageFile = new File("D:\\NetBeanProjects--------------------------\\DoctrisSystem-main\\ClinicBooking-codebyVietAnh\\booking_clinic\\web\\assets\\images\\doctors\\bs-oanh.png");
+        File imageFile = new File("D:\\NetBeanProjects--------------------------\\DoctrisSystem-main\\ClinicBooking-codebyVietAnh\\Github_code\\booking_clinic\\web\\assets\\images\\doctors\\bs-huong.png");
         InputStream inputStream = new FileInputStream(imageFile);
         byte[] imageBytes = new byte[inputStream.available()];
         inputStream.read(imageBytes);
