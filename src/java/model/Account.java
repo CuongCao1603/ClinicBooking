@@ -46,14 +46,24 @@ public class Account {
         this.img = img;
         this.status = status;
     }
-
-    public Account(String username, String name, boolean gender, int phone, String email, String img) {
+      public Account(String username, Role role, String name, boolean gender, int phone, String email, boolean status) {
         this.username = username;
+        this.role = role;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
         this.email = email;
+        this.status = status;
+    }
+
+
+    public Account(String img, String username, String name, String email, boolean gender, int phone) {
         this.img = img;
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+        this.phone = phone;
     }
     
      public Account(String username, String name, boolean gender) {

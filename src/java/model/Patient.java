@@ -53,13 +53,14 @@ public class Patient {
         this.status = status;
         this.DOB = DOB;
     }
-
-    public Patient(Account account, Date DOB, int patient_id, Appointment appointment) {
+    
+    public Patient(Account account,Date DOB,int patient_id , Appointment appointment) {
         this.account = account;
         this.DOB = DOB;
         this.patient_id = patient_id;
         this.appointment = appointment;
     }
+
 
     public Patient(Account account) {
         this.account = account;

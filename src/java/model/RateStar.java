@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Admin
@@ -12,16 +14,17 @@ public class RateStar {
     private int id;
     private String feedback;
     private int star;
+    private Timestamp date;
     private int countfeedback;
     private Account user;
 
     public RateStar() {
     }
 
-    public RateStar(String feedback, int star, int countfeedback, Account user) {
+   public RateStar(Account user, int star, String feedback, Timestamp date) {
         this.feedback = feedback;
         this.star = star;
-        this.countfeedback = countfeedback;
+        this.date = date;
         this.user = user;
     }
 
@@ -29,11 +32,11 @@ public class RateStar {
         this.star = star;
         this.countfeedback = countfeedback;
     }
-
-    public RateStar(String feedback, int star, Account user) {
-        this.feedback = feedback;
-        this.star = star;
+    
+    public RateStar(Account user, int star, String feedback) {
         this.user = user;
+        this.star = star;
+        this.feedback = feedback;
     }
 
     public int getId() {
@@ -75,13 +78,15 @@ public class RateStar {
     public void setUser(Account user) {
         this.user = user;
     }
-    
-    
-    
-    
-    
-    
-    
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+        
     
     
 }

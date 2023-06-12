@@ -23,20 +23,19 @@ public class Setting {
     public Setting(int setting_id, String setting_name) {
         this.setting_id = setting_id;
         this.setting_name = setting_name;
-       
     }
-
-    public Setting(int setting_id,int id, String name, boolean status) {
-        this.setting_id = setting_id;
+    
+    public Setting(int id, String name, int setting_id, boolean status) {
         this.id = id;
         this.name = name;
+        this.setting_id = setting_id;
         this.status = status;
     }
 
-    public Setting(int setting_id, int id, String name, boolean status, String note, int order) {
-        this.setting_id = setting_id;
+    public Setting(int id, String name, int setting_id, boolean status, String note, int order) {
         this.id = id;
         this.name = name;
+        this.setting_id = setting_id;
         this.status = status;
         this.note = note;
         this.order = order;

@@ -23,16 +23,14 @@ public class Doctor {
     private String description;
     private boolean status;
     private String img;
-    private RateStar ratestar;
+    private RateStar rateStar;
     private double fee;
     private String position;
 
-    public Doctor() {
+   public Doctor() {
     }
 
-    public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name,
-            Account account, boolean gender, Date DOB, int phone, String description,
-            boolean status, String img, double fee, String position) {
+    public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name, Account account, boolean gender, Date DOB, int phone, String description, boolean status, String img, double fee, String position) {
         this.setting = setting;
         this.doctor_id = doctor_id;
         this.role_id = role_id;
@@ -48,9 +46,7 @@ public class Doctor {
         this.position = position;
     }
 
-    public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name,
-            Account account, boolean gender, Date DOB, int phone, String description,
-            boolean status, String img, RateStar ratestar, double fee, String position) {
+    public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name, Account account, boolean gender, Date DOB, int phone, String description, boolean status, String img, RateStar rateStar, double fee, String position) {
         this.setting = setting;
         this.doctor_id = doctor_id;
         this.role_id = role_id;
@@ -62,13 +58,12 @@ public class Doctor {
         this.description = description;
         this.status = status;
         this.img = img;
-        this.ratestar = ratestar;
+        this.rateStar = rateStar;
         this.fee = fee;
         this.position = position;
     }
-
-    public Doctor(String doctor_name,
-            boolean gender, int phone, String description, String img) {
+    
+    public Doctor(String img, String doctor_name, int phone, boolean gender, String description) {
         this.doctor_name = doctor_name;
         this.gender = gender;
         this.phone = phone;
@@ -76,8 +71,7 @@ public class Doctor {
         this.img = img;
     }
 
-    public Doctor(Setting setting, int doctor_id, String doctor_name,
-            boolean gender, boolean status) {
+    public Doctor(Setting setting, int doctor_id, String doctor_name, boolean gender, boolean status) {
         this.setting = setting;
         this.doctor_id = doctor_id;
         this.doctor_name = doctor_name;
@@ -93,8 +87,8 @@ public class Doctor {
         this.doctor_id = doctor_id;
         this.doctor_name = doctor_name;
     }
-
-    public Doctor(int doctor_id, String img, String doctor_name) {
+    
+    public Doctor(int doctor_id,String img, String doctor_name) {
         this.doctor_id = doctor_id;
         this.doctor_name = doctor_name;
         this.img = img;
@@ -188,12 +182,12 @@ public class Doctor {
         this.img = img;
     }
 
-    public RateStar getRatestar() {
-        return ratestar;
+    public RateStar getRateStar() {
+        return rateStar;
     }
 
     public void setRatestar(RateStar ratestar) {
-        this.ratestar = ratestar;
+        this.rateStar = ratestar;
     }
 
     public double getFee() {
