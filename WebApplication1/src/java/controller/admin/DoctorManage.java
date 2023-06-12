@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Doctor;
 import model.Setting;
 
@@ -79,7 +81,7 @@ public class DoctorManage extends HttpServlet {
                 request.getRequestDispatcher("admin/doctor.jsp").forward(request, response);
             }
         } catch (IOException | SQLException e) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DoctorManage.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

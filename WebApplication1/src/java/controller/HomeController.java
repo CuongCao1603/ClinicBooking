@@ -15,6 +15,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import model.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,7 +47,7 @@ public class HomeController extends HttpServlet {
             request.setAttribute("doctor", doctorlist);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } catch (IOException | SQLException | ServletException e) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
