@@ -12,6 +12,10 @@
         <servlet-name>DoctorManage</servlet-name>
         <servlet-class>controller.admin.DoctorManage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Dashboard</servlet-name>
+        <servlet-class>controller.admin.Dashboard</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AccountController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>DoctorManage</servlet-name>
         <url-pattern>/doctormanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Dashboard</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
