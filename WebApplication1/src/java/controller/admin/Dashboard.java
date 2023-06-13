@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package controller.admin;
 
@@ -35,18 +36,32 @@ public class Dashboard extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Dashboard</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Dashboard at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        AppointmentDAO appointmentdao = new AppointmentDAO();
+        ReservationDAO reservationdao = new ReservationDAO();
+//        PatientDao patientdao = new PatientDao();
+        DoctorDAO doctordao = new DoctorDAO();
+        HttpSession session = request.getSession();
+        try {
+            String action = request.getParameter("action");
+            List<Appointment> appointmentlist = appointmentdao.getAppointmentListInDay();
+            List<Reservation> reservationlist = reservationdao.getReservationListInDay();
+            if (action.equals("default")) {
+                List<Statistic> appointment7day = appointmentdao.getDataLast7Day("7day");
+//                List<Statistic> reservation7day = reservationdao.getDataLast7Day("7day");
+                request.setAttribute("Revenue", reservationdao.SumFee("month") + appointmentdao.SumFee("month"));
+                request.setAttribute("appointment7day", appointment7day);
+//                request.setAttribute("reservation7day", reservation7day);
+                session.setAttribute("atype", "7day");
+                session.setAttribute("rtype", "month");
+                request.setAttribute("Revenueappointment", appointmentdao.SumFee("month"));
+                request.setAttribute("Revenuereservation", reservationdao.SumFee("month"));
+                request.setAttribute("appointmentlist", appointmentlist);
+                request.setAttribute("reservationlist", reservationlist);
+            }
+            request.getRequestDispatcher("admin/dashboard.jsp").forward(request, response);
+        } catch (Exception e) {
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

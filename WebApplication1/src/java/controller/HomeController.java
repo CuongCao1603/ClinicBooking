@@ -49,9 +49,7 @@ public class HomeController extends HttpServlet {
         } catch (IOException | SQLException | ServletException e) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -90,5 +88,4 @@ public class HomeController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

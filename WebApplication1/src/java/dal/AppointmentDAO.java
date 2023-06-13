@@ -61,10 +61,13 @@ public class AppointmentDAO extends DBContext {
 
     public List<Appointment> getAppointmentListInDay() throws SQLException, IOException {
         List<Appointment> list = new ArrayList<>();
-        String sql = "Select appointments.appointment_id , doctor.doctor_name, users.name , \n"
-                + "appointments.date ,appointments.time, appointments.status from appointments \n"
-                + "inner join doctor on appointments.doctor_id = doctor.doctor_id inner join patient on \n"
-                + "appointments.patient_id = patient.patient_id inner join users on patient.username = users.username where appointments.date = cast(CURDATE() as Date);";
+        String sql = "SELECT appointments.appointment_id, doctor.doctor_name, users.name, \n"
+                + "appointments.date, appointments.time, appointments.status\n"
+                + "FROM appointments \n"
+                + "INNER JOIN doctor ON appointments.doctor_id = doctor.doctor_id \n"
+                + "INNER JOIN patient ON appointments.patient_id = patient.patient_id \n"
+                + "INNER JOIN users ON patient.username = users.username\n"
+                + "WHERE DATE(appointments.date) = CURDATE();";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -84,8 +87,8 @@ public class AppointmentDAO extends DBContext {
         }
         return list;
     }
-    
-        public List<Statistic> getDataLast7Day(String type) {
+
+    public List<Statistic> getDataLast7Day(String type) {
         List<Statistic> list = new ArrayList<>();
         String day7 = " Select p.day , coalesce(count(u.appointment_id), 0) as count from (\n"
                 + "    Select curdate() as day union\n"
@@ -147,6 +150,36 @@ public class AppointmentDAO extends DBContext {
             //no code
         }
         return list;
+    }
+
+    public int SumFee(String type) {
+        int sum = 0;
+        String month = "select sum(fee) from appointments where status = 'Complete' AND month(appointments.date) = month(CURRENT_DATE)";
+        String today = "select sum(fee) from appointments where status = 'Complete' AND appointments.date = CURRENT_DATE";
+        String day7 = "select sum(fee) from appointments where status = 'Complete' AND appointments.date BETWEEN DATE_SUB(CURRENT_DATE, INTERVAL 7) DAY AND CURRENT_DATE";
+        String day14 = "select sum(fee) from appointments where status = 'Complete' AND appointments.date BETWEEN DATE_SUB(CURRENT_DATE, INTERVAL 14) DAY AND CURRENT_DATE";
+        try {
+            connection = dbc.getConnection();
+            if (type.equals("7day")) {
+                ps = connection.prepareStatement(day7);
+            }
+            if (type.equals("14day")) {
+                ps = connection.prepareStatement(day14);
+            }
+            if (type.equals("today")) {
+                ps = connection.prepareStatement(today);
+            }
+            if (type.equals("month")) {
+                ps = connection.prepareStatement(month);
+            }
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                sum = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            //todo
+        }
+        return sum;
     }
 
 }
