@@ -396,8 +396,13 @@ public class DoctorDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public List<Doctor> getListByPage(ArrayList<Doctor> doctorall, int start, int end) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Doctor> getListByPage(ArrayList<Doctor> list, int start, int end) {
+      
+         ArrayList<Doctor> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
     }
 
     public List<Appointment> getAllAppointment(int doctorIDByUsername) {
