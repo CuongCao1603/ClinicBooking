@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package controller;
 
 import dao.AccountDAO;
@@ -50,8 +47,7 @@ public class AccountController extends HttpServlet {
         String alert = null;
         String message = null;
 
-        try {
-            
+        try {  
 //Login
             if (action.equals("login")) {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
