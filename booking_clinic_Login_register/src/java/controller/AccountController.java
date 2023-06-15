@@ -40,8 +40,10 @@ public class AccountController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String action = request.getParameter("action"); // lấy giá trị ở action bên jsp lưu vào biến action 
+        // Talk about session and cookies: https://viblo.asia/p/session-cookie-va-ung-dung-vao-bai-toan-login-3P0lP1jP5ox
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("user");
+        
         
         AccountDAO userdao = new AccountDAO();
         String alert = null;
@@ -74,8 +76,13 @@ public class AccountController extends HttpServlet {
                     // Nên dùng cookies lưu vào thì mình kiểm soát đc thời gian 
                     Cookie cemail = new Cookie("email", email);
                     Cookie cpass = new Cookie("pass", password);
-                    Cookie rem = new Cookie("remember", remember);
-                    
+                    Cookie rem = new Cookie("remember", remember); 
+//             Đoạn mã này tạo một đối tượng cookie mới có tên là 'rem' với tên là "remember" và giá trị của biến remember.
+//             Mục đích của cookie là lưu trữ các mẩu dữ liệu nhỏ ở phía máy khách 
+//             mà máy chủ web có thể truy xuất trong các yêu cầu tiếp theo. 
+//             Trong trường hợp này, có vẻ như cookie đang được sử dụng 
+//              để ghi nhớ một số loại cài đặt hoặc sở thích của người dùng.                    
+
                     // Tại sao có session rồi mà còn phải set cookies
                     if (remember != null) {
                         cemail.setMaxAge(60 * 60 * 24 * 30); // tính bằng giây 
@@ -133,13 +140,13 @@ public class AccountController extends HttpServlet {
                 
                 if (account != null) {
                     
-                    request.setAttribute("email", email);
-                    request.setAttribute("password", password);
+                     request.setAttribute("email", email);
+                     request.setAttribute("password", password);
                     request.setAttribute("repassword", repassword);
                     request.setAttribute("username", username);
                     request.setAttribute("name", name);
                     request.setAttribute("gender", rgender.equals("true"));
-                    request.setAttribute("phone", rphone);
+                    request.setAttribute("phone", rphone); 
                     
                     request.setAttribute("error", "Email hoặc username đã tồn tại trên hệ thống!");
                     request.getRequestDispatcher("user?action=register").forward(request, response);

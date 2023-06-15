@@ -38,11 +38,11 @@ Sau khi nhận giá trị trả vể, UserController check tài khoản
                             <div class="card-body">
                                 <h4 class="text-center">Đăng nhập</h4> 
                                 <c:set var="cookie" value="${pageContext.request.cookies}"/>
-<!--Mã JSP mà bạn cung cấp dường như đang cố truy xuất các giá trị của cookie 
-"email" và "pass" bằng cách sử dụng biểu thức EL ${cookie.email.value} và ${cookie.pass.value} tương ứng. 
-Tuy nhiên, điều quan trọng cần lưu ý là việc truy cập cookie theo cách này không phải lúc nào cũng hoạt động như mong đợi, 
-đặc biệt nếu cookie không có hoặc hết hạn. Ngoài ra, 
-giá trị được gán cho biến cookie sử dụng thẻ <c:set> không được sử dụng ở bất kỳ đâu trong mã tiếp theo.-->
+<!--Trong công nghệ JSP (JavaServer Pages), pageContext là một đối tượng ẩn cung cấp quyền truy cập vào các đối tượng khác nhau 
+được liên kết với yêu cầu hiện tại, chẳng hạn như request, response, session, servlet context, and so on
+Trong mã bạn đã cung cấp, pageContext.request đề cập đến đối tượng HttpServletRequest được liên kết với yêu cầu hiện tại. 
+Thuộc tính cookie của đối tượng này trả về một mảng các đối tượng Cookie đại diện cho tất cả các cookie có trong yêu cầu.
+-->
     
                                 <form action="user?action=checklogin" method="POST" class="login-form mt-4">
                                     <p style="color: red; align-content: center;">
@@ -54,31 +54,50 @@ giá trị được gán cho biến cookie sử dụng thẻ <c:set> không đư
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
+                                                
                                                 <label class="form-label">Email <span class="text-danger">*</span></label>
                                                 <input type="email" oninvalid="CheckEmail(this);" oninput="CheckEmail(this);" value="${cookie.email.value}" class="form-control" placeholder="Email" name="email" required="">
-                                            <%-- oninvalid - nếu để chống thanh điền thì sẽ gọi đến hàm CheckEmail() 
+                                            <%-- 
+                                            
+                                            oninvalid - nếu để chống thanh điền thì sẽ gọi đến hàm CheckEmail() // pattern=".{6,}" -> Must contain 6 or more characters
+                                            Thuộc tính oninput kích hoạt khi giá trị của thẻ <input> và <textarea> thay đổi.
                                             oninvalid : https://www.w3schools.com/jsref/event_oninvalid.asp#:~:text=The%20oninvalid%20event%20occurs%20when%20a%20submittable%20%3Cinput%3E,must%20be%20filled%20out%20before%20submitting%20the%20form%29.
                                             oninput : https://www.w3schools.com/jsref/event_oninput.asp
                                             --%>
+                                            
                                             </div>
                                         </div>
-
+                                            
                                         <div class="col-lg-12">
                                             <div class="mb-3">
+                                                
                                                 <label class="form-label">Mật khẩu <span class="text-danger">*</span></label>
                                                 <input type="password" oninvalid="CheckPassword(this);" oninput="CheckPassword(this);" value="${cookie.pass.value}" class="form-control" name="password" placeholder="Password" required="">
-                                                <!-- Câu hỏi -->
+                                        <!--    required="" phải điền vào các trường 
+                                                Thuộc tính value để lưu cookies trên thanh điền và ko phải nhập lại -->
+                                                
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="d-flex justify-content-between">
+                                                
                                                 <div class="mb-3">
                                                     <div class="form-check">
                                                         <input ${(cookie.rem.value eq 'ON')?"checked":""} class="form-check-input align-middle" type="checkbox" name="remember" id="remember-check">
+                                                        <!--so sánh rem xem có 'ON' hay ko , 
+                                                        Nếu ko on thì cút 
+                                                        Nếu có on thì checked -> 
+                                                        -->
                                                         <label class="form-check-label" for="remember-check">Lưu tài khoản</label>
+<!--                                                        label liên kết với input qua for="remember-check"-->
+                                                        <!--Giá trị của thuộc tính "for" phải bằng thuộc tính "id" của điều khiển biểu mẫu được liên kết với nó.
+                                                        The label được liên kết với"checkbox" bằng thuộc tính "for", tham chiếu đến "id" của "checkbox".
+                                                        -->
+                                                        
                                                     </div>
                                                 </div>
+                                                        
                                                 <a href="user?action=recover" class="text-dark h6 mb-0">Quên mật khẩu ?</a>
                                             </div>
                                         </div>

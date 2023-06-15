@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/src/java/config/EncodeData.java</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/web/assets/js/app.js</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/src/java/config/Validate.java</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/web/login.jsp</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/src/java/dao/AccountDAO.java</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/src/java/connect/DBContext.java</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/src/java/controller/AccountController.java</file>
-            <file>file:/D:/NetBeanProjects--------------------------/DoctrisSystem-main/ClinicBooking-codebyVietAnh/booking_clinic_Login_register/web/register.jsp</file>
+            <file>file:/D:/ClinicBooking/booking_clinic_Login_register/web/register.jsp</file>
+            <file>file:/D:/ClinicBooking/booking_clinic_Login_register/src/java/controller/AccountController.java</file>
+            <file>file:/D:/ClinicBooking/booking_clinic_Login_register/web/login.jsp</file>
+            <file>file:/D:/ClinicBooking/booking_clinic_Login_register/web/assets/js/app.js</file>
         </group>
     </open-files>
 </project-private>

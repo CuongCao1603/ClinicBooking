@@ -43,9 +43,11 @@ thứ tự viết hàm
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="mb-3">                                               
+                                            <div class="mb-3">     
+                                                
                                                 <label class="form-label">Giới tính <span class="text-danger">*</span></label>
                                                 <div class="my-3">
+                                                    
                                                     <div class="form-check">
                                                         <input ${(requestScope.gender) ? "checked=\"checked\"" : ""} id="credit" name="gender" value="true" type="radio" class="form-check-input"
                                                                checked required>
@@ -54,9 +56,13 @@ thứ tự viết hàm
                                                     <div class="form-check">
                                                         <input ${(!requestScope.gender) ? "checked=\"checked\"" : ""} id="debit" name="gender" value="false" type="radio" class="form-check-input"
                                                                required>
+<!--                                                        thuộc tính checked, nó được sử dụng để 
+                                                        kiểm soát trạng thái được chọn hoặc không được chọn của một input element.-->
                                                         <label class="form-check-label">Nữ</label>
                                                     </div>
+                                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
