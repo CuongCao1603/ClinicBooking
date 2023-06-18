@@ -38,7 +38,7 @@ public class Dashboard extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         AppointmentDAO appointmentdao = new AppointmentDAO();
         ReservationDAO reservationdao = new ReservationDAO();
-//        PatientDao patientdao = new PatientDao();
+        PatientDao patientdao = new PatientDao();
         DoctorDAO doctordao = new DoctorDAO();
         HttpSession session = request.getSession();
         try {
@@ -47,17 +47,34 @@ public class Dashboard extends HttpServlet {
             List<Reservation> reservationlist = reservationdao.getReservationListInDay();
             if (action.equals("default")) {
                 List<Statistic> appointment7day = appointmentdao.getDataLast7Day("7day");
-//                List<Statistic> reservation7day = reservationdao.getDataLast7Day("7day");
+                List<Statistic> reservation7day = reservationdao.getDataLast7Day("7day");
                 request.setAttribute("Revenue", reservationdao.SumFee("month") + appointmentdao.SumFee("month"));
                 request.setAttribute("appointment7day", appointment7day);
-//                request.setAttribute("reservation7day", reservation7day);
+                request.setAttribute("reservation7day", reservation7day);
                 session.setAttribute("atype", "7day");
                 session.setAttribute("rtype", "month");
                 request.setAttribute("Revenueappointment", appointmentdao.SumFee("month"));
-                request.setAttribute("Revenuereservation", reservationdao.SumFee("month"));
-                request.setAttribute("appointmentlist", appointmentlist);
-                request.setAttribute("reservationlist", reservationlist);
+                request.setAttribute("Revenuereservation", reservationdao.SumFee("month"));  
             }
+            if (action.contains("statistic")) {
+                String atype = request.getParameter("atype");
+                String rtype = request.getParameter("rtype");
+                List<Statistic> appointment7day = appointmentdao.getDataLast7Day(atype);
+                List<Statistic> reservation7day = reservationdao.getDataLast7Day(atype);
+                request.setAttribute("Revenue", reservationdao.SumFee(rtype) + appointmentdao.SumFee(rtype));
+                request.setAttribute("Revenueappointment", appointmentdao.SumFee(rtype));
+                request.setAttribute("Revenuereservation", reservationdao.SumFee(rtype)); 
+                session.setAttribute("atype", atype);
+                session.setAttribute("rtype", rtype);
+                request.setAttribute("appointment7day", appointment7day);
+                request.setAttribute("reservation7day", reservation7day);
+            }
+            request.setAttribute("patient", patientdao.CountPatient());
+            request.setAttribute("appointment", appointmentdao.CountAppointment());
+            request.setAttribute("reservation", reservationdao.CountReservation());
+            request.setAttribute("doctor", doctordao.CountDoctor());
+            request.setAttribute("appointmentlist", appointmentlist);
+            request.setAttribute("reservationlist", reservationlist);
             request.getRequestDispatcher("admin/dashboard.jsp").forward(request, response);
         } catch (Exception e) {
         }
