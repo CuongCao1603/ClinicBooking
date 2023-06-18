@@ -64,6 +64,53 @@ public class SettingController extends HttpServlet {
                 setting = settingdao.getAllSetting();
                 settingdetailslist = settingdao.getBySetting("category_service");
             }
+            if (action.equals("update")) {
+                int setting_id = Integer.parseInt(request.getParameter("setting_id"));
+                int id = Integer.parseInt(request.getParameter("id"));
+                String value = request.getParameter("value");
+                int order = Integer.parseInt(request.getParameter("order"));
+                String note = request.getParameter("note");
+                boolean status = Boolean.parseBoolean(request.getParameter("status"));
+                String table = null;
+                if (setting_id == 1) {
+                    table = "role";
+                }
+                if (setting_id == 2) {
+                    table = "category_blog";
+                }
+                if (setting_id == 3) {
+                    table = "category_service";
+                }
+                settingdao.SettingUpdate(table, id, value, status, setting_id, note, order);
+                alert = "success";
+                message = "Cập nhật thông tin thành công";
+                request.setAttribute("alert", alert);
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("setting?action=all").forward(request, response);
+            }
+            if (action.equals("addnew")) {
+                int setting_id = Integer.parseInt(request.getParameter("setting_id"));
+                String value = request.getParameter("value");
+                boolean status = Boolean.parseBoolean(request.getParameter("status"));
+                String note = request.getParameter("note");
+                int order = Integer.parseInt(request.getParameter("order"));
+                String table = null;
+                if (setting_id == 1) {
+                    table = "role";
+                }
+                if (setting_id == 2) {
+                    table = "category_blog";
+                }
+                if (setting_id == 3) {
+                    table = "category_service";
+                }
+                settingdao.SettingADD(table, value, status, setting_id, note, order);
+                alert = "success";
+                message = "Thêm mới thành công";
+                request.setAttribute("alert", alert);
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("setting?action=all").forward(request, response);
+            }
             if (action.equals("search")){
                 url = "setting?action=search";
                 String search = request.getParameter("search");
