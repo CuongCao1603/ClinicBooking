@@ -77,6 +77,7 @@ public class Dashboard extends HttpServlet {
             request.setAttribute("reservationlist", reservationlist);
             request.getRequestDispatcher("admin/dashboard.jsp").forward(request, response);
         } catch (Exception e) {
+            //no code
         }
 
     }

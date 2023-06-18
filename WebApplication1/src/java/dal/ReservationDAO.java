@@ -88,4 +88,97 @@ public class ReservationDAO extends DBContext {
         return sum;
     }
 
+    public List<Statistic> getDataLast7Day(String type) {
+        List<Statistic> list = new ArrayList<>();
+        String day7 = "Select p.day , coalesce(count(u.reservation_id), 0) as count from (\n"
+                + "    Select curdate() as day\n"
+                + "          union\n"
+                + "    Select date_sub(Curdate(),interval 1 day)\n"
+                + "          union\n"
+                + "    Select date_sub(Curdate(),interval 2 day)\n"
+                + "          union\n"
+                + "    Select date_sub(Curdate(),interval 3 day)\n"
+                + "          union\n"
+                + "    Select date_sub(Curdate(),interval 4 day)\n"
+                + "          union\n"
+                + "    Select date_sub(Curdate(),interval 5 day)\n"
+                + "         union\n"
+                + "    Select date_sub(Curdate(),interval 6 day))as p\n"
+                + "left join reservations as u on p.day = u.date group by p.day order by p.day asc";
+
+        String day14 = "Select p.day , coalesce(count(u.reservation_id), 0) as count from (\n"
+                + "                    Select curdate() as day\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 1 day)\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 2 day)\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 3 day)\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 4 day)\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 5 day)\n"
+                + "                         union\n"
+                + "                    Select date_sub(Curdate(),interval 6 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 7 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 8 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 9 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 10 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 11 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 12 day)\n"
+                + "                    union\n"
+                + "                    Select date_sub(Curdate(),interval 13 day)\n"
+                + "                    )as p\n"
+                + "                    \n"
+                + "                left join reservations as u on p.day = u.date group by p.day order by p.day asc";
+
+        String day3 = "Select p.day , coalesce(count(r.reservation_id), 0) as count from (\n"
+                + "                    Select curdate() as day\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 1 day)\n"
+                + "                          union\n"
+                + "                    Select date_sub(Curdate(),interval 2 day)\n"
+                + "                    )as p\n"
+                + "                left join reservations as r on p.day = r.date group by p.day order by p.day asc";
+        try {
+            connection = dbc.getConnection();
+            if (type.equals("7day")) {
+                ps = connection.prepareStatement(day7);
+            }
+            if (type.equals("14day")) {
+                ps = connection.prepareStatement(day14);
+            }
+            if (type.equals("3day")) {
+                ps = connection.prepareStatement(day3);
+            }
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Statistic(rs.getDate(1), rs.getInt(2)));
+            }
+        } catch (Exception e) {
+            //no code
+        }
+        return list;
+    }
+
+    public int CountReservation() {
+        int count = 0;
+        String sql = "select count(*) from reservations where reservations.status = 'Complete' AND month(reservations.date) = month(CURRENT_DATE)";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return count;
+    }
 }

@@ -126,6 +126,21 @@ public class DoctorDAO extends DBContext {
         return list;
     }
 
+    public int CountDoctor() {
+        int count = 0;
+        String sql = "select count(*) from doctor";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return count;
+    }
+
     public List<Doctor> getListByPage(List<Doctor> list,
             int start, int end) {
         ArrayList<Doctor> arr = new ArrayList<>();

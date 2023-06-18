@@ -182,4 +182,18 @@ public class AppointmentDAO extends DBContext {
         return sum;
     }
 
+    public int CountAppointment() {
+        int count = 0;
+        String sql = "select count(*) from appointments where status = 'Complete' AND month(appointments.date) = month(CURRENT_DATE)";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return count;
+    }
 }
