@@ -56,6 +56,10 @@ public class Appointment {
         this.status = status;
     }
 
+    public Appointment(Date date) {
+        this.date = date;
+    }
+
     public Appointment(Date date, Time time, String status) {
         this.date = date;
         this.time = time;

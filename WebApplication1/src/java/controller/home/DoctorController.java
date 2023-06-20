@@ -45,17 +45,16 @@ public class DoctorController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         
+        HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        
+        Account user = (Account) session.getAttribute("user");
+                
         DoctorDAO doctordao = new DoctorDAO();
         AppointmentDAO appointmentdao = new AppointmentDAO();
         PatientDAO patientdao = new PatientDAO();
         
         String url = null;
         List<Doctor> getdoctor = null;
-        HttpSession session = request.getSession();
-           
-        Account user = (Account) session.getAttribute("user");
         ArrayList<Doctor> doctorall = new ArrayList<>();
         
         try {
@@ -150,6 +149,11 @@ public class DoctorController extends HttpServlet {
                request.setAttribute("patients", patients);
                
                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
+            }
+            
+// myappointment
+            if(action.equals("myappointment")){
+                
             }
             
 

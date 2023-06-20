@@ -92,6 +92,14 @@ public class Account {
         }
     }
 
+    public Account(String img, String name, int phone, String email) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.img = img;
+    }
+    
+
     public Account(String img, String name, int phone, boolean gender, String email) {
         this.name = name;
         this.gender = gender;

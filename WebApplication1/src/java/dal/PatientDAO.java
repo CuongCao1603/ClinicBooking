@@ -33,8 +33,14 @@ public class PatientDAO {
     public List<Patient> getPatientByDoctor(int doctor_id) throws SQLException {
 
         List<Patient> list = new ArrayList<>();
-        String sql = "select";
-
+        String sql = "select distinct users.img, users.name, a.pdate, users.phone, users.email, patient.DOB, patient.patient_id\n"
+                + "	as lastbooking from appointments \n"
+                + "	inner join patient on appointments.patient_id = patient.patient_id \n"
+                + "	inner join users on patient.username = users.username inner join \n"
+                + "	(\n"
+                + "	select patient_id as pid , max(date) as pdate from appointments group by patient_id\n"
+                + "	) \n"
+                + "	as a on a.pid = appointments.patient_id where appointments.doctor_id = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -58,9 +64,9 @@ public class PatientDAO {
                 } else {
                     base64Image = "default";
                 }
-                Account a = new Account(base64Image, rs.getString(2), rs.getInt(3), false, rs.getString(4));
-                Appointment ap = new Appointment(rs.getString(7), rs.getString(8), rs.getDouble(9));
-                list.add(new Patient(a, rs.getDate(5), rs.getInt(6), ap));
+                Account a = new Account(base64Image, rs.getString(4), rs.getInt(6), rs.getString(7));
+                Appointment ap = new Appointment(rs.getDate(5));
+                list.add(new Patient(a, rs.getDate(6), rs.getInt(1), ap));
             }
         } catch (Exception e) {
         } finally {
