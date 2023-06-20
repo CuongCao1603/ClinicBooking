@@ -64,9 +64,11 @@ public class PatientDAO {
                 } else {
                     base64Image = "default";
                 }
-                Account a = new Account(base64Image, rs.getString(4), rs.getInt(6), rs.getString(7));
-                Appointment ap = new Appointment(rs.getDate(5));
-                list.add(new Patient(a, rs.getDate(6), rs.getInt(1), ap));
+                Account a = new Account(base64Image, rs.getString(2));
+                Appointment ap = new Appointment(rs.getDate(3));
+                Account a2 = new Account(rs.getInt(4), rs.getString(5));
+                Patient pa = new Patient(rs.getDate(6), rs.getInt(7));
+                list.add(new Patient(a, ap, a2, pa));
             }
         } catch (Exception e) {
         } finally {

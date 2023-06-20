@@ -91,12 +91,16 @@ public class Account {
             this.img = img;
         }
     }
-
-    public Account(String img, String name, int phone, String email) {
+    
+   
+    public Account(String img, String name) {
+        this.img = img;
         this.name = name;
+    }    
+    
+    public Account(int phone, String email) {
         this.phone = phone;
         this.email = email;
-        this.img = img;
     }
     
 
@@ -112,10 +116,6 @@ public class Account {
         }
     }
 
-    public Account(String username, String name) {
-        this.username = username;
-        this.name = name;
-    }
 
     public String getUsername() {
         return username;
