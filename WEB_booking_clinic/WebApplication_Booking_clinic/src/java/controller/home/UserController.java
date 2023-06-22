@@ -19,10 +19,7 @@ import config.Validate;
 import jakarta.servlet.http.Part;
 import model.Role;
 
-/**
- *
- * @author doans
- */
+
 public class UserController extends HttpServlet {
 
     /**
@@ -44,7 +41,6 @@ public class UserController extends HttpServlet {
         String alert = null;
         String message = null;
         
-//try(PrintWriter out = response.getWriter()){...}
         try {
             if (action.equals("login")) {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -163,12 +159,7 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("user?action=profile").forward(request, response);
             }
 
-//Kiểm tra xem oldpassword có khớp với mật khẩu hiện tại của người dùng (user.getPassword()) hay không. 
-//Nếu không khớp, một số thuộc tính của yêu cầu được thiết lập để truyền thông tin về lỗi. Cụ thể là:
-//oldpassword: giá trị oldpassword đã được giải mã (EncodeData.deCode(oldpassword)).
-//newpassword: giá trị newpassword.
-//renewpassword: giá trị renewpassword.
-//passerror: thông báo lỗi "Mật khẩu cũ không đúng!".
+
             if (action.equals("changepassword")) {
                 String oldpassword = EncodeData.enCode(request.getParameter("oldpassword"));
                 String newpassword = request.getParameter("newpassword");
