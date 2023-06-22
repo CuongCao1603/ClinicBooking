@@ -14,8 +14,6 @@ import java.sql.Date;
 public class Patient {
 
     Account account;
-    Account account2;
-    Patient pa;
     Appointment appointment;
     private int patient_id;
     private String username;
@@ -57,13 +55,15 @@ public class Patient {
         this.status = status;
         this.DOB = DOB;
     }
-    
-    public Patient(Account account, Appointment appointment, Patient pa) {
+
+    public Patient(Account account, Appointment appointment, Date DOB, int patient_id) {
         this.account = account;
-        this.appointment = appointment;
-        this.pa = pa;
-        
+        this.appointment = appointment;      
+        this.DOB = DOB;
+        this.patient_id = patient_id;
     }
+    
+
 
     public Patient(Date DOB, int patient_id) {
         this.DOB = DOB;

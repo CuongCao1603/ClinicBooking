@@ -33,7 +33,7 @@ public class PatientDAO {
     public List<Patient> getPatientByDoctor(int doctor_id) throws SQLException {
 
         List<Patient> list = new ArrayList<>();
-        String sql = "select distinct users.img, users.name, a.pdate, users.phone, users.email, patient.DOB, patient.patient_id\n"
+        String sql = "select distinct users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id\n"
                 + "as lastbooking from appointments \n"
                 + "inner join patient on appointments.patient_id = patient.patient_id \n"
                 + "inner join users on patient.username = users.username inner join \n"
@@ -46,35 +46,12 @@ public class PatientDAO {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, doctor_id);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                String base64Image = null;
-                Blob blob = rs.getBlob(1);
-                if (blob != null) {
-                    InputStream inputStream = blob.getBinaryStream();
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    byte[] buffer = new byte[4096];
-                    int bytesRead = -1;
-                    while ((bytesRead = inputStream.read(buffer)) != -1) {
-                        outputStream.write(buffer, 0, bytesRead);
-                    }
-                    byte[] imageBytes = outputStream.toByteArray();
-                    base64Image = Base64.getEncoder().encodeToString(imageBytes);
-                    inputStream.close();
-                    outputStream.close();
-                } else {
-                    base64Image = "default";
-                }
-                
-                Account a = new Account(base64Image, rs.getString(2), rs.getInt(4), rs.getString(5));
-                Appointment ap = new Appointment(rs.getDate(3));
-                Patient pa = new Patient(rs.getDate(6), rs.getInt(7));
-                list.add(new Patient(a, ap, pa));
+            while (rs.next()) {               
+                Account a = new Account(rs.getString(1), rs.getInt(2), rs.getString(3));
+                Appointment ap = new Appointment(rs.getDate(4));
+                list.add(new Patient(a, ap, rs.getDate(5), rs.getInt(6)));
             }
         } catch (Exception e) {
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
         }
         return list;
     }

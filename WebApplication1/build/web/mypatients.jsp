@@ -29,9 +29,9 @@
                                         <thead>
                                             <tr>
                                                 <th class="border-bottom" style="min-width: 100px;"> Patient</th>
-                                                <th class="border-bottom" style="min-width: 110px;">Date Booking</th>
                                                 <th class="border-bottom" style="min-width: 70px;">Phone</th>
                                                 <th class="border-bottom" style="min-width: 70px;">Email</th>
+                                                <th class="border-bottom" style="min-width: 110px;">Date Booking</th>
                                                 <th class="border-bottom" style="min-width: 30px;">DOB</th>
                                                 <th class="border-bottom"></th>
                                             </tr>
@@ -42,14 +42,13 @@
                                                     <td>
                                                         <a>
                                                             <div class="d-flex align-items-center">
-                                                                <img src="data:img/png;base64, ${a.account.img}" class="avatar avatar-md-sm rounded-circle shadow" alt="img">
                                                                 <span class="ms-2">${a.account.name}</span>
                                                             </div>
                                                         </a>
                                                     </td>
+                                                    <td class="">${a.account.phone}</td>
+                                                    <td class="">${a.account.email}</td>
                                                     <td class=""><fmt:formatDate pattern="dd/MM//yyyy" value="${a.appointment.date}"/></td>
-                                                    <td class="">${a.user.phone}</td>
-                                                    <td class="">${a.user.email}</td>
                                                     <td class=""><fmt:formatDate pattern="dd/MM/yyyy" value="${a.DOB}"/></td>
                                                     <td class="text-end">
                                                         <a href="doctor?acction=detailpatient&id=${a.patient_id}"><u>Detail</u></a>

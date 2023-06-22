@@ -103,8 +103,7 @@ public class Account {
         this.email = email;
     }
 
-    public Account( String img, String name, int phone, String email) {
-        this.img = img;
+    public Account(String name, int phone, String email) {
         this.name = name;
         this.phone = phone;
         this.email = email;   
