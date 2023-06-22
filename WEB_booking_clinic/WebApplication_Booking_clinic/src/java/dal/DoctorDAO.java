@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dal;
 
 import java.io.IOException;
@@ -71,18 +68,18 @@ public class DoctorDAO extends DBContext {
             rs = ps.executeQuery();
             while (rs.next()) {
                 String base64Image = null;
-                Blob blob = rs.getBlob(14); //trích xuất đối tượng Blob từ kết quả truy vấn ResultSet tại vị trí cột thứ 14.
+                Blob blob = rs.getBlob(14); 
                 if (blob != null) {
-                    InputStream inputStream = blob.getBinaryStream();//tạo một đối tượng InputStream từ blob, sử dụng getBinaryStream() để lấy luồng nhị phân của blob.
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();//tạo một đối tượng ByteArrayOutputStream, được sử dụng để ghi dữ liệu từ luồng đầu vào.
+                    InputStream inputStream = blob.getBinaryStream();
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                     byte[] buffer = new byte[4096]; //tạo một bộ đệm có kích thước 4096 byte.
                     int bytesRead;
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         outputStream.write(buffer, 0, bytesRead);//ghi bytesRead byte đọc được từ buffer vào outputStream.
-                    }//bytesRead = inputStream.read(buffer) đọc một phần dữ liệu từ inputStream vào buffer và trả về số byte đã đọc. Nếu không còn dữ liệu, giá trị trả về là -1 và vòng lặp sẽ dừng lại.
-                    //Sau khi vòng lặp kết thúc, toàn bộ dữ liệu đã được đọc từ blob và ghi vào outputStream. Bây giờ, dữ liệu trong outputStream cần được chuyển đổi thành một mảng byte.
-                    byte[] imageBytes = outputStream.toByteArray();//chuyển đổi nội dung của outputStream thành một mảng byte bằng cách sử dụng phương thức toByteArray().
-                    base64Image = Base64.getEncoder().encodeToString(imageBytes);// mã hóa mảng byte thành một chuỗi Base64 sử dụng Base64.getEncoder().encodeToString() và gán kết quả vào biến base64Image.
+                    }
+                   
+                    byte[] imageBytes = outputStream.toByteArray();
+                    base64Image = Base64.getEncoder().encodeToString(imageBytes);
                 } else {
                     base64Image = "default";
                 }
@@ -124,11 +121,6 @@ public class DoctorDAO extends DBContext {
         return list;
     }
 
-//    1 là chỉ số của tham số trong truy vấn SQL. Chỉ số tham số bắt đầu từ 1.
-//      text là giá trị chuỗi mà bạn muốn thiết lập cho tham số.
-//      "%" + text + "%" là một chuỗi kết hợp. Nó kết hợp giá trị của biến text với các dấu % ở đầu và cuối chuỗi. 
-//       Điều này tạo ra một chuỗi có dạng %text%, nơi % đại diện cho một ký tự bất kỳ 
-//      hoặc một chuỗi ký tự bất kỳ.
     public List<Doctor> Search(String text) throws SQLException, IOException {
         List<Doctor> list = new ArrayList<>();
         String sql = "select cs.name, d.doctor_id,d.doctor_name,d.gender,d.status "
@@ -565,8 +557,4 @@ public class DoctorDAO extends DBContext {
         }
         return arr;
     }
-
-//    Sử dụng vòng lặp for bắt đầu từ start và kết thúc trước end (vòng lặp chạy từ start đến end-1).
-//    Trong mỗi vòng lặp, lấy phần tử tại vị trí i từ danh sách list ban đầu bằng cách sử dụng phương thức get(i) và thêm phần tử đó vào danh sách arr bằng cách sử dụng phương thức add().
-//    Sau khi vòng lặp kết thúc, danh sách arr chứa các phần tử từ start đến end-1 trong danh sách list.
 }

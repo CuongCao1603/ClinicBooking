@@ -138,10 +138,8 @@ public class DoctorController extends HttpServlet {
 // mypatient       
             if(action.equals("mypatient")){
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-                // Lấy ra id của bác sĩ Oanh = 19 
                 
                List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
-               // truyền id vào 
                
                request.setAttribute("patients", patients);
                
