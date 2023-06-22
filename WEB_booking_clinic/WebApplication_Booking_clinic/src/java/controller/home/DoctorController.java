@@ -20,10 +20,6 @@ import model.RateStar;
 import model.Setting;
 import model.Appointment;
 
-/**
- *
- * @author Khuong Hung
- */
 public class DoctorController extends HttpServlet {
 
     /**
@@ -134,8 +130,7 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("doctor", doctorlist);
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
-            
-// mypatient       
+               
             if(action.equals("mypatient")){
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 
@@ -144,13 +139,7 @@ public class DoctorController extends HttpServlet {
                request.setAttribute("patients", patients);
                
                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
-            }
-            
-// myappointment
-            if(action.equals("myappointment")){
-                
-            }
-            
+            }             
 
         } catch (IOException | SQLException e) {
             System.out.println(e);

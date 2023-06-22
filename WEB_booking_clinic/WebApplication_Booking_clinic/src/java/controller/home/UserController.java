@@ -182,9 +182,7 @@ public class UserController extends HttpServlet {
         }
     }
 
-//    Nếu oldpassword khớp với mật khẩu hiện tại của người dùng , mật khẩu mới(newpassword)
-//    sẽ được mã hóa bằng EncodeData.enCode().
-//    Cuối cùng, hàm Recover() của đối tượng userdao sẽ được gọi để cập nhật mật khẩu mới cho người dùng. 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

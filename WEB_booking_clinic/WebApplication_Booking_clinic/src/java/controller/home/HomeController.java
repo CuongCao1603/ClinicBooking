@@ -12,10 +12,7 @@ import java.sql.SQLException;
 import model.*;
 import java.util.List;
 
-/**
- *
- * @author doans
- */
+
 public class HomeController extends HttpServlet {
 
     /**
