@@ -58,10 +58,9 @@ public class Patient {
         this.DOB = DOB;
     }
     
-    public Patient(Account account, Appointment appointment, Account account2, Patient pa) {
+    public Patient(Account account, Appointment appointment, Patient pa) {
         this.account = account;
         this.appointment = appointment;
-        this.account2 = account2;
         this.pa = pa;
         
     }

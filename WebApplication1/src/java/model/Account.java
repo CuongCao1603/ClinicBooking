@@ -102,6 +102,14 @@ public class Account {
         this.phone = phone;
         this.email = email;
     }
+
+    public Account( String img, String name, int phone, String email) {
+        this.img = img;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;   
+    }
+    
     
 
     public Account(String img, String name, int phone, boolean gender, String email) {

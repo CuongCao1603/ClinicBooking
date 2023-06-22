@@ -34,13 +34,13 @@ public class PatientDAO {
 
         List<Patient> list = new ArrayList<>();
         String sql = "select distinct users.img, users.name, a.pdate, users.phone, users.email, patient.DOB, patient.patient_id\n"
-                + "	as lastbooking from appointments \n"
-                + "	inner join patient on appointments.patient_id = patient.patient_id \n"
-                + "	inner join users on patient.username = users.username inner join \n"
-                + "	(\n"
-                + "	select patient_id as pid , max(date) as pdate from appointments group by patient_id\n"
-                + "	) \n"
-                + "	as a on a.pid = appointments.patient_id where appointments.doctor_id = ?";
+                + "as lastbooking from appointments \n"
+                + "inner join patient on appointments.patient_id = patient.patient_id \n"
+                + "inner join users on patient.username = users.username inner join \n"
+                + "(\n"
+                + "select patient_id as pid , max(date) as pdate from appointments group by patient_id\n"
+                + ") \n"
+                + "as a on a.pid = appointments.patient_id where appointments.doctor_id = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -64,11 +64,11 @@ public class PatientDAO {
                 } else {
                     base64Image = "default";
                 }
-                Account a = new Account(base64Image, rs.getString(2));
+                
+                Account a = new Account(base64Image, rs.getString(2), rs.getInt(4), rs.getString(5));
                 Appointment ap = new Appointment(rs.getDate(3));
-                Account a2 = new Account(rs.getInt(4), rs.getString(5));
                 Patient pa = new Patient(rs.getDate(6), rs.getInt(7));
-                list.add(new Patient(a, ap, a2, pa));
+                list.add(new Patient(a, ap, pa));
             }
         } catch (Exception e) {
         } finally {
