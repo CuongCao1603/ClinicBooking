@@ -33,7 +33,7 @@
                                                 <th class="border-bottom" style="min-width: 70px;">Email</th>
                                                 <th class="border-bottom" style="min-width: 110px;">Date Booking</th>
                                                 <th class="border-bottom" style="min-width: 30px;">DOB</th>
-                                                <th class="border-bottom"></th>
+                                                <th class="border-bottom">      </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,6 +63,8 @@
                     </div>
                 </div>
             </div>
+
+            
         </section>
 
         <jsp:include page="layout/footer.jsp"/>
