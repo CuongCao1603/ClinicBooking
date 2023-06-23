@@ -37,6 +37,7 @@ public class SettingController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String action = request.getParameter("action");
+        String action_id = null;
         String url = null;
         String alert = null;
         String message = null;
