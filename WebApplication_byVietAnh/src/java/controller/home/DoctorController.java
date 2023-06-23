@@ -160,7 +160,7 @@ public class DoctorController extends HttpServlet {
 // myappointment
             if (action.equals("myappointment")) {
                 List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
-                int page, numperpage = 8;
+                int page, numberpage = 8;
                 int size = getAppointment.size();
                 int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
                 
@@ -173,8 +173,8 @@ public class DoctorController extends HttpServlet {
                 }
                 
                 int start, end;
-                start = (page - 1) * numperpage;
-                end = Math.min(page * numperpage, size);
+                start = (page - 1) * numberpage;
+                end = Math.min(page * numberpage, size);
                 
                 List<Appointment> AppointmentList = appointmentdao.getListByPage(getAppointment, start, end);
                 

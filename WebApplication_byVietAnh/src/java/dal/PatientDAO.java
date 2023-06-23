@@ -31,7 +31,7 @@ public class PatientDAO {
     ResultSet rs = null;
 
     public List<Patient> getPatientByDoctor(int doctor_id) throws SQLException {
-
+        // Lấy ra id bệnh nhân từ id của bác si được truyền vào 
         List<Patient> list = new ArrayList<>();
         String sql = "select distinct users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id\n"
                 + "as lastbooking from appointments \n"
