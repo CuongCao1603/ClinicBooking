@@ -1,7 +1,7 @@
 <%-- 
     Document   : setting
-    Created on : Jun 18, 2023, 10:37:42 PM
-    Author     : doans
+    Created on : 6 14, 2023, 2:58:38 PM
+    Author     : Son
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,9 +47,11 @@
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li><a class="dropdown-item" href="setting?action=all">Tất cả</a></li>
-                                                                <c:forEach items="${setting}" var="s">
-                                                                <li><a class="dropdown-item" href="setting?action=${s.setting_name}">${s.setting_name}</a></li>
-                                                                </c:forEach>
+                                                                
+                                                                <li><a class="dropdown-item" href="setting?action=User">User</a></li>
+                                                                <li><a class="dropdown-item" href="setting?action=Blog">Blog</a></li>
+                                                                <li><a class="dropdown-item" href="setting?action=Service">Service</a></li>
+                                                                
                                                         </ul>
                                                     </div>
                                                 </div>
