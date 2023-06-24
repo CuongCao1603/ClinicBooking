@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>HomeController</servlet-name>
-        <servlet-class>controller.HomeController</servlet-class>
+        <servlet-class>controller.home.HomeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DoctorManage</servlet-name>
