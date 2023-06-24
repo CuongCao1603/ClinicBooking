@@ -176,7 +176,7 @@ public class AppointmentDAO extends DBContext {
             while (rs.next()) {
                 sum = rs.getInt(1);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             //todo
         }
         return sum;
