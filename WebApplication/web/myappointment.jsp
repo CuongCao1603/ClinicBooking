@@ -17,7 +17,7 @@
         <section class="bg-dashboard">
             <div class="container">
                 <div class="row justify-content-center">
-                    <jsp:include page="layout/profileMenu.jsp"/>
+                    <jsp:include page="layout/profileMenu.jsp"/>//hung
 
                     <div class="col-xl-8 col-lg-8 col-md-7 mt-4 pt-2 mt-sm-0 pt-sm-0">
                         <h3 class="mb-0"></h3>
