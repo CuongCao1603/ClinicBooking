@@ -26,28 +26,34 @@
                                 <div class="p-4">
                                     <div class="d-flex align-items-center mt-2">
                                         <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
-                                        <h6 class="mb-0"></h6>
-                                        <p class="text-muted mb-0 ms-2"></p>
+                                        <h6 class="mb-0">Tên : </h6>
+                                        <p class="text-muted mb-0 ms-2"> ${patients.accoun.name}</p>
                                     </div>
-                                    <div>
-                                        <i></i>
-                                        <h6></h6>
-                                        <p></p>
+                                    <div class="d-flex align-items-center mt-2">
+                                        <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
+                                        <h6 class="mb-0">Email : </h6>
+                                        <p class="text-muted mb-0 ms-2"> ${patients.accoun.email}</p>
                                     </div>
-                                    <div>
-                                        <i></i>
-                                        <h6></h6>
-                                        <p></p>
+                                    <div class="d-flex align-items-center mt-2">
+                                        <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
+                                        <h6 class="mb-0">Sdt : </h6>
+                                        <p class="text-muted mb-0 ms-2"> 0${patients.accoun.phone}</p>
                                     </div>
-                                    <div>
-                                        <i></i>
-                                        <h6></h6>
-                                        <p></p>
+                                    <div class="d-flex align-items-center mt-2">
+                                        <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
+                                        <h6 class="mb-0">Giới tính : </h6>
+                                        <c:if test="${patients.account.gender == true}">
+                                            <p class="text-muted mb-0 ms-2">Nam</p>
+                                        </c:if>
+                                            <c:if test="${patients.account.gender == false}">
+                                                <p class="text-muted mb-0 ms-2">Nữ</p>
+                                        </c:if>
+                                        
                                     </div>
-                                    <div>
-                                        <i></i>
-                                        <h6></h6>
-                                        <p></p>
+                                    <div class="d-flex align-items-center mt-2">
+                                        <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
+                                        <h6 class="mb-0">Ngày sinh : </h6>
+                                        <p class="text-muted mb-0 ms-2"><fmt:formatDate pattern="dd/MM/yyyy" value="${patients.DOB}"/></p>
                                     </div>
                                 </div>
                             </div>
@@ -69,9 +75,9 @@
                                     <tbody>
                                         <c:forEach items="${appointmentlist}" var="a">
                                             <tr>
-                                                <td class="p-3"></td>
-                                                <td class="p-3"></td>
-                                                <td class="p-3"></td>
+                                                <td class="p-3"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.date}"/></td>
+                                                <td class="p-3">${a.tịme}</td>
+                                                <td class="p-3">${a.status}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -87,6 +93,6 @@
             <jsp:include page="layout/search.jsp"/>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather.min.js"></script>
-        <script src="assets/js/app.js"></script
+        <script src="assets/js/app.js"></script>
 </body>
                         </html>

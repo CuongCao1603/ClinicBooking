@@ -111,13 +111,10 @@ public class Account {
     
     
 
-    public Account(String img, String name, int phone, boolean gender, String email) {
+    public Account(String name, int phone, boolean gender, String email) {
         this.name = name;
         this.gender = gender;
         this.phone = phone;
-        if (img != null) {
-            this.img = img;
-        }
         if (email != null) {
             this.email = email;
         }

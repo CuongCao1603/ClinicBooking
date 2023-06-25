@@ -146,7 +146,7 @@ public class DoctorController extends HttpServlet {
                 // Lấy ra id của bác sĩ Oanh = 19 
 
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
-                // truyền id vào 
+                // truyền id vào
 
                 request.setAttribute("patients", patients);
 
@@ -154,15 +154,26 @@ public class DoctorController extends HttpServlet {
             }
 // mymatient detail   
             if (action.equals("detailpatient")) {
-
+                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
+                
+                int patient_id = Integer.parseInt(request.getParameter("id"));
+                
+                Patient patients = patientdao.getPatientbyid(patient_id);
+                List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByPatient(doctor_id, patient_id);
+                
+                request.setAttribute("patients", patients);
+                request.setAttribute("appointmentlist", appointmentlist);
+                
+                request.getRequestDispatcher("mypatientdetail.jsp").forward(request, response);
             }
 
 // myappointment
             if (action.equals("myappointment")) {
                 List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
-                int page, numberpage = 8;
+                
+                int page, numberpage = 2; // numberpage để lưu số dòng tối đa trong 1 trang 
                 int size = getAppointment.size();
-                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                int num = (size % 2 == 0 ? (size / 2) : ((size / 2)) + 1);
                 
                 String xpage = request.getParameter("page");
                 

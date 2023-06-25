@@ -56,4 +56,21 @@ public class PatientDAO {
         return list;
     }
 
+    
+    public Patient getPatientbyid(int patient_id) {
+        String sql = "";
+        
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, patient_id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Account a = new Account(rs.getString(1), rs.getInt(2), rs.getBoolean(3), rs.getString(4));
+                return new Patient(a, rs.getDate(5));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }
