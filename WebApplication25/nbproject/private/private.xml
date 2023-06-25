@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/ClinicBooking/WebApplication25/src/java/controller/admin/AccountManage.java</file>
+            <file>file:/D:/ClinicBooking/WebApplication25/src/java/controller/admin/ReservationManage.java</file>
+            <file>file:/D:/ClinicBooking/WebApplication25/src/java/controller/admin/SettingController.java</file>
+            <file>file:/D:/ClinicBooking/WebApplication25/src/java/controller/admin/AppointmentManage.java</file>
+            <file>file:/D:/ClinicBooking/WebApplication25/src/java/controller/admin/Dashboard.java</file>
+        </group>
     </open-files>
 </project-private>
