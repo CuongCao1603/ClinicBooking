@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
@@ -8,9 +9,10 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author Admin
+ * @author Khuong Hung
  */
 public class RateStar {
+
     private int id;
     private String feedback;
     private int star;
@@ -21,7 +23,7 @@ public class RateStar {
     public RateStar() {
     }
 
-   public RateStar(Account user, int star, String feedback, Timestamp date) {
+    public RateStar(Account user, int star, String feedback, Timestamp date) {
         this.feedback = feedback;
         this.star = star;
         this.date = date;
@@ -37,6 +39,22 @@ public class RateStar {
         this.user = user;
         this.star = star;
         this.feedback = feedback;
+    }
+    
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
+    }
+
+    public int getCountfeedback() {
+        return countfeedback;
+    }
+
+    public void setCountfeedback(int countfeedback) {
+        this.countfeedback = countfeedback;
     }
 
     public int getId() {
@@ -55,20 +73,12 @@ public class RateStar {
         this.feedback = feedback;
     }
 
-    public int getStar() {
-        return star;
+    public Timestamp getDate() {
+        return date;
     }
 
-    public void setStar(int star) {
-        this.star = star;
-    }
-
-    public int getCountfeedback() {
-        return countfeedback;
-    }
-
-    public void setCountfeedback(int countfeedback) {
-        this.countfeedback = countfeedback;
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     public Account getUser() {
@@ -79,14 +89,4 @@ public class RateStar {
         this.user = user;
     }
 
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
-    }
-        
-    
-    
 }

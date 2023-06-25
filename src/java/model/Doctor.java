@@ -1,17 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
- * @author Admin
+ * @author Khuong Hung
  */
 public class Doctor {
-
     Setting setting;
     private int doctor_id;
     private int role_id;
@@ -27,7 +27,7 @@ public class Doctor {
     private double fee;
     private String position;
 
-   public Doctor() {
+    public Doctor() {
     }
 
     public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name, Account account, boolean gender, Date DOB, int phone, String description, boolean status, String img, double fee, String position) {
@@ -98,7 +98,7 @@ public class Doctor {
         return setting;
     }
 
-    public void setSetting(Setting setting) {
+    public void setSettingdetails(Setting settingdetails) {
         this.setting = setting;
     }
 
@@ -186,8 +186,8 @@ public class Doctor {
         return rateStar;
     }
 
-    public void setRatestar(RateStar ratestar) {
-        this.rateStar = ratestar;
+    public void setRateStar(RateStar rateStar) {
+        this.rateStar = rateStar;
     }
 
     public double getFee() {
@@ -205,6 +205,5 @@ public class Doctor {
     public void setPosition(String position) {
         this.position = position;
     }
-    
 
 }

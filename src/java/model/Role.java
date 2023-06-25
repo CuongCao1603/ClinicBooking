@@ -1,15 +1,15 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
 /**
  *
- * @author Admin
+ * @author Khuong Hung
  */
 public class Role {
-
     private int role_id;
     private String name;
     Setting setting;
@@ -18,7 +18,7 @@ public class Role {
     public Role() {
     }
 
-   public Role(int role_id, String name, Setting setting) {
+    public Role(int role_id, String name, Setting setting) {
         this.role_id = role_id;
         this.name = name;
         this.setting = setting;
@@ -35,13 +35,13 @@ public class Role {
         this.role_id = role_id;
         this.name = name;
     }
-
-    public Role(String name) {
-        this.name = name;
-    }
-
+    
     public Role(int role_id) {
         this.role_id = role_id;
+    }
+    
+    public Role(String name) {
+        this.name = name;
     }
 
     public int getRole_id() {
@@ -75,6 +75,4 @@ public class Role {
     public void setNote(String note) {
         this.note = note;
     }
-    
-
 }

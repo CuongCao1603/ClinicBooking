@@ -1,12 +1,13 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
 /**
  *
- * @author Admin
+ * @author Khuong Hung
  */
 public class Setting {
     private int setting_id;
@@ -41,10 +42,10 @@ public class Setting {
         this.order = order;
     }
     
-    public Setting(String name){
-        this.name=name;
+    public Setting(String name) {
+        this.name = name;
     }
-
+    
     public int getSetting_id() {
         return setting_id;
     }
@@ -100,10 +101,6 @@ public class Setting {
     public void setOrder(int order) {
         this.order = order;
     }
-    
-    
-    
-    
     
     
 }

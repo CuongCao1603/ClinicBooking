@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author doans
+ * @author Admin
  */
 public class Blog {
     private int blog_id;

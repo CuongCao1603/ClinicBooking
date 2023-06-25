@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author doans
+ * @author Khuong Hung
  */
 public class RateDAO {
 

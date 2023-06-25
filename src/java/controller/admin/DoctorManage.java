@@ -14,10 +14,11 @@ import jakarta.servlet.http.Part;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import model.Doctor;
 import model.Setting;
+import java.sql.Date;
+import model.RateStar;
 
 /**
  *
@@ -40,6 +41,7 @@ public class DoctorManage extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DoctorDAO doctordao = new DoctorDAO();
+        AppointmentDAO appointmentdao = new AppointmentDAO();
         String action = request.getParameter("action");
         List<Doctor> doctorlist = null;
         String url = null;
@@ -51,10 +53,69 @@ public class DoctorManage extends HttpServlet {
                 url = "doctormanage?action=all";
                 doctorlist = doctordao.getAllDoctor();
             }          
-            if (action.equals("search")) {
+            if(action.equals("filter")){
+                String gender = request.getParameter("gender");
+                String speciality = request.getParameter("speciality");
+                request.setAttribute("gender",gender);
+                request.setAttribute("speciality1",speciality);
+                if(gender.equals("all") && speciality.equals("all")){
+                    response.sendRedirect("doctormanage?action=all");
+                }else if(gender.equals("all")){
+                    doctorlist = doctordao.getAllDoctorBySpeciality(speciality);
+                }else if(speciality.equals("all")){
+                    doctorlist = doctordao.getAllDoctorByGender(gender);
+                }else{
+                    doctorlist = doctordao.getAllDoctorByFilter(gender, speciality);
+                }
+                url = "doctormanage?action=filter&gender=" + gender + "&speciality=" + speciality;
+            }
+            if(action.equals("search")){
                 String text = request.getParameter("txt");
                 doctorlist = doctordao.Search(text);
                 url = "doctormanage?action=search&txt=" + text;
+            }
+            if(action.equals("detail")){
+                int doctor_id = Integer.parseInt(request.getParameter("id"));
+                Doctor doctor = new Doctor();
+                List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByDoctor(doctor_id);
+                List<RateStar> getRate = doctordao.getRateDoctor(doctor_id);
+                doctor = doctordao.getDoctorByID(doctor_id);
+                request.setAttribute("speciality", specialitylist);
+                request.setAttribute("appointment", appointmentlist);
+                request.setAttribute("rate", getRate);
+                request.setAttribute("doctor", doctor);
+                request.getRequestDispatcher("admin/doctordetail.jsp").forward(request, response);
+            }
+            if (action.equals("update_image")) {
+                int doctor_id = Integer.parseInt(request.getParameter("id"));
+                Part image = request.getPart("image");
+                if (image != null) {
+                    try {
+                        doctordao.UpdateImage(doctor_id, image);
+                    } catch (Exception e) {
+                    }
+                }
+                alert = "success";
+                message = "Cập nhật ảnh thành công";
+                request.setAttribute("alert", alert);
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("doctormanage?action=detail&id=" + doctor_id).forward(request, response);
+            }
+            if(action.equals("update_info")){
+                int doctor_id = Integer.parseInt(request.getParameter("id"));
+                String name = request.getParameter("name");
+                boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+                int phone = Integer.parseInt(request.getParameter("phone"));
+                Date DOB = Date.valueOf(request.getParameter("DOB"));
+                String description = request.getParameter("description");
+                int speciality = Integer.parseInt(request.getParameter("speciality"));
+                boolean status = Boolean.parseBoolean(request.getParameter("status"));
+                doctordao.DoctorUpdate(doctor_id, name, gender, phone, DOB, description, speciality, status);
+                alert = "success";
+                message = "Cập nhật thông tin thành công";
+                request.setAttribute("alert", alert);
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("doctormanage?action=detail&id=" + doctor_id).forward(request, response);
             }
             if (doctorlist != null) {
                 int page, numperpage = 8;
@@ -70,7 +131,7 @@ public class DoctorManage extends HttpServlet {
                 int start, end;
                 start = (page - 1) * numperpage;
                 end = Math.min(page * numperpage, size);
-                List<Doctor> doctors = doctordao.getListByPage((ArrayList<Doctor>) doctorlist, start, end);
+                List<Doctor> doctors = doctordao.getListByPage(doctorlist, start, end);
                 request.setAttribute("type", type);
                 request.setAttribute("page", page);
                 request.setAttribute("num", num);

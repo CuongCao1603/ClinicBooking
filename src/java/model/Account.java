@@ -1,14 +1,16 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
 /**
  *
- * @author Admin
+ * @author Khuong Hung
  */
 public class Account {
+
     private String username;
     Role role;
     private String password;
@@ -23,8 +25,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(String username, Role role, String password, String name,
-            boolean gender, int phone, String email, String img, boolean status) {
+    public Account(String username, Role role, String password, String name, boolean gender, int phone, String email, String img, boolean status) {
         this.username = username;
         this.role = role;
         this.password = password;
@@ -46,7 +47,8 @@ public class Account {
         this.img = img;
         this.status = status;
     }
-      public Account(String username, Role role, String name, boolean gender, int phone, String email, boolean status) {
+
+    public Account(String username, Role role, String name, boolean gender, int phone, String email, boolean status) {
         this.username = username;
         this.role = role;
         this.name = name;
@@ -56,7 +58,6 @@ public class Account {
         this.status = status;
     }
 
-
     public Account(String img, String username, String name, String email, boolean gender, int phone) {
         this.img = img;
         this.username = username;
@@ -65,48 +66,48 @@ public class Account {
         this.gender = gender;
         this.phone = phone;
     }
-    
-     public Account(String username, String name, boolean gender) {
+
+    public Account(String username, String name, boolean gender) {
         this.username = username;
         this.name = name;
         this.gender = gender;
-     }
-    
-     public Account(String username){
-         this.username=username;
-     }
-     
-     public Account(String username,String email,String captcha,String img){
-         if(username!=null){
-             this.username=username;
-         }
-         if(email!=null){
-             this.email=email;
-         }
-         if(captcha!=null){
-             this.captcha=captcha;
-         }
-         if(img!=null){
-             this.img=img;
-         }
-     }
-     
-     public Account(String img,String name,int phone,boolean gender,String email){
-         this.name=name;
-         this.gender=gender;
-         this.phone=phone;
-         if(img!=null){
-             this.img=img;
-         }
-         if(email!=null){
-             this.email=email;
-         }
-     }
-     
-     public  Account(String username,String name){
-         this.username=username;
-         this.name=name;
-     }
+    }
+
+    public Account(String username) {
+        this.username = username;
+    }
+
+    public Account(String username, String email, String captcha, String img) {
+        if (username != null) {
+            this.username = username;
+        }
+        if (email != null) {
+            this.email = email;
+        }
+        if (captcha != null) {
+            this.captcha = captcha;
+        }
+        if (img != null) {
+            this.img = img;
+        }
+    }
+
+    public Account(String img, String name, int phone, boolean gender, String email) {
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+        if (img != null) {
+            this.img = img;
+        }
+        if (email != null) {
+            this.email = email;
+        }
+    }
+
+    public Account(String username, String name) {
+        this.username = username;
+        this.name = name;
+    }
 
     public String getUsername() {
         return username;
@@ -187,13 +188,5 @@ public class Account {
     public void setCaptcha(String captcha) {
         this.captcha = captcha;
     }
-    
-     
-    
-    
-    
-    
-    
-    
-    
+
 }

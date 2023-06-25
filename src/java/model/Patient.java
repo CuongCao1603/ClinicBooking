@@ -1,16 +1,18 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
- * @author Admin
+ * @author Trung
  */
 public class Patient {
+
     Account account;
     Appointment appointment;
     private int patient_id;
@@ -60,7 +62,6 @@ public class Patient {
         this.patient_id = patient_id;
         this.appointment = appointment;
     }
-
 
     public Patient(Account account) {
         this.account = account;
@@ -126,12 +127,13 @@ public class Patient {
     public void setDOB(Date DOB) {
         this.DOB = DOB;
     }
-
+    
     public Appointment getAppointment() {
         return appointment;
     }
 
     public void setAppointment(Appointment appointment) {
-
+        this.appointment = appointment;
     }
+
 }

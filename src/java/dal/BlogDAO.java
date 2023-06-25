@@ -102,7 +102,7 @@ public class BlogDAO {
                     + "Inner join users as u on b.username = u.username\n"
                     + "inner join category_blog c on b.category_id = c.id\n"
                     + "where b.status = 1\n"
-                    + "order by b.date desc";
+                    + "order by b.date desc;";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
@@ -550,46 +550,45 @@ public class BlogDAO {
         return blogs;
     }
 
-      public void AddBlog(int category_id, String title, InputStream img,String brief,
-            String describe, Boolean featured, String username, Boolean status) {
-        try {
-            connection = dbc.getConnection();
-            String sql = "INSERT INTO `doctris_system`.`blog`\n"
-                    + "(\n"
-                    + "`category_id`,\n"
-                    + "`title`,\n"
-                    + "`img`,\n"
-                    + "`brief`,\n"
-                    + "`describe`,\n"
-                    + "`date`,\n"
-                    + "`featured`,\n"
-                    + "`username`,\n"
-                    + "`status`)\n"
-                    + "VALUES\n"
-                    + "(\n"
-                    + "? ,\n"
-                    + "? ,\n"
-                    + "? ,\n"
-                    + "? ,\n"
-                    + "? ,\n"
-                    + "curdate(),\n"
-                    + "? ,\n"
-                    + "? ,\n"
-                    + "? );";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, category_id);
-            stm.setString(2, title);
-            stm.setBlob(3, img);
-            stm.setString(4, brief);
-            stm.setString(5, describe);
-            stm.setBoolean(6, featured);
-            stm.setString(7, username);
-            stm.setBoolean(8, status);
-            stm.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(BlogDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+public void AddBlog(int category_id, String title, InputStream img, String brief, String description, Boolean featured, String username, Boolean status) {
+    try {
+        connection = dbc.getConnection();
+        String sql = "INSERT INTO `doctris_system`.`blog`\n"
+                + "(\n"
+                + "`category_id`,\n"
+                + "`title`,\n"
+                + "`img`,\n"
+                + "`brief`,\n"
+                + "`describe`,\n" // Enclose `describe` in backticks
+                + "`date`,\n"
+                + "`featured`,\n"
+                + "`username`,\n"
+                + "`status`)\n"
+                + "VALUES\n"
+                + "(\n"
+                + "? ,\n"
+                + "? ,\n"
+                + "? ,\n"
+                + "? ,\n"
+                + "? ,\n"
+                + "curdate(),\n"
+                + "? ,\n"
+                + "? ,\n"
+                + "? );";
+        PreparedStatement stm = connection.prepareStatement(sql);
+        stm.setInt(1, category_id);
+        stm.setString(2, title);
+        stm.setBlob(3, img);
+        stm.setString(4, brief);
+        stm.setString(5, description);
+        stm.setBoolean(6, featured);
+        stm.setString(7, username);
+        stm.setBoolean(8, status);
+        stm.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(BlogDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
 
     public void UpdateBlog(int category_id, String title,String brief,
             String describe, Boolean featured, Boolean status, int blog_id) throws IOException {

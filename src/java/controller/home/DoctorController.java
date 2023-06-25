@@ -1,31 +1,32 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package controller.home;
 
-import dal.AppointmentDAO;
 import dal.DoctorDAO;
-import dal.PatientDAO;
+import dal.AppointmentDAO;
+import dal.PatientDao;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 import model.Account;
-import model.Appointment;
 import model.Doctor;
 import model.Patient;
 import model.RateStar;
 import model.Setting;
+import model.Appointment;
 
 /**
  *
- * @author Admin
+ * @author Khuong Hung
  */
 public class DoctorController extends HttpServlet {
 
@@ -42,11 +43,10 @@ public class DoctorController extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-
+        response.setContentType("text/html; charset=UTF-8");
         String action = request.getParameter("action");
         AppointmentDAO appointmentdao = new AppointmentDAO();
-        PatientDAO patientdao = new PatientDAO();
+        PatientDao patientdao = new PatientDao();
         DoctorDAO doctordao = new DoctorDAO();
         String url = null;
         List<Doctor> getdoctor = null;
@@ -55,8 +55,8 @@ public class DoctorController extends HttpServlet {
         ArrayList<Doctor> doctorall = new ArrayList<>();
         try {
             List<Setting> specialitylist = doctordao.getSpeciality();
-            if (action.equalsIgnoreCase("all")) {
-                url = "doctor?acton=all";
+            if (action.equals("all")) {
+                url = "doctor?action=all";
                 getdoctor = doctordao.getAllDoctorHome();
             }
 
@@ -100,34 +100,14 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("rate", getRate);
                 request.getRequestDispatcher("doctordetail.jsp").forward(request, response);
             }
-            if (action.equals("myfeedback")) {
-                List<RateStar> getRate = doctordao.getRateDoctor(doctordao.getDoctorIDByUsername(user.getUsername()));
-                int page, numperpage = 8;
-                int size = getRate.size();
-                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
-                String xpage = request.getParameter("page");
-                if (xpage == null) {
-                    page = 1;
-                } else {
-                    page = Integer.parseInt(xpage);
-                }
-                int start, end;
-                start = (page - 1) * numperpage;
-                end = Math.min(page * numperpage, size);
-                List<RateStar> ratelist = doctordao.getListByPageRate(getRate, start, end);
-                request.setAttribute("page", page);
-                request.setAttribute("num", num);
-                request.setAttribute("ratelist", ratelist);
-                request.getRequestDispatcher("myfeedback.jsp").forward(request, response);
-            }
+
             if (getdoctor != null) {
                 for (Doctor doctor : getdoctor) {
                     int star = doctordao.getStars(doctor.getDoctor_id());
                     int feedback = doctordao.CountFeedback(doctor.getDoctor_id());
                     RateStar rateStar = new RateStar(star, feedback);
                     Account a = new Account(doctor.getAccount().getUsername());
-                    Setting s = new Setting(doctor.getSetting().getId(), doctor.getSetting().getName(),
-                            doctor.getSetting().getSetting_id(), doctor.getSetting().isStatus());
+                    Setting s = new Setting(doctor.getSetting().getId(), doctor.getSetting().getName(), doctor.getSetting().getSetting_id(), doctor.getSetting().isStatus());
                     doctorall.add(new Doctor(s, doctor.getDoctor_id(), doctor.getRole_id(),
                             doctor.getDoctor_name(), a, doctor.isGender(), doctor.getDOB(),
                             doctor.getPhone(), doctor.getDescription(), doctor.isStatus(),
@@ -153,65 +133,14 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("doctor", doctorlist);
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
-            
-            
-//            ------------------------------------------
-
-            if (action.equals("mypatient")) {
-                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-                List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
-                request.setAttribute("patients", patients);
-                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
+            if(action.equals("mypatient")){
+                int doctor_id=doctordao.getDoctorIDByUsername(user.getUsername());
+                List<Patient> patients=patientdao.getPatientByDoctor(doctor_id);
             }
 
-            if (action.equals("detailpatient")) {
-                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-                int patient_id = Integer.parseInt(request.getParameter("id"));
-
-                Patient patients = patientdao.getPatientbyid(patient_id);
-                List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByPatient(doctor_id, patient_id);
-
-                request.setAttribute("patients", patients);
-                request.setAttribute("appointmentlist", appointmentlist);
-
-                request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
-            }
-
-            if (action.equals("myappointment")) {
-                List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
-                int page, numperpage = 8;
-                int size = getAppointment.size();
-                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
-                String xpage = request.getParameter("page");
-                if (xpage == null) {
-                    page = 1;
-                } else {
-                    page = Integer.parseInt(xpage);
-                }
-                int start, end;
-                start = (page - 1) * numperpage;
-                end = Math.min(page * numperpage, size);
-                List<Appointment> AppointmentList = appointmentdao.getListByPage(getAppointment, start, end);
-                request.setAttribute("page", page);
-                request.setAttribute("num", num);
-                request.setAttribute("AppointmentList", AppointmentList);
-                request.getRequestDispatcher("myappointment.jsp").forward(request, response);
-            }
-
-            if (action.equals("myappointmentdetail")) {
-                Appointment a = doctordao.getAppointmentDetail(Integer.parseInt(request.getParameter("id")));
-                request.setAttribute("a", a);
-                request.getRequestDispatcher("myappointmentdetail.jsp").forward(request, response);
-            }
-            if (action.equals("updateappointmentstatus")) {
-                doctordao.UpdateAppointmentStatus(Integer.parseInt(request.getParameter("id")));
-                response.sendRedirect("doctor?action=myappointmentdetail&id=" + request.getParameter("id"));
-            }
-
-        } catch (Exception e) {
+        } catch (IOException | SQLException e) {
             System.out.println(e);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

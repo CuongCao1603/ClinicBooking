@@ -3,24 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/home/RateController.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/web/WEB-INF/web.xml</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/home/DoctorController.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/dal/DoctorDAO.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/model/Blog.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/home/UserController.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/dal/ServiceDAO.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/web/doctor.jsp</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/dal/BlogDAO.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/home/BlogController.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/home/HomeController.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/home/ContactController.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/model/Category_Blog.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/model/Service.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/controller/admin/DoctorManage.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/dal/RateDAO.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/src/java/dal/UserDAO.java</file>
-            <file>file:/D:/SWP391_PROJECT/Doctris_System/ClinicBooking/web/XML/Setting.xml</file>
+            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/controller/home/DoctorController.java</file>
+            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/controller/home/HomeController.java</file>
+            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/controller/home/PaymentFailed.java</file>
+            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/vnpay/common/config.java</file>
         </group>
     </open-files>
 </project-private>

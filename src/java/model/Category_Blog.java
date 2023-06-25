@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author doans
+ * @author Admin
  */
 public class Category_Blog {
     private int id;
