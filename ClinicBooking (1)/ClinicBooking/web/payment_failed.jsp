@@ -10,7 +10,7 @@
     <jsp:include page="layout/head.jsp"/>
     <body>
         <div class="back-to-home rounded d-none d-sm-block">
-            <a href="home" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
+            <a href="home" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>//ggggg
         </div>
 
         <!-- Hero Start -->
