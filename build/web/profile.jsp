@@ -117,7 +117,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Tên người dùng</label>
-                                                <input name="username" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="${sessionScope.user.username}" id="name" type="text" class="form-control">
+                                                <input name="username" readonly value="${sessionScope.user.username}" id="name" type="text" class="form-control">
                                             </div>
                                         </div>
 
@@ -169,7 +169,51 @@
                             </div>
                         </div>
 
-                       
+                        <div class="rounded shadow mt-4">
+                            <div class="p-4 border-bottom">
+                                <h5 class="mb-0">Đổi mật khẩu :</h5>
+                                <p style="color: red; align-content: center;">
+                                    ${requestScope.passerror}
+                                </p>
+                                <p style="color: blue; align-content: center;">
+                                    ${requestScope.passsuccess}
+                                </p>
+                            </div>
+
+                            <div class="p-4">
+                                <form action="user?action=changepassword" method="POST">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mật khẩu cũ :</label>
+                                                <input value="${oldpassword}" oninvalid="CheckPassword(this);" oninput="CheckPassword(this);" type="password"  name="oldpassword" class="form-control" required="">
+                                            </div>
+                                        </div><!--end col-->
+
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mật khẩu mới :</label>
+                                                <input value="${newpassword}" oninvalid="CheckPassword(this);" oninput="CheckPassword(this);" id="password" type="password" name="newpassword" class="form-control" required="">
+                                            </div>
+                                        </div><!--end col-->
+
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Nhập lại mật khẩu :</label>
+                                                <input value="${renewpassword}" oninvalid="CheckRePassword(this);" oninput="CheckRePassword(this);"type="password" name="renewpassword" class="form-control" required="">
+                                            </div>
+                                        </div><!--end col-->
+
+                                        <div class="col-lg-12 mt-2 mb-0">
+                                            <button class="btn btn-primary">Thay đổi</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <jsp:include page="layout/footer.jsp"/>
         <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-pills btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>

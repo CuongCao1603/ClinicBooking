@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author doans
+ * @author Khuong Hung
  */
 public class Doctor {
     Setting setting;

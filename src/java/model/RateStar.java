@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author doans
+ * @author Khuong Hung
  */
 public class RateStar {
 

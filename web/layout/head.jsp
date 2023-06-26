@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset="utf-8" />
-    <title>Doctris - Tìm bác sĩ chính xác - Đặt lịch khám dễ dàng</title>
+    <title>MedicHealth - Tìm bác sĩ chính xác - Đặt lịch khám dễ dàng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="doctris, khám bệnh, đặt lịch, bác sĩ, lịch khám" />
     <meta name="description" content="Hệ thống y tế, lịch khám" />

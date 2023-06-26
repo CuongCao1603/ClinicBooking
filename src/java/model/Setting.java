@@ -1,12 +1,13 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package model;
 
 /**
  *
- * @author doans
+ * @author Khuong Hung
  */
 public class Setting {
     private int setting_id;
@@ -16,19 +17,15 @@ public class Setting {
     private boolean status;
     private String note;
     private int order;
-    
-    public Setting(){}
 
-    public Setting(int setting_id, String setting_name, int id, String name, boolean status, String note, int order) {
-        this.setting_id = setting_id;
-        this.setting_name = setting_name;
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.note = note;
-        this.order = order;
+    public Setting() {
     }
 
+    public Setting(int setting_id, String setting_name) {
+        this.setting_id = setting_id;
+        this.setting_name = setting_name;
+    }
+    
     public Setting(int id, String name, int setting_id, boolean status) {
         this.id = id;
         this.name = name;
@@ -36,7 +33,19 @@ public class Setting {
         this.status = status;
     }
 
-
+    public Setting(int id, String name, int setting_id, boolean status, String note, int order) {
+        this.id = id;
+        this.name = name;
+        this.setting_id = setting_id;
+        this.status = status;
+        this.note = note;
+        this.order = order;
+    }
+    
+    public Setting(String name) {
+        this.name = name;
+    }
+    
     public int getSetting_id() {
         return setting_id;
     }
@@ -94,5 +103,4 @@ public class Setting {
     }
     
     
-
 }
