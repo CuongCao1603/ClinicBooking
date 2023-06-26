@@ -17,8 +17,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
-import config.EncodeData;
-import config.Validate;
+import configs.EncodeData;
+import configs.Validate;
+import dal.AppointmentDAO;
+import dal.PatientDao;
+import dal.ReservationDAO;
+import jakarta.servlet.http.Part;
+import java.util.List;
+import model.Appointment;
+import model.Reservation;
+import model.Role;
 
 /**
  *
@@ -46,7 +54,6 @@ public class UserController extends HttpServlet {
         String message = null;
 
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             if (action.equals("login")) {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
@@ -97,6 +104,123 @@ public class UserController extends HttpServlet {
                 return;
             }
 
+            // Register
+            if (action.equals("register")) {
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+            }
+            if (action.equals("checkregister")) {
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+                String repassword = request.getParameter("repassword");
+                String username = request.getParameter("username");
+                String name = request.getParameter("name");
+                String rgender = request.getParameter("gender");
+                String rphone = request.getParameter("phone");
+                int role_id = 2;
+                String img = "default";
+                boolean status = true;
+                String enpassword = EncodeData.enCode(password);
+                boolean gender = Boolean.parseBoolean(rgender);
+                int phone = Integer.parseInt(rphone);
+                String fullname = Validate.capitalizeFirstLetter(name);
+                Account account = userdao.checkAcc(email, username);
+                if (account != null) {
+                    request.setAttribute("email", email);
+                    request.setAttribute("password", password);
+                    request.setAttribute("repassword", repassword);
+                    request.setAttribute("username", username);
+                    request.setAttribute("name", name);
+                    request.setAttribute("gender", rgender.equals("true"));
+                    request.setAttribute("phone", rphone);
+                    request.setAttribute("error", "Email hoặc username đã tồn tại trên hệ thống!");
+                    request.getRequestDispatcher("user?action=register").forward(request, response);
+                } else {
+                    Role r = new Role(role_id);
+                    userdao.Register(email, EncodeData.enCode(password), username, role_id, name, phone, gender, status);
+                    Account a = new Account(username, r, EncodeData.enCode(enpassword), fullname, gender, phone, email, img, status);
+
+                    session.setAttribute("register", a);
+                    request.getRequestDispatcher("user?action=login").forward(request, response);
+                }
+            }
+            
+                        if (action.equals("updateprofile")) {
+                String username = request.getParameter("username");
+                String name = request.getParameter("name");
+                int phone = Integer.parseInt(request.getParameter("phone"));
+                boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+                userdao.UpdateProfile(username, name, phone, gender);
+                Account a = new Account(username, user.getRole(), name, gender, phone, user.getEmail(), user.getImg(), user.isStatus());
+                session.setAttribute("user", a);
+                request.setAttribute("updatesuccess", "Thông tin đã được cập nhật!");
+                response.sendRedirect("user?action=profile");
+            }
+
+            if (action.equals("update_image")) {
+                String username = user.getUsername();
+                Part image = request.getPart("image");
+                if (image != null) {
+                    try {
+                        Account acc = userdao.getAccountByUsername(username);
+                        userdao.UpdateImage(username, image);
+                        session.setAttribute("user", acc);
+                    } catch (Exception e) {
+                    }
+                }
+                alert = "success";
+                message = "Cập nhật ảnh thành công";
+                request.setAttribute("alert", alert);
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("user?action=profile").forward(request, response);
+            }
+            
+             if (action.equals("history")) {
+                String type = request.getParameter("type");
+                PatientDao pdao = new PatientDao();
+                AppointmentDAO adao = new AppointmentDAO();
+                ReservationDAO rdao = new ReservationDAO();
+                List<Appointment> appointmentlist = null;
+                List<Reservation> reservationlist = null;
+                if (type.equals("appointment")) {
+                    appointmentlist = adao.getAppointmentHistory(pdao.getPatientIDByUsername(user.getUsername()));
+                } else if (type.equals("reservation")) {
+                    reservationlist = rdao.getReservationListHistory(pdao.getPatientIDByUsername(user.getUsername()));
+                }
+                if (appointmentlist != null || reservationlist != null) {
+                    int page, numperpage = 8;
+                    int size = 0;
+                    if (appointmentlist != null) {
+                        size = appointmentlist.size();
+                    } else {
+                        size = reservationlist.size();
+                    }
+                    int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                    String xpage = request.getParameter("page");
+                    if (xpage == null) {
+                        page = 1;
+                    } else {
+                        page = Integer.parseInt(xpage);
+                    }
+                    int start, end;
+                    String url = null;
+                    start = (page - 1) * numperpage;
+                    end = Math.min(page * numperpage, size);
+                    if (appointmentlist != null) {
+                        appointmentlist = adao.getListByPage(appointmentlist, start, end);
+                        request.setAttribute("appointmentlist", appointmentlist);
+                        url = "user?action=history&type=appointment";
+                    } else {
+                        reservationlist = rdao.getListByPage(reservationlist, start, end);
+                        request.setAttribute("reservationlist", reservationlist);
+                        url = "user?action=history&type=reservation";
+                    }
+                    request.setAttribute("page", page);
+                    request.setAttribute("url", url);
+                    request.setAttribute("num", num);
+                    request.getRequestDispatcher("history.jsp").forward(request, response);
+                }
+            }
+            
             if (action.equals("changepassword")) {
                 String oldpassword = EncodeData.enCode(request.getParameter("oldpassword"));
                 String newpassword = request.getParameter("newpassword");
@@ -118,7 +242,6 @@ public class UserController extends HttpServlet {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
