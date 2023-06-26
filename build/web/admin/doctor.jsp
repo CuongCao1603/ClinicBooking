@@ -146,4 +146,8 @@
 
     </body>
 
+<<<<<<< HEAD:WebApplication1/build/web/admin/doctor.jsp
 </html>
+=======
+</html>
+>>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/admin/doctor.jsp
