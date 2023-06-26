@@ -195,6 +195,10 @@ public class DoctorController extends HttpServlet {
 
                 request.getRequestDispatcher("myappointment.jsp").forward(request, response);
             }
+            
+            if(action.equals("search")){
+                
+            }
 
         } catch (IOException | SQLException e) {
             System.out.println(e);
