@@ -6,6 +6,7 @@ package dal;
 
 import context.DBContext;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
@@ -57,9 +58,10 @@ public class PatientDAO {
     }
 
     
-    public Patient getPatientbyid(int patient_id) {
-        String sql = "";
-        
+    public Patient getPatientbyid(int patient_id) throws SQLException, IOException {
+        String sql = "SELECT u.name,u.email,u.phone,u.gender,p.DOB FROM users u inner join patient p\n"
+                + "on u.username = p.username\n"
+                + "where p.patient_id = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -69,7 +71,7 @@ public class PatientDAO {
                 Account a = new Account(rs.getString(1), rs.getInt(2), rs.getBoolean(3), rs.getString(4));
                 return new Patient(a, rs.getDate(5));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return null;
     }

@@ -59,7 +59,9 @@ public class AppointmentDAO extends DBContext {
 
     public List<Appointment> getAppointmentByPatient(int doctor_id, int patient_id) throws SQLException, IOException {
         List<Appointment> list = new ArrayList<>();
-        String sql = "";
+        String sql = "select a.date,a.time,a.status from appointments a inner join patient p\n"
+                + "on a.patient_id = p.patient_id \n"
+                + "where a.doctor_id = ? and p.patient_id = ? ORDER BY a.date ASC";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);

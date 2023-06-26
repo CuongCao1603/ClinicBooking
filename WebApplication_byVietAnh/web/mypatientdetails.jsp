@@ -48,7 +48,6 @@
                                             <c:if test="${patients.account.gender == false}">
                                                 <p class="text-muted mb-0 ms-2">Nữ</p>
                                         </c:if>
-                                        
                                     </div>
                                     <div class="d-flex align-items-center mt-2">
                                         <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>

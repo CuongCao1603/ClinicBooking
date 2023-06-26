@@ -115,9 +115,8 @@ public class Account {
         this.name = name;
         this.gender = gender;
         this.phone = phone;
-        if (email != null) {
-            this.email = email;
-        }
+        this.email = email;
+  
     }
 
 

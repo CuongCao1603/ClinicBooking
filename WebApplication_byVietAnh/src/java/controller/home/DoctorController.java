@@ -164,7 +164,7 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("patients", patients);
                 request.setAttribute("appointmentlist", appointmentlist);
                 
-                request.getRequestDispatcher("mypatientdetail.jsp").forward(request, response);
+                request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
             }
 
 // myappointment
