@@ -1,7 +1,12 @@
 <%-- 
     Document   : setting
+<<<<<<< HEAD:WebApplication1/build/web/admin/setting.jsp
+    Created on : 6 14, 2023, 2:58:38 PM
+    Author     : Son
+=======
     Created on : Jan 14, 2022, 2:58:38 PM
     Author     : Khuong Hung
+>>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/admin/setting.jsp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,9 +52,17 @@
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li><a class="dropdown-item" href="setting?action=all">Tất cả</a></li>
+<<<<<<< HEAD:WebApplication1/build/web/admin/setting.jsp
+                                                                
+                                                                <li><a class="dropdown-item" href="setting?action=User">User</a></li>
+                                                                <li><a class="dropdown-item" href="setting?action=Blog">Blog</a></li>
+                                                                <li><a class="dropdown-item" href="setting?action=Service">Service</a></li>
+                                                                
+=======
                                                                 <c:forEach items="${setting}" var="s">
                                                                 <li><a class="dropdown-item" href="setting?action=${s.setting_name}">${s.setting_name}</a></li>
                                                                 </c:forEach>
+>>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/admin/setting.jsp
                                                         </ul>
                                                     </div>
                                                 </div>
