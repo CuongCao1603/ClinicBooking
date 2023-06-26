@@ -6,18 +6,11 @@
 package configs;
 
 import java.util.*;
-<<<<<<< HEAD:WebApplication1/src/java/config/SendMail.java
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-=======
+
+
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/configs/SendMail.java
+
 
 public class SendMail {
 
@@ -32,11 +25,8 @@ public class SendMail {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.allow8bitmime", "true");
         props.put("mail.smtps.allow8bitmime", "true");
-<<<<<<< HEAD:WebApplication1/src/java/config/SendMail.java
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-=======
+
         Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/configs/SendMail.java
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(user, pass);
@@ -220,13 +210,8 @@ public class SendMail {
                 + "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n"
                 + "  <tr>\n"
                 + "    <td style=\"padding-right: 0px;padding-left: 0px;\" align=\"center\">\n"
-<<<<<<< HEAD:WebApplication1/src/java/config/SendMail.java
-                + "      <a href=\"https://doctriscare.ml\" target=\"_blank\">\n"
-                + "      <img align=\"center\" border=\"0\" src=\"https://doctriscare.ml/assets/images/logo-light.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 38%;max-width: 220.4px;\" width=\"220.4\" class=\"v-src-width v-src-max-width\"/>\n"
-=======
-                + "      <a href=\"https://doctriscare.store\" target=\"_blank\">\n"
-                + "      <img align=\"center\" border=\"0\" src=\"https://doctriscare.store/assets/images/logo-light.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 38%;max-width: 220.4px;\" width=\"220.4\" class=\"v-src-width v-src-max-width\"/>\n"
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/configs/SendMail.java
+                + "      <a href=\"https://doctriscare.site\" target=\"_blank\">\n"
+                + "      <img align=\"center\" border=\"0\" src=\"https://doctriscare.site/assets/images/logo-light.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 38%;max-width: 220.4px;\" width=\"220.4\" class=\"v-src-width v-src-max-width\"/>\n"
                 + "      </a>\n"
                 + "    </td>\n"
                 + "  </tr>\n"
@@ -278,11 +263,7 @@ public class SendMail {
                 + "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 60px 50px 26px;font-family:'Montserrat',sans-serif;\" align=\"left\">\n"
                 + "        \n"
                 + "  <div style=\"color: #444444; line-height: 170%; text-align: left; word-wrap: break-word;\">\n"
-<<<<<<< HEAD:WebApplication1/src/java/config/SendMail.java
-                + "    <p style=\"font-size: 14px; line-height: 170%;\">ID&nbsp; : &nbsp; #"+ id + "<br />Email :&nbsp; support@doctriscare.ml<br />Phone :&nbsp; (+84) 888195313<br />Website : doctriscare.ml<br />T&ecirc;n kh&aacute;ch h&agrave;ng : "+ name + "</p>\n"
-=======
-                + "    <p style=\"font-size: 14px; line-height: 170%;\">ID&nbsp; : &nbsp; #"+ id + "<br />Email :&nbsp; support@doctriscare.store<br />Phone :&nbsp; (+84) 888195313<br />Website : doctriscare.store<br />T&ecirc;n kh&aacute;ch h&agrave;ng : "+ name + "</p>\n"
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/configs/SendMail.java
+                + "    <p style=\"font-size: 14px; line-height: 170%;\">ID&nbsp; : &nbsp; #"+ id + "<br />Email :&nbsp; support@doctriscare.site<br />Phone :&nbsp; (+84) 888195313<br />Website : doctriscare.site<br />T&ecirc;n kh&aacute;ch h&agrave;ng : "+ name + "</p>\n"
                 + "  </div>\n"
                 + "\n"
                 + "      </td>\n"
@@ -430,11 +411,7 @@ public class SendMail {
                 + "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 13px;font-family:'Montserrat',sans-serif;\" align=\"left\">\n"
                 + "        \n"
                 + "  <div style=\"color: #b0b1b4; line-height: 180%; text-align: center; word-wrap: break-word;\">\n"
-<<<<<<< HEAD:WebApplication1/src/java/config/SendMail.java
-                + "    <p style=\"font-size: 14px; line-height: 180%;\">&copy; 2022 doctriscare.ml</p>\n"
-=======
-                + "    <p style=\"font-size: 14px; line-height: 180%;\">&copy; 2023 doctriscare.store</p>\n"
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/configs/SendMail.java
+                + "    <p style=\"font-size: 14px; line-height: 180%;\">&copy; 2023 doctriscare.site</p>\n"
                 + "  </div>\n"
                 + "\n"
                 + "      </td>\n"

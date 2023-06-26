@@ -47,7 +47,7 @@ public class Booking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
+        response.setContentType("text/html; ch:arset=UTF-8");
         HttpSession session = request.getSession();
         DoctorDAO ddao = new DoctorDAO();
         PatientDao pdao = new PatientDao();
