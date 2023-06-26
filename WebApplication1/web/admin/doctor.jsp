@@ -1,7 +1,7 @@
 <%-- 
     Document   : doctor
-    Created on : May 29, 2023, 7:57:35 AM
-    Author     : doans
+    Created on : Feb 8, 2022, 12:13:02 AM
+    Author     : Khuong Hung
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -36,7 +36,7 @@
                                     </div> 
                                 </div>
                             </div>
-<!--                            <div class="col-md-7">
+                            <div class="col-md-7">
                                 <form action="doctormanage?action=filter" method="POST" onSubmit="document.getElementById('submit').disabled = true;">
                                     <div class="justify-content-md-end row">
                                         <div class="col-md-5 row align-items-center">
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>-->
+                            </div>
                         </div>
 
                         <div class="row">
@@ -147,4 +147,3 @@
     </body>
 
 </html>
-
