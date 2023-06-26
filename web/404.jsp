@@ -1,7 +1,12 @@
 <%-- 
     Document   : 404
+<<<<<<< HEAD:WebApplication1/build/web/404.jsp
+    Created on : Jun 24, 2023, 9:11:57 AM
+    Author     : doans
+=======
     Created on : Feb 16, 2022, 4:00:40 PM
     Author     : Khuong Hung
+>>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/404.jsp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

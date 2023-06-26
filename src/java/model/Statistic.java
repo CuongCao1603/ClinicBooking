@@ -9,7 +9,11 @@ import java.sql.Date;
 
 /**
  *
+<<<<<<< HEAD:WebApplication1/src/java/model/Statistic.java
+ * @author doans
+=======
  * @author Khuong Hung
+>>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/model/Statistic.java
  */
 public class Statistic {
     private Date date;

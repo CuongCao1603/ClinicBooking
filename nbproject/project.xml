@@ -31,6 +31,13 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+<<<<<<< HEAD:WebApplication1/nbproject/project.xml
+                    <file>${file.reference.Doctris-lib}</file>
+                    <path-in-war>WEB-INF/classes</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.javax.mail.jar}</file>
+=======
                     <file>${file.reference.jakarta.mail-2.0.1.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -40,6 +47,7 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.mysql-connector-j-8.0.33.jar-1}</file>
+>>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:nbproject/project.xml
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
