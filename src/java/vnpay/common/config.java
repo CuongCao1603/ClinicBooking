@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public class config {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-//    public static String vnp_Returnurl = "https://doctriscare.site";
+    public static String vnp_Returnurl = "https://doctriscare.site";
     public static String vnp_TmnCode = "KPTXNCGK";
     public static String vnp_HashSecret = "ZYGKZVJVQJQGSYFPEOZNYWXXNOPZIFMU";
 //    public static String vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
