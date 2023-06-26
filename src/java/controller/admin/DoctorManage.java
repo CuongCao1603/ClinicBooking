@@ -17,18 +17,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-<<<<<<< HEAD:WebApplication1/src/java/controller/admin/DoctorManage.java
 import model.*;
-=======
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import model.Doctor;
-import model.Setting;
-import java.sql.Date;
-import model.RateStar;
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/controller/admin/DoctorManage.java
 
 /**
  *
@@ -52,7 +41,6 @@ public class DoctorManage extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DoctorDAO doctordao = new DoctorDAO();
-        AppointmentDAO appointmentdao = new AppointmentDAO();
         String action = request.getParameter("action");
         List<Doctor> doctorlist = null;
         AppointmentDAO appointmentdao = new AppointmentDAO();
@@ -65,11 +53,7 @@ public class DoctorManage extends HttpServlet {
             if (action.equals("all")) {
                 url = "doctormanage?action=all";
                 doctorlist = doctordao.getAllDoctor();
-<<<<<<< HEAD:WebApplication1/src/java/controller/admin/DoctorManage.java
             }
-=======
-            }          
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/controller/admin/DoctorManage.java
             if(action.equals("filter")){
                 String gender = request.getParameter("gender");
                 String speciality = request.getParameter("speciality");
@@ -78,15 +62,9 @@ public class DoctorManage extends HttpServlet {
                 if(gender.equals("all") && speciality.equals("all")){
                     response.sendRedirect("doctormanage?action=all");
                 }else if(gender.equals("all")){
-<<<<<<< HEAD:WebApplication1/src/java/controller/admin/DoctorManage.java
-                     doctorlist = doctordao.getAllDoctorByGender(gender);
-                }else if(speciality.equals("all")){
-                    doctorlist = doctordao.getAllDoctorBySpeciality(speciality);
-=======
                     doctorlist = doctordao.getAllDoctorBySpeciality(speciality);
                 }else if(speciality.equals("all")){
                     doctorlist = doctordao.getAllDoctorByGender(gender);
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/controller/admin/DoctorManage.java
                 }else{
                     doctorlist = doctordao.getAllDoctorByFilter(gender, speciality);
                 }
