@@ -172,6 +172,35 @@ public class DoctorDAO {
         return list;
     }
 
+    public List<Patient> searchPatientByName(String name) throws SQLException {
+    List<Patient> patientList = new ArrayList<>();
+    String sql = "SELECT * FROM patient WHERE username IN (SELECT username FROM users WHERE name LIKE ?)";
+
+    try (Connection connection = dbc.getConnection();
+         PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+        String searchKeyword = "%" + name + "%";
+        preparedStatement.setString(1, searchKeyword);
+
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                int patientId = resultSet.getInt("patient_id");
+                Date dateOfBirth = resultSet.getDate("DOB");
+                // Get other patient information if needed
+
+                // Create Patient object and add it to the list
+                Patient patient = new Patient(patientId, dateOfBirth);
+                patientList.add(patient);
+            }
+        }
+
+    } catch (SQLException e) {
+        // Handle the exception
+    }
+
+    return patientList;
+}
+    
     public List<Doctor> Search(String text) throws SQLException, IOException {
         List<Doctor> list = new ArrayList<>();
         String sql = "select cs.name, d.doctor_id,d.doctor_name,d.gender,d.status "
