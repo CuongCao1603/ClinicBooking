@@ -455,7 +455,7 @@ public class ReservationDAO {
     public void Booking(int service_id, int patient_id, String staff, String date, String time, String description, String status, String payment) throws SQLException {
         String sql = "INSERT INTO `reservations` (`patient_id`, `service_id`, "
                 + "`staff`, `date`, `time`, `status`, `description`, `payment`) VALUES "
-                + "(?, ?, ?, STR_TO_DATE(?,'%d/%m/%Y'), ?, ?, ?, ?)";
+                + "(?, ?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, ?, ?)";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);

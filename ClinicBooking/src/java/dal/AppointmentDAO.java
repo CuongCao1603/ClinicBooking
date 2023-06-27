@@ -497,9 +497,9 @@ public class AppointmentDAO {
         return list;
     }
 
-    public void Booking(int doctor_id, int patient_id, String staff, String date, String time, String description, String status, double fee, String payment) throws SQLException, IOException {
+     public void Booking(int doctor_id, int patient_id, String staff, String date, String time, String description, String status, double fee, String payment) throws SQLException, IOException {
         String sql = "INSERT INTO `appointments` (`doctor_id`, `patient_id`, `staff`, `date`, `time`, `description`, `status`, `fee`, `payment`) \n"
-                + "VALUES (?, ?, ?, STR_TO_DATE(?,'%d/%m/%Y'), ?, ?, ?, ?, ?)";
+                + "VALUES (?, ?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, ?, ?, ?)";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);

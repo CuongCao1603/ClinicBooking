@@ -152,14 +152,15 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("doctor", doctorlist);
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
-
+            
+            
+            // Vanh
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
                 request.setAttribute("patients", patients);
                 request.getRequestDispatcher("mypatients.jsp").forward(request, response);
             }
-
             if (action.equals("detailpatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 int patient_id = Integer.parseInt(request.getParameter("id"));
@@ -172,12 +173,12 @@ public class DoctorController extends HttpServlet {
 
                 request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
             }
-
             if (action.equals("myappointment")) {
                 List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
-                int page, numperpage = 8;
-                int size = getAppointment.size();
-                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                  
+                int page, numperpage = 3;
+                int size = getAppointment.size(); // size = 5 
+                int num = (size % 3 == 0 ? (size / 3) : ((size / 3)) + 1); // num = 2
                 String xpage = request.getParameter("page");
                 if (xpage == null) {
                     page = 1;
@@ -193,7 +194,14 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("AppointmentList", AppointmentList);
                 request.getRequestDispatcher("myappointment.jsp").forward(request, response);
             }
+            
 
+            
+            
+            
+            
+            
+            
             if (action.equals("myappointmentdetail")) {
                 Appointment a = doctordao.getAppointmentDetail(Integer.parseInt(request.getParameter("id")));
                 request.setAttribute("a", a);

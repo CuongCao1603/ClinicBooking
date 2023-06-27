@@ -1,4 +1,3 @@
-
 package dal;
 
 import java.io.IOException;
@@ -34,20 +33,20 @@ public class DoctorDAO extends DBContext {
 // Vanh
     public int getDoctorIDByUsername(String username) {
         int doctor_id = 0;
-        String sql="select doctor_id from doctor where username = ?";
+        String sql = "select doctor_id from doctor where username = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, username);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 doctor_id = rs.getInt(1);
             }
         } catch (Exception e) {
         }
         return doctor_id;
     }
-    
+
     public List<Appointment> getAllAppointment(int id) throws SQLException {
         List<Appointment> list = new ArrayList<>();
         String sql = "SELECT a.appointment_id, p.patient_id,  u.name,a.date, a.time,a.status from appointments a\n"
@@ -63,7 +62,7 @@ public class DoctorDAO extends DBContext {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Appointment a = new Appointment(rs.getInt(1), new Patient(rs.getInt(2), rs.getString(3)), rs.getDate(4), rs.getTime(5), rs.getString(6));
                 list.add(a);
             }
@@ -71,11 +70,7 @@ public class DoctorDAO extends DBContext {
         }
         return list;
     }
-    
-    
-    
-    
-    
+
     public List<Doctor> getRandomTop6Doctor() throws SQLException, IOException {
         List<Doctor> list = new ArrayList<>();
         String sql = "select concat_ws(cs.id,d.category_id)id,"
@@ -141,6 +136,31 @@ public class DoctorDAO extends DBContext {
             }
         }
         return list;
+    }
+
+    public List<Patient> search(int doctor_id, String keyword) throws SQLException, IOException {
+        List<Patient> searchResults = new ArrayList<>();
+        String sql = "SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments "
+                + "INNER JOIN patient ON appointments.patient_id = patient.patient_id "
+                + "INNER JOIN users ON patient.username = users.username INNER JOIN ("
+                + "SELECT patient_id AS pid , MAX(date) AS pdate FROM appointments GROUP BY patient_id"
+                + ") AS a ON a.pid = appointments.patient_id "
+                + "WHERE appointments.doctor_id = ? AND users.name LIKE ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, doctor_id);
+            ps.setString(2, "%" + keyword + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account a = new Account(rs.getString(1), rs.getInt(2), rs.getString(3));
+                Appointment ap = new Appointment(rs.getDate(4));
+                searchResults.add(new Patient(a, ap, rs.getDate(5), rs.getInt(6)));
+            }
+        } catch (SQLException e) {
+            // Handle the exception
+        }
+        return searchResults;
     }
 
 //    1 là chỉ số của tham số trong truy vấn SQL. Chỉ số tham số bắt đầu từ 1.
@@ -493,8 +513,6 @@ public class DoctorDAO extends DBContext {
         }
         return null;
     }
-
-
 
     public List<RateStar> getRateDoctor(int id) throws SQLException, IOException {
         List<RateStar> list = new ArrayList<>();

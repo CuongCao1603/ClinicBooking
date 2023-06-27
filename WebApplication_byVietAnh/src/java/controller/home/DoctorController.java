@@ -141,6 +141,18 @@ public class DoctorController extends HttpServlet {
 
 // mypatient      
 // Câu hỏi: Mục đích của việc hiển thị bảng bệnh nhân là gì 
+
+            if(action.endsWith("searchpatient")){
+                String search = request.getParameter("search");
+                int doctor_id = doctordao.getDoctorByID(user.getUsername());
+                
+                List<Patient> patient = doctordao.search(doctor_id, search);
+                
+                request.setAttribute("patient", patient);
+                
+                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
+            }
+            
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 // Lấy ra id của bác sĩ Oanh = 19 

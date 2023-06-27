@@ -24,7 +24,16 @@
                                 <h5 class="mb-0"> Bệnh nhân của tôi </h5>
                             </div>
                             <div class="p-4">
-                                <jsp:include page="layout/search.jsp"/>
+                                
+                                <div class="searchpatient">
+                                    <form action="doctor?action=searchpatient" method="GET" class="form-inline">
+                                        <div class="input-group">
+                                            <input type="text" name="search" class="form-control" placeholder="Tìm kiếm bệnh nhân...">
+                                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
                                 <div class="table-responsive bg-white shadow rounded">
                                     <table class="table mb-0 table-center" style="font-size: smaller;">
                                         <thead>
@@ -52,7 +61,7 @@
                                                     <td class=""><fmt:formatDate pattern="dd/MM//yyyy" value="${a.appointment.date}"/></td>
                                                     <td class=""><fmt:formatDate pattern="dd/MM/yyyy" value="${a.DOB}"/></td>
                                                     <td class="text-end">
-                                                        <a href="doctor?acction=detailpatient&id=${a.patient_id}"><u>Detail</u></a>
+                                                        <a href="doctor?action=detailpatient&id=${a.patient_id}"><u>Detail</u></a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -68,9 +77,11 @@
 
         <jsp:include page="layout/footer.jsp"/>
         <a href="#" onclick="topFunction()" id="back-to-top" clas="btn btn-icon btn-pills btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i> </a>
-        
+
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather.min.js"></script>
         <script src="assets/js/app.js"></script>
+        <script src="assets/fonts/remixicon.woff2"></script>
+        <script src="assets/fonts/materialdesignicons-webfont.woff2"></script>
     </body>
 </html>
