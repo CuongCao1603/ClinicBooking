@@ -17,14 +17,16 @@ import java.util.Map;
 import java.util.Random;
 import jakarta.servlet.http.HttpServletRequest;
 
-
+/**
+ *
+ * @author Khuong Hung
+ */
 public class config {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_Returnurl = "https://doctriscare.site";
-    public static String vnp_TmnCode = "KPTXNCGK";
-    public static String vnp_HashSecret = "ZYGKZVJVQJQGSYFPEOZNYWXXNOPZIFMU";
-//    public static String vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
-    public static String vnp_apiUrl = " https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    public static String vnp_Returnurl = "http://doctriscare.store/verification";
+    public static String vnp_TmnCode = "2HI8UZZV";
+    public static String vnp_HashSecret = "GZGESIMQFAWZACMSAKWAMXZQMWADWVDB";
+    public static String vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
 
     public static String md5(String message) {
         String digest = null;

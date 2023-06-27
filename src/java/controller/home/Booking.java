@@ -47,7 +47,7 @@ public class Booking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; ch:arset=UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         HttpSession session = request.getSession();
         DoctorDAO ddao = new DoctorDAO();
         PatientDao pdao = new PatientDao();
@@ -77,25 +77,25 @@ public class Booking extends HttpServlet {
                 session.setAttribute("type", type);
             }
             if (type.equals("checkout")) {
-
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
                 String description = request.getParameter("description");
                 String payment = request.getParameter("payment");
                 session.setAttribute("time", time);
                 session.setAttribute("date", date);
+
                 if (payment.equals("default")) {
                     if (session.getAttribute("type").equals("appointment")) {
                         adao.Booking(d.getDoctor_id(), pdao.getPatientIDByUsername(user.getUsername()), udao.getRandomStaff(), date, time, description, "Assigned", d.getFee(), "Pending");
                         int booking_id = adao.getLastBooking(pdao.getPatientIDByUsername(user.getUsername()));
                         int fee = (int) Math.round(d.getFee());
-                        SendMail.Booking(booking_id, user.getEmail(), user.getName(), date, time, "Bác sĩ : " + d.getDoctor_name(), fee, "Thanh toán tại phòng khám");
+                        SendMail.Booking(booking_id, user.getEmail(), user.getName(), date, time, "Bác sĩ: " + d.getDoctor_name(), fee, "Thanh toán tại phòng khám");
                     }
                     if (session.getAttribute("type").equals("reservation")) {
                         rdao.Booking(s.getService_id(), pdao.getPatientIDByUsername(user.getUsername()), udao.getRandomStaff(), date, time, description, "Assigned", "Pending");
                         int booking_id = rdao.getLastBooking(pdao.getPatientIDByUsername(user.getUsername()));
                         int fee = (int) Math.round(s.getFee());
-                        SendMail.Booking(booking_id, user.getEmail(), user.getName(), date, time, "Dịch vụ : " + s.getTitle(), fee, "Thanh toán tại phòng khám");
+                        SendMail.Booking(booking_id, user.getEmail(), user.getName(), date, time, "Dịch vụ: " + s.getTitle(), fee, "Thanh toán tại phòng khám");
                     }
                 }
                 if (payment.equals("vnpay")) {

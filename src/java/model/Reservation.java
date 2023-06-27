@@ -10,11 +10,7 @@ import java.sql.Time;
 
 /**
  *
-<<<<<<< HEAD:WebApplication1/src/java/model/Reservation.java
- * @author doans
-=======
  * @author Khuong Hung
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/model/Reservation.java
  */
 public class Reservation {
     private int id;

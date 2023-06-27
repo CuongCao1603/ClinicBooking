@@ -1,13 +1,7 @@
 <%-- 
-<<<<<<< HEAD:WebApplication1/build/web/401.jsp
-    Document   : 401.jsp
-    Created on : Jun 24, 2023, 9:11:20 AM
-    Author     : doans
-=======
     Document   : 401
     Created on : Mar 3, 2022, 2:42:18 PM
     Author     : Khuong Hung
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/401.jsp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -6,11 +6,8 @@
 package configs;
 
 import java.util.*;
-
-
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
-
 
 public class SendMail {
 
@@ -25,7 +22,6 @@ public class SendMail {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.allow8bitmime", "true");
         props.put("mail.smtps.allow8bitmime", "true");
-
         Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -210,8 +206,8 @@ public class SendMail {
                 + "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n"
                 + "  <tr>\n"
                 + "    <td style=\"padding-right: 0px;padding-left: 0px;\" align=\"center\">\n"
-                + "      <a href=\"https://doctriscare.site\" target=\"_blank\">\n"
-                + "      <img align=\"center\" border=\"0\" src=\"https://doctriscare.site/assets/images/logo-light.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 38%;max-width: 220.4px;\" width=\"220.4\" class=\"v-src-width v-src-max-width\"/>\n"
+                + "      <a href=\"https://doctriscare.store\" target=\"_blank\">\n"
+                + "      <img align=\"center\" border=\"0\" src=\"https://doctriscare.store/assets/images/logo-light.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 38%;max-width: 220.4px;\" width=\"220.4\" class=\"v-src-width v-src-max-width\"/>\n"
                 + "      </a>\n"
                 + "    </td>\n"
                 + "  </tr>\n"
@@ -263,7 +259,7 @@ public class SendMail {
                 + "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 60px 50px 26px;font-family:'Montserrat',sans-serif;\" align=\"left\">\n"
                 + "        \n"
                 + "  <div style=\"color: #444444; line-height: 170%; text-align: left; word-wrap: break-word;\">\n"
-                + "    <p style=\"font-size: 14px; line-height: 170%;\">ID&nbsp; : &nbsp; #"+ id + "<br />Email :&nbsp; support@doctriscare.site<br />Phone :&nbsp; (+84) 888195313<br />Website : doctriscare.site<br />T&ecirc;n kh&aacute;ch h&agrave;ng : "+ name + "</p>\n"
+                + "    <p style=\"font-size: 14px; line-height: 170%;\">ID&nbsp; : &nbsp; #"+ id + "<br />Email :&nbsp; support@doctriscare.store<br />Phone :&nbsp; (+84) 888195313<br />Website : doctriscare.store<br />T&ecirc;n kh&aacute;ch h&agrave;ng : "+ name + "</p>\n"
                 + "  </div>\n"
                 + "\n"
                 + "      </td>\n"
@@ -411,7 +407,7 @@ public class SendMail {
                 + "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 13px;font-family:'Montserrat',sans-serif;\" align=\"left\">\n"
                 + "        \n"
                 + "  <div style=\"color: #b0b1b4; line-height: 180%; text-align: center; word-wrap: break-word;\">\n"
-                + "    <p style=\"font-size: 14px; line-height: 180%;\">&copy; 2023 doctriscare.site</p>\n"
+                + "    <p style=\"font-size: 14px; line-height: 180%;\">&copy; 2023 doctriscare.store</p>\n"
                 + "  </div>\n"
                 + "\n"
                 + "      </td>\n"

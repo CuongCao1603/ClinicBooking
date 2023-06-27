@@ -1,29 +1,29 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controller.admin;
 
-import dal.AppointmentDAO;
 import dal.DoctorDAO;
-import java.io.IOException;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
+import dal.AppointmentDAO;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import model.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import model.Doctor;
+import model.Setting;
+import java.sql.Date;
+import model.RateStar;
 
 /**
  *
- * @author Khuong Hung
+ * @author doans
  */
-@MultipartConfig(maxFileSize = 16177216)
 public class DoctorManage extends HttpServlet {
 
     /**
@@ -41,19 +41,18 @@ public class DoctorManage extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DoctorDAO doctordao = new DoctorDAO();
+        AppointmentDAO appointmentdao = new AppointmentDAO();
         String action = request.getParameter("action");
         List<Doctor> doctorlist = null;
-        AppointmentDAO appointmentdao = new AppointmentDAO();
         String url = null;
         String alert = null;
         String message = null;
         List<Setting> specialitylist = null;
         try {
-            specialitylist = doctordao.getSpeciality();
             if (action.equals("all")) {
                 url = "doctormanage?action=all";
                 doctorlist = doctordao.getAllDoctor();
-            }
+            }          
             if(action.equals("filter")){
                 String gender = request.getParameter("gender");
                 String speciality = request.getParameter("speciality");
@@ -122,7 +121,7 @@ public class DoctorManage extends HttpServlet {
                 int page, numperpage = 8;
                 int type = 0;
                 int size = doctorlist.size();
-                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                int num = size % 8 == 0 ? size / 8 : size / 8 + 1;
                 String xpage = request.getParameter("page");
                 if (xpage == null) {
                     page = 1;
@@ -141,7 +140,7 @@ public class DoctorManage extends HttpServlet {
                 request.setAttribute("speciality", specialitylist);
                 request.getRequestDispatcher("admin/doctor.jsp").forward(request, response);
             }
-        } catch (IOException | SQLException | ServletException e) {
+        } catch (IOException | SQLException e) {
             System.out.println(e);
         }
     }
