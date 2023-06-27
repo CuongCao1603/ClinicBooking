@@ -152,6 +152,17 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("doctor", doctorlist);
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
+            
+            if(action.endsWith("searchpatient")){
+                String search = request.getParameter("search");
+                int doctor_id = doctordao.getDoctorByID(user.getUsername());
+                
+                List<Patient> patient = doctordao.search(doctor_id, search);
+                
+                request.setAttribute("patient", patient);
+                
+                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
+            }
               if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
