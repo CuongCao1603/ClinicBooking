@@ -22,8 +22,11 @@ public class DBContext {
             String dbName = "doctris_system";
             String url = "jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName + "?" + condition;
 
-            String username = "root";
-            String password = "thanh298";
+//            String username = "root";
+//            String password = "thanh298";
+
+            String username = "sa";
+            String password = "vanhleg2301";
 
             Connection connection = DriverManager.getConnection(url, username, password);
             return connection;
