@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/controller/home/DoctorController.java</file>
-            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/controller/home/HomeController.java</file>
-            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/controller/home/PaymentFailed.java</file>
-            <file>file:/D:/FILE_CUA_CUONG/SWP391/ClinicBooking/src/java/vnpay/common/config.java</file>
+            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/context/DBContext.java</file>
+            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/configs/EncodeData.java</file>
+            <file>file:/D:/SWP391_Final_Project/ClinicBooking/web/META-INF/context.xml</file>
+            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/configs/InsertBase64ToBlob.java</file>
+            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/vnpay/common/config.java</file>
         </group>
     </open-files>
 </project-private>
