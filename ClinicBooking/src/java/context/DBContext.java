@@ -19,7 +19,7 @@ public class DBContext {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String serverName = "localhost";
             String portNumber = "3306";
-            String dbName = "g3_cbs_db_final";
+            String dbName = "doctris_system";
             String url = "jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName + "?" + condition;
 
             String username = "sa";

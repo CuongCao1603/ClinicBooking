@@ -253,7 +253,24 @@ public class PatientDao {
             ps.setString(2, "%" + keyword + "%");
             rs = ps.executeQuery();
             while (rs.next()) {
-                Account a = new Account(null, rs.getString(2), rs.getInt(3), false, rs.getString(4));
+                 String base64Image = null;
+                Blob blob = rs.getBlob(1);
+                if (blob != null) {
+                    InputStream inputStream = blob.getBinaryStream();
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[4096];
+                    int bytesRead = -1;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                    byte[] imageBytes = outputStream.toByteArray();
+                    base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                    inputStream.close();
+                    outputStream.close();
+                } else {
+                    base64Image = "default";
+                }
+                Account a = new Account(base64Image, rs.getString(2), rs.getInt(3), false , rs.getString(4));
                 Appointment ap = new Appointment(rs.getDate(7), null, null);
                 searchResults.add(new Patient(a, rs.getDate(5), rs.getInt(6), ap));
             }
