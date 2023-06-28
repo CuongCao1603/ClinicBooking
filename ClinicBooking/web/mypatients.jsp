@@ -25,9 +25,9 @@
                             <div class="p-4">
 
                                 <div class="searchpatient">
-                                    <form action="doctor?action=searchpatient" method="GET" class="form-inline">
+                                    <form action="doctor?action=search" method="POST" class="form-inline">
                                         <div class="input-group">
-                                            <input type="text" name="search" class="form-control" placeholder="Tìm kiếm bệnh nhân...">
+                                            <input type="text" name="txt" class="form-control" placeholder="Tìm kiếm bệnh nhân...">
                                             <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                         </div>
                                     </form>

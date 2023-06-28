@@ -153,12 +153,13 @@ public class DoctorController extends HttpServlet {
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
             
-            if(action.endsWith("searchpatient")){
-                String search = request.getParameter("search");
+            
+            if(action.endsWith("search")){
+                String txt = request.getParameter("txt");
                 
-                List<Patient> patient = doctordao.searchPatientByName(url);
+                List<Patient> patient = doctordao.searchPatientByName(search);
                 
-                request.setAttribute("patient", patient);
+                url = "doctor?action=search&txt=" + txt;
                 
                 request.getRequestDispatcher("mypatients.jsp").forward(request, response);
             }
