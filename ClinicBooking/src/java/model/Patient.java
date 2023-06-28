@@ -49,6 +49,13 @@ public class Patient {
         this.status = status;
     }
 
+    public Patient(int patient_id, Date DOB) {
+        this.patient_id = patient_id;
+        this.DOB = DOB;
+    }
+    
+    
+
     public Patient(Account account, int patient_id, Date DOB, boolean status) {
         this.account = account;
         this.patient_id = patient_id;

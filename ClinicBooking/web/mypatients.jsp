@@ -23,6 +23,16 @@
                                 <h5 class="mb-0">Bệnh nhân của tôi</h5>
                             </div>
                             <div class="p-4">
+
+                                <div class="search">
+                                    <form action="doctor?action=search" method="POST" class="form-inline">
+                                        <div class="input-group">
+                                            <input type="text" name="txt" class="form-control" placeholder="Tìm kiếm bệnh nhân...">
+                                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        </div>
+                                        <input type="hidden" name="action" value="searchpatient">
+                                    </form>
+                                </div>
                                 <div class="table-responsive bg-white shadow rounded">
                                     <table class="table mb-0 table-center" style="font-size: smaller;">
                                         <thead>
@@ -50,7 +60,7 @@
                                                     <td class="">0${a.account.phone}</td>
                                                     <td class="">${a.account.email}</td>
                                                     <td class=""><fmt:formatDate pattern="dd/MM/yyyy" value="${a.DOB}" /></td>
-                                                     <td class="text-end ">
+                                                    <td class="text-end ">
                                                         <a href="doctor?action=detailpatient&id=${a.patient_id}" ><u>Detail</u></a>
                                                     </td>
                                                 </tr>

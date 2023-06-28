@@ -172,6 +172,7 @@ public class DoctorDAO {
         return list;
     }
 
+    
     public List<Doctor> Search(String text) throws SQLException, IOException {
         List<Doctor> list = new ArrayList<>();
         String sql = "select cs.name, d.doctor_id,d.doctor_name,d.gender,d.status "

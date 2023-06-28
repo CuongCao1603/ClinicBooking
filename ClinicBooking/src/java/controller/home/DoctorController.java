@@ -155,6 +155,14 @@ public class DoctorController extends HttpServlet {
             
             
             // Vanh
+            
+            if(action.endsWith("search")){
+                String txt = request.getParameter("txt");
+                List<Patient> patientlist = patientdao.search(doctordao.getDoctorIDByUsername(user.getUsername()), txt);
+                
+                url = "doctor?action=search&txt=" + txt;
+//                request.getRequestDispatcher(url).forward(request, response);
+            }
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);

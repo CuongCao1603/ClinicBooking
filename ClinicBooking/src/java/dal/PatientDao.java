@@ -238,6 +238,35 @@ public class PatientDao {
         return list;
     }
     
+        public List<Patient> search(int doctor_id, String keyword) throws SQLException, IOException {
+        List<Patient> searchResults = new ArrayList<>();
+        String sql = "SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments "
+                + "INNER JOIN patient ON appointments.patient_id = patient.patient_id "
+                + "INNER JOIN users ON patient.username = users.username INNER JOIN ("
+                + "SELECT patient_id AS pid , MAX(date) AS pdate FROM appointments GROUP BY patient_id"
+                + ") AS a ON a.pid = appointments.patient_id "
+                + "WHERE appointments.doctor_id = ? AND users.email LIKE ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, doctor_id);
+            ps.setString(2, "%" + keyword + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account a = new Account(null, rs.getString(2), rs.getInt(3), false, rs.getString(4));
+                Appointment ap = new Appointment(rs.getDate(7), null, null);
+                searchResults.add(new Patient(a, rs.getDate(5), rs.getInt(6), ap));
+            }
+        } catch (SQLException e) {
+            // Handle the exception
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return searchResults;
+    }
+    
     public Patient getPatientbyid(int patient_id) throws SQLException, IOException {
         String sql = "SELECT u.name,u.email,u.phone,u.gender,p.DOB FROM users u inner join patient p\n"
                 + "on u.username = p.username\n"
