@@ -156,19 +156,22 @@ public class DoctorController extends HttpServlet {
             
             // Vanh
             
-            if(action.endsWith("search")){
+            if(action.equals("search")){
                 String txt = request.getParameter("txt");
-                List<Patient> patientlist = patientdao.search(doctordao.getDoctorIDByUsername(user.getUsername()), txt);
+                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
+                List<Patient> patientlist = patientdao.search(doctor_id, txt);
                 
-                url = "doctor?action=search&txt=" + txt;
+                url = "doctor?action=search&txt=" + txt;               
 //                request.getRequestDispatcher(url).forward(request, response);
             }
+            
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
                 request.setAttribute("patients", patients);
                 request.getRequestDispatcher("mypatients.jsp").forward(request, response);
             }
+            
             if (action.equals("detailpatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 int patient_id = Integer.parseInt(request.getParameter("id"));
@@ -181,6 +184,7 @@ public class DoctorController extends HttpServlet {
 
                 request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
             }
+            
             if (action.equals("myappointment")) {
                 List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
                   

@@ -5,11 +5,9 @@
         <group>
             <file>file:/D:/ClinicBooking/ClinicBooking/web/admin/doctor.jsp</file>
             <file>file:/D:/ClinicBooking/ClinicBooking/src/java/controller/home/DoctorController.java</file>
-            <file>file:/D:/ClinicBooking/ClinicBooking/src/java/context/DBContext.java</file>
-            <file>file:/D:/ClinicBooking/ClinicBooking/src/java/model/Account.java</file>
+            <file>file:/D:/ClinicBooking/ClinicBooking/src/java/dal/PatientDao.java</file>
             <file>file:/D:/ClinicBooking/ClinicBooking/src/java/controller/admin/DoctorManage.java</file>
             <file>file:/D:/ClinicBooking/ClinicBooking/web/mypatients.jsp</file>
-            <file>file:/D:/ClinicBooking/ClinicBooking/src/java/dal/DoctorDAO.java</file>
         </group>
     </open-files>
 </project-private>

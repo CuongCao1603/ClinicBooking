@@ -23,16 +23,16 @@
                                 <h5 class="mb-0">Bệnh nhân của tôi</h5>
                             </div>
                             <div class="p-4">
-
-                                <div class="search">
-                                    <form action="doctor?action=search" method="POST" class="form-inline">
+                                
+                                <div id="search" class="menu-search mb-0" class="search-bar" style="padding-bottom: 10px;">
+                                    <form action="doctor?action=search" method="GET" class="form-inline" id="searchform" class="searchform">
                                         <div class="input-group">
-                                            <input type="text" name="txt" class="form-control" placeholder="Tìm kiếm bệnh nhân...">
-                                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                            <input type="text" name="txt" class="form-control border rounded-pill" id="s" placeholder="Tìm kiếm bệnh nhân...">
+                                            <button type="submit" id="searchsubmit" value="Search" class="btn btn-primary rounded-pill"><i class="fas fa-search"></i></button>
                                         </div>
-                                        <input type="hidden" name="action" value="searchpatient">
                                     </form>
                                 </div>
+                                
                                 <div class="table-responsive bg-white shadow rounded">
                                     <table class="table mb-0 table-center" style="font-size: smaller;">
                                         <thead>
@@ -76,7 +76,6 @@
         </section>
         <jsp:include page="layout/footer.jsp"/>
         <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-pills btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
-            <jsp:include page="layout/search.jsp"/>
 
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather.min.js"></script>

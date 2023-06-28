@@ -1,4 +1,4 @@
-use doctris_system
+-- use doctris_system
 -- getPatientByDoctor(int doctor_id)
 select distinct users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id
 	as lastbooking from appointments 
