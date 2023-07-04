@@ -1,10 +1,12 @@
 
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <!DOCTYPE html>
+
 <html lang="en">
     <jsp:include page="../admin/layout/adminhead.jsp"/>
     <body>
@@ -41,7 +43,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-12 mt-4">
                                 <div class="table-responsive bg-white shadow rounded">
@@ -141,7 +142,6 @@
                                 </div>
                             </div>
                     </c:forEach>
-
                     <div class="modal fade" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
@@ -183,6 +183,7 @@
             </main>
         </div>
 
+        
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/simplebar.min.js"></script>
@@ -194,7 +195,6 @@
         <script src="assets/js/timepicker.init.js"></script> 
         <script src="assets/js/feather.min.js"></script>
         <script src="assets/js/app.js"></script>
-
     </body>
 
 </html>
