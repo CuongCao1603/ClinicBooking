@@ -19,4 +19,3 @@ Phương thức setAttribute được sử dụng để đặt giá trị cho m�
 
 
 
-
