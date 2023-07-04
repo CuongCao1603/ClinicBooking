@@ -49,7 +49,7 @@
                                     <table class="table mb-0 table-center">
                                         <thead>
                                             <tr>
-                                                <th class="border-bottom p-3" >ID</th>
+                                                <th class="border-bottom p-3" >Id</th>
                                                 <th class="border-bottom p-3" >Họ tên</th>
                                                 <th class="border-bottom p-3" >Giới tính</th>
                                                 <th class="border-bottom p-3" >Ngày sinh</th>
@@ -70,10 +70,10 @@
                                                     </c:if>
                                                     <td class="p-3"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.DOB}" /></td>
                                                     <c:if test="${a.status == true}">
-                                                        <td class="p-3">Active</td>
+                                                        <td class="p-3">active</td>
                                                     </c:if>
                                                     <c:if test="${a.status == false}">
-                                                        <td class="p-3">Disable</td>
+                                                        <td class="p-3">disable</td>
                                                     </c:if>
                                                     <td class="text-end p-3">
                                                         <a href="patientmanage?action=detail&username=${a.account.username}" type="button"class="btn btn-info">Chi tiết</a>
@@ -179,11 +179,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- <jsp:include page="../admin/layout/footer.jsp"/> -->
+                <jsp:include page="../admin/layout/footer.jsp"/>
             </main>
         </div>
 
-        
+
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/simplebar.min.js"></script>
