@@ -1,8 +1,3 @@
-<%-- 
-    Document   : patient
-    Created on : Feb 13, 2022, 1:43:58 AM
-    Author     : Khuong Hung
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -169,7 +164,7 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Trạng thái <span class="text-danger">*</span></label>
+                                                <label class="form-label">Trạng thái <span class=""></span></label>
                                                 <select name="status" class="form-select" aria-label="Default select example">
                                                     <option selected value="all">Tất cả</option>
                                                     <option value="1">Active</option>
