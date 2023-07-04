@@ -179,7 +179,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../admin/layout/footer.jsp"/>
+                <!-- <jsp:include page="../admin/layout/footer.jsp"/> -->
             </main>
         </div>
 
