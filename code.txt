@@ -1,3 +1,5 @@
+Mục đích của bảng patient trong chức năng của doctor
+
             String s = request.getParameter("s");
 Lấy giá trị của tham số "s" từ đối tượng request và gán cho biến s 
 Phương thức getParameter được sử dụng để truy xuất các tham số truyền qua URL hoặc form.

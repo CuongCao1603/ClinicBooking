@@ -21,6 +21,14 @@
                         <div class="rounded shadow mt-4">
                             <div class="p-4 border-bottom">
                                 <h5 class="mb-0">Lịch hẹn từ bệnh nhân</h5>
+                                <div id="search" class="menu-search mb-0" class="search-bar" style="padding-top: 10px;">
+                                    <form action="doctor?action=searchappointment" method="GET" class="form-inline" id="searchform" class="searchform">
+                                        <div class="input-group">
+                                            <input type="text" name="txt" class="form-control border rounded-pill" id="s" placeholder="Tìm kiếm bệnh nhân...">
+                                            <button type="submit" id="searchsubmit" value="Search" class="btn btn-primary rounded-pill"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                             <div class="p-4">
                                 <table class="table mb-0 table-center">
@@ -28,7 +36,8 @@
                                         <tr>
                                             <th class="border-bottom p-3" >ID</th>
                                             <th class="border-bottom p-3" >Tên bệnh nhân</th>
-                                            <th class="border-bottom p-3" >ID bệnh nhân</th>
+                                            <th class="border-bottom p-3" >ID bệnh nhân</th> 
+                                            <!--id bệnh nhân là để nếu có tên bệnh nhân trùng nhau thì nhận dạng bằng id--> 
                                             <th class="border-bottom p-3" >Ngày đặt lịch</th>
                                             <th class="border-bottom p-3" >Giờ đặt lịch</th>
                                             <th class="border-bottom p-3" >Trạng thái</th>

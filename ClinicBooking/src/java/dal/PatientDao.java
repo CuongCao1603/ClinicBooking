@@ -21,6 +21,7 @@ import java.util.List;
 import model.Account;
 import model.Appointment;
 import model.Patient;
+import model.Setting;
 
 /**
  *
@@ -250,7 +251,7 @@ public class PatientDao {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setInt(1, doctor_id);
-            ps.setString(1, "%" + keyword + "%");
+            ps.setString(2, "%" + keyword + "%");
             rs = ps.executeQuery();
             while (rs.next()) {
                  String base64Image = null;

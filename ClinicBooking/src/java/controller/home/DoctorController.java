@@ -49,6 +49,7 @@ public class DoctorController extends HttpServlet {
         PatientDao patientdao = new PatientDao();
         DoctorDAO doctordao = new DoctorDAO();
         String url = null;
+        List<Patient> patientlist = null;
         List<Doctor> getdoctor = null;
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("user");
@@ -155,15 +156,18 @@ public class DoctorController extends HttpServlet {
             
             
             // Vanh
-            
             if(action.equals("search")){
-                String txt = request.getParameter("txt");
+                String text = request.getParameter("txt");
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-                List<Patient> patientlist = patientdao.search(doctor_id, txt);
+                patientlist = patientdao.search(doctor_id, text);
                 
-                url = "doctor?action=search&txt=" + txt;               
-//                request.getRequestDispatcher(url).forward(request, response);
+                url = "doctor?action=mypatient&txt=" + text;         
+                request.setAttribute("patientlist", patientlist);
+                request.getRequestDispatcher(url).forward(request, response);
             }
+            
+            // Thầy hỏi là làm sao người dùng vào đc bảng patient. Cần xem lại booking 
+            // để vừa lưu lịch hẹn đồng thơi lưu luôn vào bảng patient 
             
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
@@ -183,6 +187,11 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("appointmentlist", appointmentlist);
 
                 request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
+            }
+            
+            if(action.equals("searchappointment")){
+                String text = request.getParameter("txt");
+                
             }
             
             if (action.equals("myappointment")) {

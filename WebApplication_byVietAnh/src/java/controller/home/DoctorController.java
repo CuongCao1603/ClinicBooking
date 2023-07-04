@@ -144,7 +144,7 @@ public class DoctorController extends HttpServlet {
 
             if(action.endsWith("searchpatient")){
                 String search = request.getParameter("search");
-                int doctor_id = doctordao.getDoctorByID(user.getUsername());
+                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 
                 List<Patient> patient = doctordao.search(doctor_id, search);
                 

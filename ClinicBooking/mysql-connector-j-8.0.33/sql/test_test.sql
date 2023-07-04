@@ -1,4 +1,4 @@
--- use doctris_system
+use doctris_system
 -- getPatientByDoctor(int doctor_id)
 select distinct users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id
 	as lastbooking from appointments 
@@ -8,6 +8,8 @@ select distinct users.name, users.phone, users.email, a.pdate, patient.DOB, pati
 	( select patient_id as pid , max(date) as pdate from appointments group by patient_id ) as a 
     on a.pid = appointments.patient_id
     where appointments.doctor_id = '19'
+    
+    -- insert
     -- search 
 SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments
             INNER JOIN patient ON appointments.patient_id = patient.patient_id 
@@ -16,12 +18,12 @@ SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, pati
             ) AS a ON a.pid = appointments.patient_id 
             WHERE appointments.doctor_id = 19 AND users.email LIKE 'tr'
  -- search 2 
-SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments
+SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments 
                 INNER JOIN patient ON appointments.patient_id = patient.patient_id 
                 INNER JOIN users ON patient.username = users.username INNER JOIN (
                 SELECT patient_id AS pid , MAX(date) AS pdate FROM appointments GROUP BY patient_id
                 ) AS a ON a.pid = appointments.patient_id 
-                WHERE appointments.doctor_id = 19 AND users.name LIKE '%H%'
+                WHERE appointments.doctor_id = 19 AND users.email LIKE '%9%'
 -- getAllAppointment(int id)
     SELECT a.appointment_id, p.patient_id,  u.name, a.date, a.time, a.status from appointments a
                 INNER JOIN patient p ON a.patient_id = p.patient_id
@@ -29,7 +31,13 @@ SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, pati
                  WHERE a.doctor_id = '19'
                  group by a.appointment_id, p.patient_id, u.name,a.date, a.time,a.status
                  order by CAST(a.date AS DATETIME) + CAST(a.time AS DATETIME) desc
-				
+                 -- search appointment
+SELECT a.appointment_id, p.patient_id,  u.name, a.date, a.time, a.status FROM appointments a 
+                INNER JOIN patient p ON a.patient_id = p.patient_id 
+                INNER JOIN users u ON p.username = u.username 
+                WHERE a.doctor_id = 19 AND (u.name LIKE '%t%' or CAST(u.date AS DATETIME) LIKE '%Mar%')
+                GROUP BY a.appointment_id, p.patient_id, u.name, a.date, a.time, a.status 
+                ORDER BY CAST(a.date AS DATETIME) + CAST(a.time AS DATETIME) DESC
 
 -- getPatientbyid(int patient_id)
 SELECT u.name, u.email, u.phone, u.gender, p.DOB FROM users u 

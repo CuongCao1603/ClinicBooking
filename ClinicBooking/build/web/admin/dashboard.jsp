@@ -113,6 +113,7 @@
                             </div>
 
                             <div class="col-xl-4 col-lg-5 mt-4">
+                                
                                 <div class="card shadow border-0 p-4">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h6 class="align-items-center mb-0">Doanh thu</h6>
@@ -127,6 +128,7 @@
                                     </div>
                                     <div id="department" class="apex-chart"></div>
                                 </div>
+                                            
                             </div>
                         </div>
 

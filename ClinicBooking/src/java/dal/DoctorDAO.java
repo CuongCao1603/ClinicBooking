@@ -172,7 +172,6 @@ public class DoctorDAO {
         return list;
     }
 
-    
     public List<Doctor> Search(String text) throws SQLException, IOException {
         List<Doctor> list = new ArrayList<>();
         String sql = "select cs.name, d.doctor_id,d.doctor_name,d.gender,d.status "
@@ -724,6 +723,34 @@ public class DoctorDAO {
             }
         }
         return list;
+    }
+
+    public List<Appointment> searchAppointments(int doctor_id, String keyword) throws SQLException {
+        List<Appointment> searchResults = new ArrayList<>();
+        String sql = "SELECT a.appointment_id, p.patient_id,  u.name, a.date, a.time, a.status FROM appointments a "
+                + "INNER JOIN patient p ON a.patient_id = p.patient_id "
+                + "INNER JOIN users u ON p.username = u.username "
+                + "WHERE a.doctor_id = ? AND (u.name LIKE ?) "
+                + "GROUP BY a.appointment_id, p.patient_id, u.name, a.date, a.time, a.status "
+                + "ORDER BY CAST(a.date AS DATETIME) + CAST(a.time AS DATETIME) DESC";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, doctor_id);
+            ps.setString(2, "%" + keyword + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Appointment a = new Appointment(rs.getInt(1), new Patient(rs.getInt(2), rs.getString(3)), rs.getDate(4), rs.getTime(5), rs.getString(6));
+                searchResults.add(a);
+            }
+        } catch (SQLException e) {
+            // Handle the exception
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return searchResults;
     }
 
     public Appointment getAppointmentDetail(int id) throws SQLException {

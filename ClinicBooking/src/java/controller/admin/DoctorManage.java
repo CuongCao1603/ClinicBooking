@@ -74,7 +74,9 @@ public class DoctorManage extends HttpServlet {
                 String text = request.getParameter("txt");
                 doctorlist = doctordao.Search(text);
                 url = "doctormanage?action=search&txt=" + text;
+ 
             }
+            
             if(action.equals("detail")){
                 int doctor_id = Integer.parseInt(request.getParameter("id"));
                 Doctor doctor = new Doctor();

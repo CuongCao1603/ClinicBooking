@@ -11,6 +11,7 @@ package model;
  */
 public class Account {
 
+    Setting s;
     private String username;
     Role role;
     private String password;
@@ -89,6 +90,18 @@ public class Account {
         }
         if (img != null) {
             this.img = img;
+        }
+    }
+    
+    public Account(String img, Setting s, int phone, boolean gender, String email) {
+        this.s = s;
+        this.gender = gender;
+        this.phone = phone;
+        if (img != null) {
+            this.img = img;
+        }
+        if (email != null) {
+            this.email = email;
         }
     }
 
