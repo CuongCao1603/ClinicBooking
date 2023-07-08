@@ -1,15 +1,12 @@
-<%-- 
-    Document   : patient
-    Created on : Feb 13, 2022, 1:43:58 AM
-    Author     : Khuong Hung
---%>
+
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <!DOCTYPE html>
+
 <html lang="en">
     <jsp:include page="../admin/layout/adminhead.jsp"/>
     <body>
@@ -46,14 +43,13 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-12 mt-4">
                                 <div class="table-responsive bg-white shadow rounded">
                                     <table class="table mb-0 table-center">
                                         <thead>
                                             <tr>
-                                                <th class="border-bottom p-3" >ID</th>
+                                                <th class="border-bottom p-3" >Id</th>
                                                 <th class="border-bottom p-3" >Họ tên</th>
                                                 <th class="border-bottom p-3" >Giới tính</th>
                                                 <th class="border-bottom p-3" >Ngày sinh</th>
@@ -74,10 +70,10 @@
                                                     </c:if>
                                                     <td class="p-3"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.DOB}" /></td>
                                                     <c:if test="${a.status == true}">
-                                                        <td class="p-3">Active</td>
+                                                        <td class="p-3">active</td>
                                                     </c:if>
                                                     <c:if test="${a.status == false}">
-                                                        <td class="p-3">Disable</td>
+                                                        <td class="p-3">disable</td>
                                                     </c:if>
                                                     <td class="text-end p-3">
                                                         <a href="patientmanage?action=detail&username=${a.account.username}" type="button"class="btn btn-info">Chi tiết</a>
@@ -146,7 +142,6 @@
                                 </div>
                             </div>
                     </c:forEach>
-
                     <div class="modal fade" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
@@ -169,7 +164,7 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Trạng thái <span class="text-danger">*</span></label>
+                                                <label class="form-label">Trạng thái <span class=""></span></label>
                                                 <select name="status" class="form-select" aria-label="Default select example">
                                                     <option selected value="all">Tất cả</option>
                                                     <option value="1">Active</option>
@@ -188,18 +183,18 @@
             </main>
         </div>
 
+
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/simplebar.min.js"></script>
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/select2.init.js"></script>
         <script src="assets/js/flatpickr.min.js"></script>
-        <script src="assets/js/flatpickr.init.js"></script>
-        <script src="assets/js/jquery.timepicker.min.js"></script> 
+        <script src="assets/js/flatpickr.init.js"></script> 
+         <script src="assets/js/jquery.timepicker.min.js"></script> 
         <script src="assets/js/timepicker.init.js"></script> 
         <script src="assets/js/feather.min.js"></script>
         <script src="assets/js/app.js"></script>
-
     </body>
 
 </html>
