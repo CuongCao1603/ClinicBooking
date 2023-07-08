@@ -61,7 +61,7 @@
                                                     <td class=""><fmt:formatDate pattern="dd/MM//yyyy" value="${a.appointment.date}"/></td>
                                                     <td class=""><fmt:formatDate pattern="dd/MM/yyyy" value="${a.DOB}"/></td>
                                                     <td class="text-end">
-                                                        <a href="doctor?action=detailpatient&id=${a.patient_id}"><u>Detail</u></a>
+                                                        <a href="doctor?action=mypatientdetail&id=${a.patient_id}" type="button" class="btn btn-info">Detail</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

@@ -58,7 +58,7 @@ public class PatientDAO {
     }
 
     public Patient getPatientbyid(int patient_id) throws SQLException, IOException {
-        String sql = "SELECT u.name,u.email,u.phone,u.gender,p.DOB FROM users u inner join patient p\n"
+        String sql = "SELECT u.name, u.email, u.phone, u.gender, p.DOB FROM users u inner join patient p\n"
                 + "on u.username = p.username\n"
                 + "where p.patient_id = ?";
         try {

@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/ClinicBooking/WebApplication_byVietAnh/src/java/dal/PatientDAO.java</file>
-            <file>file:/D:/ClinicBooking/WebApplication_byVietAnh/src/java/model/Account.java</file>
-            <file>file:/D:/ClinicBooking/WebApplication_byVietAnh/web/admin/patientdetail.jsp</file>
-            <file>file:/D:/ClinicBooking/WebApplication_byVietAnh/web/admin/patient.jsp</file>
-            <file>file:/D:/ClinicBooking/WebApplication_byVietAnh/src/java/model/Patient.java</file>
-            <file>file:/D:/ClinicBooking/WebApplication_byVietAnh/src/java/controller/admin/PatientManage.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

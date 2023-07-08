@@ -22,22 +22,22 @@
                                 <div class="p-4 border-bottom">
                                     <h5 class="mb-0"> Thông tin chi tiết bệnh nhân</h5>
                                 </div>
-
+                                
                                 <div class="p-4">
                                     <div class="d-flex align-items-center mt-2">
                                         <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
                                         <h6 class="mb-0">Tên : </h6>
-                                        <p class="text-muted mb-0 ms-2"> ${patients.accoun.name}</p>
+                                        <p class="text-muted mb-0 ms-2"> ${patients.account.name}</p>
                                     </div>
                                     <div class="d-flex align-items-center mt-2">
                                         <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
                                         <h6 class="mb-0">Email : </h6>
-                                        <p class="text-muted mb-0 ms-2"> ${patients.accoun.email}</p>
+                                        <p class="text-muted mb-0 ms-2"> ${patients.account.email}</p>
                                     </div>
                                     <div class="d-flex align-items-center mt-2">
                                         <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
                                         <h6 class="mb-0">Sdt : </h6>
-                                        <p class="text-muted mb-0 ms-2"> 0${patients.accoun.phone}</p>
+                                        <p class="text-muted mb-0 ms-2"> ${patients.account.phone}</p>
                                     </div>
                                     <div class="d-flex align-items-center mt-2">
                                         <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>

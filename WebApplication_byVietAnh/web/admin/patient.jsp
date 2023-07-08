@@ -14,7 +14,7 @@
     <body>
         <div class="page-wrapper doctris-theme toggled">
             <jsp:include page="../admin/layout/menu.jsp"/>
-            
+
             <main class="page-content bg-light">
                 <jsp:include page="../admin/layout/headmenu.jsp"/>
                 <div class="container-fluid">
@@ -106,9 +106,27 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <!--some-->
+                    <!-- LỌC --> 
+                    <c:forEach items="${account}" var="a">
+                        <div class="modal fade" id="edit${a.username}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header border-bottom p-3">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body p-3 pt-4">
+                                        <<form action="account?action=update" method="POST" onsubmit="document.getElementById('submit').disabled=true;">
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+
+
                 </div>
                 <jsp:include page="../admin/layout/footer.jsp"/>
             </main>

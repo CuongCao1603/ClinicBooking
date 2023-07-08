@@ -50,7 +50,7 @@
                                         </c:if>     
                                     </div>
                                     <div class="d-flex align-items-center mt-2">
-                                        <i class="uil uil-envelope align-text-bottom text-primary h5 mb-0 me-2"></i>
+                                        <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
                                         <h6 class="mb-0">Ngày sinh</h6>
                                         <p class="text-muted mb-0 ms-2"><fmt:formatDate pattern="dd/MM/yyyy" value="${patients.DOB}" /></p>
                                     </div>

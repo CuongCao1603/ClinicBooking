@@ -117,5 +117,49 @@
 
             </main>
         </div>
+
+
+
+
+
+
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/simplebar.min.js"></script>
+        <script src="assets/js/feather.min.js"></script>
+        <script src="assets/js/app.js"></script>
+                <script>
+
+                                            function readURL(input, thumbimage) {
+                                                if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+                                                    var reader = new FileReader();
+                                                    reader.onload = function (e) {
+                                                        $("#thumbimage").attr('src', e.target.result);
+                                                    }
+                                                    reader.readAsDataURL(input.files[0]);
+                                                } else { // Sử dụng cho IE
+                                                    $("#thumbimage").attr('src', input.value);
+
+                                                }
+                                                $("#thumbimage").show();
+                                                $('.filename').text($("#uploadfile").val());
+                                                $(".Choicefile").hide();
+                                                $(".Update").show();
+                                                $(".removeimg").show();
+                                            }
+                                            $(document).ready(function () {
+                                                $(".Choicefile").bind('click', function () {
+                                                    $("#uploadfile").click();
+
+                                                });
+                                                $(".removeimg").click(function () {
+                                                    $("#thumbimage").attr('src', '').hide();
+                                                    $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+                                                    $(".removeimg").hide();
+                                                    $(".Choicefile").show();
+                                                    $(".Update").hide();
+                                                    $(".filename").text("");
+                                                });
+                                            })
+        </script>
     </body>
 </html>
