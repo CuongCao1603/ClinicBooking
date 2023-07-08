@@ -85,7 +85,7 @@ public class PatientDAO {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 list.add(new Patient(new Account(rs.getString(2), rs.getString(3), rs.getBoolean(4)), rs.getInt(1), rs.getDate(5), rs.getBoolean(6)));
             }
         } catch (Exception e) {
@@ -96,10 +96,71 @@ public class PatientDAO {
             return list;
         }
     }
-    
-    public List<Patient> getListByPage(List<Patient> list, int start, int end){
+
+    public List<Patient> searchPatientByName(String name) throws SQLException, IOException {
+        List<Patient> list = new ArrayList<>();
+        String sql = "select p.patient_id,u.username,u.name,u.gender,p.DOB,p.status from doctris_system.patient p\n"
+                + " inner join doctris_system.users u\n"
+                + " on p.username = u.username\n"
+                + " WHERE u.name LIKE N'%" + name + "%'";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Patient(new Account(rs.getString(2), rs.getString(3), rs.getBoolean(4)), rs.getInt(1), rs.getDate(5), rs.getBoolean(6)));
+            }
+        } catch (Exception e) {
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return list;
+    }
+
+    public Patient getPatientByUsername(String username) throws SQLException, IOException {
+        String sql = "select  u.img, u.username,u.name,u.email,u.gender,u.phone,p.patient_id,p.DOB,p.address,p.status from patient p inner join users u \n"
+                + "on p.username = u.username\n"
+                + "where u.username = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String base64Image = null;
+                Blob blob = rs.getBlob(1);
+                if (blob != null) {
+                    InputStream inputStream = blob.getBinaryStream();
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[4096];
+                    int bytesRead = -1;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                    byte[] imageBytes = outputStream.toByteArray();
+                    base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                    inputStream.close();
+                    outputStream.close();
+                } else {
+                    base64Image = "default";
+                }
+                Account a = new Account(base64Image, rs.getString(2), rs.getString(3), rs.getString(4), rs.getBoolean(5), rs.getInt(6));
+                return new Patient(a, rs.getInt(7), rs.getDate(8), rs.getString(9), rs.getBoolean(10));
+            }
+        } catch (SQLException e) {
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return null;
+    }
+
+    public List<Patient> getListByPage(List<Patient> list, int start, int end) {
         ArrayList<Patient> arr = new ArrayList<>();
-        for(int i = start; i < end; i++) {
+        for (int i = start; i < end; i++) {
             arr.add(list.get(i));
         }
         return arr;

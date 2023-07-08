@@ -49,6 +49,20 @@ public class PatientManage extends HttpServlet {
                 patientlist = patientdao.getAllPatient();
             }
             
+            if(action.equals("search")){
+                String search = request.getParameter("search");
+                url = "patientmanage?action=search&search="+search;
+                patientlist = patientdao.searchPatientByName(search);
+            }
+            
+            if(action.equals("detail")){
+                String username = request.getParameter("username");
+                Patient patient = new Patient();
+                patient = patientdao.getPatientByUsername(username);
+                request.setAttribute("patient", patient);
+                request.getRequestDispatcher("admin/patientdetail.jsp").forward(request, response);
+            }
+            
             if(patientlist != null) {
                 int page, numpage = 3;
                 int size = patientlist.size();

@@ -43,7 +43,7 @@
                                 <div class="col-lg-12 col-md-12 mt-4">
                                     <div class="bg-white rounded shadow overflow-hidden">
                                         <div class="p-4 border-bottom">
-                                            <h5 class="mb-0">Thông tin Dịch Vụ</h5>
+                                            <h5 class="mb-0">Thông tin</h5>
                                         </div>
                                         <br><br><br><br><br>
                                         <div class="text-center avatar-profile margin-nagative mt-n5 position-relative pb-4 border-bottom">

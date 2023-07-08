@@ -36,7 +36,7 @@
                                     </div> 
                                 </div>
                             </div>
-<!--                            <div class="col-md-7">
+                            <div class="col-md-7">
                                 <form action="doctormanage?action=filter" method="POST" onSubmit="document.getElementById('submit').disabled = true;">
                                     <div class="justify-content-md-end row">
                                         <div class="col-md-5 row align-items-center">
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>-->
+                            </div>
                         </div>
 
                         <div class="row">
