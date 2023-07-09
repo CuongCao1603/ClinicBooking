@@ -1,21 +1,31 @@
 /*
+<<<<<<< Updated upstream
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+=======
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+>>>>>>> Stashed changes
  */
 package dal;
 
 import context.DBContext;
+<<<<<<< Updated upstream
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
+=======
+import java.io.IOException;
+>>>>>>> Stashed changes
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< Updated upstream
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import model.*;
@@ -25,12 +35,25 @@ import model.*;
  * @author Khuong Hung
  */
 public class AppointmentDAO {
+=======
+import model.Account;
+import model.Appointment;
+import model.Doctor;
+import model.Patient;
+
+/**
+ *
+ * @author doans
+ */
+public class AppointmentDAO extends DBContext {
+>>>>>>> Stashed changes
 
     PreparedStatement ps = null;
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
 
+<<<<<<< Updated upstream
     public List<Appointment> getAppointmentList() throws SQLException, IOException {
         List<Appointment> list = new ArrayList<>();
         String sql = "Select appointments.appointment_id , doctor.doctor_name, users.name , appointments.date ,appointments.time, appointments.status from appointments inner join doctor on appointments.doctor_id = doctor.doctor_id inner join patient on appointments.patient_id = patient.patient_id inner join users on patient.username = users.username";
@@ -81,6 +104,8 @@ public class AppointmentDAO {
         return list;
     }
 
+=======
+>>>>>>> Stashed changes
     public List<Appointment> getAppointmentByDoctor(int doctor_id) throws SQLException, IOException {
         List<Appointment> list = new ArrayList<>();
         String sql = "Select appointments.appointment_id , doctor.doctor_name, "
@@ -109,6 +134,7 @@ public class AppointmentDAO {
         return list;
     }
 
+<<<<<<< Updated upstream
     public List<Appointment> getFilter(String doctor_id, String status) throws SQLException, IOException {
         List<Appointment> list = new ArrayList<>();
         String filterStatus = "Select appointments.appointment_id , doctor.doctor_name, users.name , appointments.date ,"
@@ -572,4 +598,6 @@ public class AppointmentDAO {
         return list;
      }
 
+=======
+>>>>>>> Stashed changes
 }

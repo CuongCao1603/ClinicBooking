@@ -3,9 +3,14 @@
     <type>org.netbeans.modules.web.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
+<<<<<<< Updated upstream
             <name>ClinicBooking</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <explicit-platform explicit-source-supported="true"/>
+=======
+            <name>WebApplication1</name>
+            <minimum-ant-version>1.6.5</minimum-ant-version>
+>>>>>>> Stashed changes
             <web-module-libraries>
                 <library dirs="200">
                     <file>${file.reference.mysql-connector-j-8.0.33.jar}</file>
@@ -31,6 +36,7 @@
                     <file>${file.reference.jakarta.servlet.jsp.jstl-api-2.0.0.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+<<<<<<< Updated upstream
                 <library dirs="200">
                     <file>${file.reference.ClinicBooking-lib}</file>
                     <path-in-war>WEB-INF/classes</path-in-war>
@@ -51,6 +57,8 @@
                     <file>${file.reference.hamcrest-core-1.3.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+=======
+>>>>>>> Stashed changes
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
@@ -60,6 +68,9 @@
                 <root id="test.src.dir"/>
             </test-roots>
         </data>
+<<<<<<< Updated upstream
         <libraries xmlns="http://www.netbeans.org/ns/cdnjs-libraries/1"/>
+=======
+>>>>>>> Stashed changes
     </configuration>
 </project>

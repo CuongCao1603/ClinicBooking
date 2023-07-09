@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <Context path="/ClinicBooking"/>
+=======
+<Context path="/WebApplication1"/>
+>>>>>>> Stashed changes

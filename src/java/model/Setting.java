@@ -1,15 +1,27 @@
 /*
+<<<<<<< Updated upstream
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+=======
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+>>>>>>> Stashed changes
  */
 package model;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author Khuong Hung
  */
 public class Setting {
+=======
+ * @author doans
+ */
+public class Setting {
+
+>>>>>>> Stashed changes
     private int setting_id;
     private String setting_name;
     private int id;
@@ -25,7 +37,11 @@ public class Setting {
         this.setting_id = setting_id;
         this.setting_name = setting_name;
     }
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     public Setting(int id, String name, int setting_id, boolean status) {
         this.id = id;
         this.name = name;
@@ -41,11 +57,19 @@ public class Setting {
         this.note = note;
         this.order = order;
     }
+<<<<<<< Updated upstream
     
     public Setting(String name) {
         this.name = name;
     }
     
+=======
+
+    public Setting(String name) {
+        this.name = name;
+    }
+
+>>>>>>> Stashed changes
     public int getSetting_id() {
         return setting_id;
     }
@@ -101,6 +125,10 @@ public class Setting {
     public void setOrder(int order) {
         this.order = order;
     }
+<<<<<<< Updated upstream
     
     
+=======
+
+>>>>>>> Stashed changes
 }
