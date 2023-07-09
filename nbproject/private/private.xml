@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+<<<<<<< Updated upstream
+=======
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/context/DBContext.java</file>
-            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/configs/EncodeData.java</file>
-            <file>file:/D:/SWP391_Final_Project/ClinicBooking/web/META-INF/context.xml</file>
-            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/configs/InsertBase64ToBlob.java</file>
-            <file>file:/D:/SWP391_Final_Project/ClinicBooking/src/java/vnpay/common/config.java</file>
+            <file>file:/C:/Users/doans/Downloads/ClinicBooking/ClinicBooking/WebApplication1/src/java/context/DBContext.java</file>
+            <file>file:/C:/Users/doans/Downloads/ClinicBooking/ClinicBooking/WebApplication1/src/java/dal/AccountDAO.java</file>
+            <file>file:/C:/Users/doans/Downloads/ClinicBooking/ClinicBooking/WebApplication1/src/java/config/InsertBase64ToBlob.java</file>
         </group>
     </open-files>
+>>>>>>> Stashed changes
 </project-private>

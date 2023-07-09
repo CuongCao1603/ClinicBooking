@@ -88,9 +88,15 @@
                     <div class="col-lg-7 col-md-6 mt-4 mt-lg-0 pt- pt-lg-0">
                         <div class="ms-lg-4">
                             <div class="section-title">
+<<<<<<< Updated upstream
                                 <h4 class="title mb-4">Vì sao nên chọn MedicHealth?</h4>
                                 <p class="text-muted para-desc">Chúng tôi quy tụ đội ngũ chuyên gia, bác sĩ, dược sĩ và điều dưỡng có trình độ chuyên môn cao, tay nghề giỏi, tận tâm và chuyên nghiệp</p>
                                 <p class="text-muted para-desc mb-0">Luôn đặt người bệnh làm trung tâm, MedicHealth cam kết đem đến dịch vụ chăm sóc sức khỏe tốt nhất cho khách hàng.</p>
+=======
+                                <h4 class="title mb-4">Vì sao nên chọn Doctris?</h4>
+                                <p class="text-muted para-desc">Chúng tôi quy tụ đội ngũ chuyên gia, bác sĩ, dược sĩ và điều dưỡng có trình độ chuyên môn cao, tay nghề giỏi, tận tâm và chuyên nghiệp</p>
+                                <p class="text-muted para-desc mb-0">Luôn đặt người bệnh làm trung tâm, Doctris cam kết đem đến dịch vụ chăm sóc sức khỏe tốt nhất cho khách hàng.</p>
+>>>>>>> Stashed changes
                             </div>
 
                             <div class="mt-4">
@@ -109,7 +115,11 @@
                         <div class="section-title text-center mb-4 pb-2">
                             <span class="badge badge-pill badge-soft-primary mb-3">Dịch vụ chăm sóc sức khỏe</span>
                             <h4 class="title mb-4">Những dịch vụ nổi bật của chúng tôi</h4>
+<<<<<<< Updated upstream
                             <p class="text-muted mx-auto para-desc mb-0">Đội ngũ MedicHealth luôn đem đến cho bạn những dịch vụ chăm sóc sức khỏe hiện đại và tốt nhất trên thị trường với những bác sĩ chuyên sâu trong các lĩnh vực .</p>
+=======
+                            <p class="text-muted mx-auto para-desc mb-0">Đội ngũ Doctris luôn đem đến cho bạn những dịch vụ chăm sóc sức khỏe hiện đại và tốt nhất trên thị trường với những bác sĩ chuyên sâu trong các lĩnh vực .</p>
+>>>>>>> Stashed changes
                         </div>
                     </div> 
                 </div>
@@ -142,7 +152,11 @@
                         <div class="section-title text-center mb-4 pb-2">
                             <span class="badge badge-pill badge-soft-primary mb-3">Dịch vụ bác sĩ </span>
                             <h4 class="title mb-4">Đội ngũ chuyên gia</h4>
+<<<<<<< Updated upstream
                             <p class="text-muted mx-auto para-desc mb-0">MedicHealth quy tụ đội ngũ chuyên gia, bác sĩ, dược sĩ và điều dưỡng được đào tạo bài bản đến chuyên sâu tại Việt nam và nhiều nước có nên y học phát triển như Mỹ, Anh, Pháp... 
+=======
+                            <p class="text-muted mx-auto para-desc mb-0">Doctris quy tụ đội ngũ chuyên gia, bác sĩ, dược sĩ và điều dưỡng được đào tạo bài bản đến chuyên sâu tại Việt nam và nhiều nước có nên y học phát triển như Mỹ, Anh, Pháp... 
+>>>>>>> Stashed changes
                                 Luôn lấy người bệnh là trung tâm, Vinmec cam kết mang lại dịch vụ chăm sóc sức khỏe toàn diện và chất lượng cao cho khách hàng.</p>
                         </div>
                     </div> 

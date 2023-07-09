@@ -147,10 +147,10 @@
                                                         </td>
                                                         <td class=" text-center p-3">
                                                             <c:if test="${b.status == true}">
-                                                                <a href="blogmanage?action=hide&blog_id=${b.blog_id}&status=${b.status?"active":"disable"}"style="width: 80px" value="${b.status}" type="button"class="btn btn-info">Ẩn</a>
+                                                                <a href="blogmanage?action=hide&blog_id=${b.blog_id}&status=${b.status?"active":"disable"}"style="width: 80px" value="${b.status}" type="button"class="btn btn-info">Hiện</a>
                                                             </c:if>
                                                             <c:if test="${b.status == false}">
-                                                                <a href="blogmanage?action=hide&blog_id=${b.blog_id}&status=${b.status?"active":"disable"}"style="width: 80px" value="${b.status}" type="button"class="btn btn-info">Hiện</a>
+                                                                <a href="blogmanage?action=hide&blog_id=${b.blog_id}&status=${b.status?"active":"disable"}"style="width: 80px" value="${b.status}" type="button"class="btn btn-info">Ẩn</a>
                                                             </c:if>
                                                         </td>
                                                         <td class="p-3">

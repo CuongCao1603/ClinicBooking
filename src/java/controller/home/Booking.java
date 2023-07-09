@@ -89,7 +89,7 @@ public class Booking extends HttpServlet {
                         adao.Booking(d.getDoctor_id(), pdao.getPatientIDByUsername(user.getUsername()), udao.getRandomStaff(), date, time, description, "Assigned", d.getFee(), "Pending");
                         int booking_id = adao.getLastBooking(pdao.getPatientIDByUsername(user.getUsername()));
                         int fee = (int) Math.round(d.getFee());
-                        SendMail.Booking(booking_id, user.getEmail(), user.getName(), date, time, "Bác sĩ: " + d.getDoctor_name(), fee, "Thanh toán tại phòng khám");
+//                        SendMail.Booking(booking_id, user.getEmail(), user.getName(), date, time, "Bác sĩ: " + d.getDoctor_name(), fee, "Thanh toán tại phòng khám");
                     }
                     if (session.getAttribute("type").equals("reservation")) {
                         rdao.Booking(s.getService_id(), pdao.getPatientIDByUsername(user.getUsername()), udao.getRandomStaff(), date, time, description, "Assigned", "Pending");
@@ -100,7 +100,7 @@ public class Booking extends HttpServlet {
                 }
                 if (payment.equals("vnpay")) {
                     int booking_id = 0;
-                    String vnp_Version = "2.0.0";
+                    String vnp_Version = "2.1.0";
                     String vnp_Command = "pay";
                     String vnp_OrderInfo = null;
                     String vnp_TxnRef = null;

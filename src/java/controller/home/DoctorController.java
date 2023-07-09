@@ -90,7 +90,7 @@ public class DoctorController extends HttpServlet {
                 int feedback = doctordao.CountFeedback(detail.getDoctor_id());
                 List<RateStar> getRate = doctordao.getRateDoctor(detail.getDoctor_id());
                 String allow = request.getRequestURI() + "?" + request.getQueryString();
-                if (allow.contains("allow=true")) {
+                if(allow.contains("allow=true")){
                     allow = "true";
                 }
                 request.setAttribute("detail", detail);
@@ -100,7 +100,26 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("rate", getRate);
                 request.getRequestDispatcher("doctordetail.jsp").forward(request, response);
             }
-
+            if (action.equals("myfeedback")) {
+                List<RateStar> getRate = doctordao.getRateDoctor(doctordao.getDoctorIDByUsername(user.getUsername()));
+                int page, numperpage = 8;
+                int size = getRate.size();
+                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                String xpage = request.getParameter("page");
+                if (xpage == null) {
+                    page = 1;
+                } else {
+                    page = Integer.parseInt(xpage);
+                }
+                int start, end;
+                start = (page - 1) * numperpage;
+                end = Math.min(page * numperpage, size);
+                List<RateStar> ratelist = doctordao.getListByPageRate(getRate, start, end);
+                request.setAttribute("page", page);
+                request.setAttribute("num", num);
+                request.setAttribute("ratelist", ratelist);
+                request.getRequestDispatcher("myfeedback.jsp").forward(request, response);
+            }
             if (getdoctor != null) {
                 for (Doctor doctor : getdoctor) {
                     int star = doctordao.getStars(doctor.getDoctor_id());
@@ -133,12 +152,59 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("doctor", doctorlist);
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
-            if(action.equals("mypatient")){
-                int doctor_id=doctordao.getDoctorIDByUsername(user.getUsername());
-                List<Patient> patients=patientdao.getPatientByDoctor(doctor_id);
+
+            if (action.equals("mypatient")) {
+                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
+                List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
+                request.setAttribute("patients", patients);
+                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
             }
 
-        } catch (IOException | SQLException e) {
+            if (action.equals("detailpatient")) {
+                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
+                int patient_id = Integer.parseInt(request.getParameter("id"));
+
+                Patient patients = patientdao.getPatientbyid(patient_id);
+                List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByPatient(doctor_id, patient_id);
+
+                request.setAttribute("patients", patients);
+                request.setAttribute("appointmentlist", appointmentlist);
+
+                request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
+            }
+
+            if (action.equals("myappointment")) {
+                List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
+                int page, numperpage = 8;
+                int size = getAppointment.size();
+                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
+                String xpage = request.getParameter("page");
+                if (xpage == null) {
+                    page = 1;
+                } else {
+                    page = Integer.parseInt(xpage);
+                }
+                int start, end;
+                start = (page - 1) * numperpage;
+                end = Math.min(page * numperpage, size);
+                List<Appointment> AppointmentList = appointmentdao.getListByPage(getAppointment, start, end);
+                request.setAttribute("page", page);
+                request.setAttribute("num", num);
+                request.setAttribute("AppointmentList", AppointmentList);
+                request.getRequestDispatcher("myappointment.jsp").forward(request, response);
+            }
+
+            if (action.equals("myappointmentdetail")) {
+                Appointment a = doctordao.getAppointmentDetail(Integer.parseInt(request.getParameter("id")));
+                request.setAttribute("a", a);
+                request.getRequestDispatcher("myappointmentdetail.jsp").forward(request, response);
+            }
+            if (action.equals("updateappointmentstatus")) {
+                doctordao.UpdateAppointmentStatus(Integer.parseInt(request.getParameter("id")));
+                response.sendRedirect("doctor?action=myappointmentdetail&id=" + request.getParameter("id"));
+            }
+
+        } catch (IOException | SQLException | ServletException e) {
             System.out.println(e);
         }
     }

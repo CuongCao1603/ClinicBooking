@@ -1,8 +1,11 @@
+<<<<<<< Updated upstream
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+>>>>>>> Stashed changes
 package dal;
 
 import java.sql.Connection;
@@ -17,6 +20,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+<<<<<<< Updated upstream
 import jakarta.servlet.http.Part;
 import model.*;
 
@@ -25,6 +29,11 @@ import model.*;
  * @author Khuong Hung
  */
 public class ServiceDAO {
+=======
+import model.*;
+
+public class ServiceDAO extends DBContext {
+>>>>>>> Stashed changes
 
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -71,6 +80,7 @@ public class ServiceDAO {
         }
         return list;
     }
+<<<<<<< Updated upstream
 
     public ArrayList<Service> getAllService() throws SQLException, IOException {
         ArrayList<Service> list = new ArrayList<>();
@@ -619,3 +629,6 @@ public class ServiceDAO {
         return arr;
     }
 }
+=======
+}
+>>>>>>> Stashed changes

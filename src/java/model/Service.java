@@ -7,7 +7,11 @@ package model;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author Khuong Hung
+=======
+ * @author doans
+>>>>>>> Stashed changes
  */
 public class Service {
 
@@ -28,6 +32,7 @@ public class Service {
         this.description = description;
     }
 
+<<<<<<< Updated upstream
     public Service(String title, Setting setting, RateStar ratestar, double fee, String description, int service_id, String img) {
         this.title = title;
         this.setting = setting;
@@ -48,6 +53,8 @@ public class Service {
         this.img = img;
     }
 
+=======
+>>>>>>> Stashed changes
     public RateStar getRatestar() {
         return ratestar;
     }
@@ -65,6 +72,7 @@ public class Service {
         this.img = img;
     }
 
+<<<<<<< Updated upstream
     public Service(int service_id, String title, Setting setting, double fee, boolean status) {
         this.setting = setting;
         this.status = status;
@@ -73,6 +81,8 @@ public class Service {
         this.fee = fee;
     }
 
+=======
+>>>>>>> Stashed changes
     public boolean isStatus() {
         return status;
     }
@@ -81,6 +91,7 @@ public class Service {
         this.status = status;
     }
 
+<<<<<<< Updated upstream
     public Service(Setting setting, String title, double fee, String img) {
         this.setting = setting;
         this.title = title;
@@ -103,6 +114,8 @@ public class Service {
         this.service_id = service_id;
     }
 
+=======
+>>>>>>> Stashed changes
     public Setting getSetting() {
         return setting;
     }

@@ -9,7 +9,11 @@ import java.sql.Date;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author Trung
+=======
+ * @author doans
+>>>>>>> Stashed changes
  */
 public class Patient {
 
