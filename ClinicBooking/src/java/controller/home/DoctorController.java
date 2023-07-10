@@ -172,7 +172,7 @@ public class DoctorController extends HttpServlet {
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
-                request.setAttribute("patients", patients);
+                request.setAttribute("patients", patients);// set biến patients vào thuộc tính có tên "patients" 
                 request.getRequestDispatcher("mypatients.jsp").forward(request, response);
             }
             
@@ -181,18 +181,15 @@ public class DoctorController extends HttpServlet {
                 int patient_id = Integer.parseInt(request.getParameter("id"));
 
                 Patient patients = patientdao.getPatientbyid(patient_id);
+                
                 List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByPatient(doctor_id, patient_id);
-
-                request.setAttribute("patients", patients);
+                //  là một danh sách (List) các đối tượng Appointment
+                request.setAttribute("patients", patients); 
                 request.setAttribute("appointmentlist", appointmentlist);
 
                 request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
             }
             
-            if(action.equals("searchappointment")){
-                String text = request.getParameter("txt");
-                
-            }
             
             if (action.equals("myappointment")) {
                 List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));

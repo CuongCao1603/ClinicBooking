@@ -56,8 +56,44 @@ public class PatientDAO {
         }
         return list;
     }
+    
+        public List<Patient> search(int doctor_id, String keyword) throws SQLException, IOException {
+        List<Patient> searchResults = new ArrayList<>();
+        String sql = "SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments "
+                + "INNER JOIN patient ON appointments.patient_id = patient.patient_id "
+                + "INNER JOIN users ON patient.username = users.username INNER JOIN ("
+                + "SELECT patient_id AS pid , MAX(date) AS pdate FROM appointments GROUP BY patient_id"
+                + ") AS a ON a.pid = appointments.patient_id "
+                + "WHERE appointments.doctor_id = ? AND users.name LIKE ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, doctor_id);
+            ps.setString(2, "%" + keyword + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account a = new Account(rs.getString(1), rs.getInt(2), rs.getString(3));
+                Appointment ap = new Appointment(rs.getDate(4));
+                searchResults.add(new Patient(a, ap, rs.getDate(5), rs.getInt(6)));
+            }
+        } catch (SQLException e) {
+            // Xử lý ngoại lệ
+        } finally {
+            // Đảm bảo đóng kết nối
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return searchResults;
+    }
+//    1 là chỉ số của tham số trong truy vấn SQL. Chỉ số tham số bắt đầu từ 1.
+//      text là giá trị chuỗi mà bạn muốn thiết lập cho tham số.
+//      "%" + text + "%" là một chuỗi kết hợp. Nó kết hợp giá trị của biến text với các dấu % ở đầu và cuối chuỗi. 
+//       Điều này tạo ra một chuỗi có dạng %text%, nơi % đại diện cho một ký tự bất kỳ 
+//      hoặc một chuỗi ký tự bất kỳ.
 
-    public Patient getPatientbyid(int patient_id) throws SQLException, IOException {
+    public List<Patient> getPatientbyid(int patient_id) throws SQLException, IOException {
+        List<Patient> list = new ArrayList<>();
         String sql = "SELECT u.name, u.email, u.phone, u.gender, p.DOB FROM users u inner join patient p\n"
                 + "on u.username = p.username\n"
                 + "where p.patient_id = ?";
@@ -68,11 +104,11 @@ public class PatientDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Account a = new Account(rs.getString(1), rs.getInt(2), rs.getBoolean(3), rs.getString(4));
-                return new Patient(a, rs.getDate(5));
+                list.add(new Patient(a, rs.getDate(5))) ;
             }
         } catch (SQLException e) {
         }
-        return null;
+        return list;
     }
 
     public List<Patient> getAllPatient() throws SQLException, IOException {

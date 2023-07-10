@@ -21,16 +21,16 @@
                         <div class="rounded shadow mt-4">
                             <div class="p-4 border-bottom">
                                 <h5 class="mb-0">Bệnh nhân của tôi</h5>
-                                
+
                                 <div id="search" class="menu-search mb-0" class="search-bar" style="padding-top: 10px;">
-                                    <form action="doctor?action=search" method="GET" class="form-inline" id="searchform" class="searchform">
+                                    <form action="doctor?action=searchpatient" method="POST" class="form-inline" id="searchform" class="searchform">
                                         <div class="input-group">
-                                            <input type="text" name="txt" class="form-control border rounded-pill" id="s" placeholder="Tìm kiếm bệnh nhân...">
-                                            <button type="submit" id="searchsubmit" value="Search" class="btn btn-primary rounded-pill"><i class="fas fa-search"></i></button>
+                                            <input type="text" name="search" class="form-control border rounded-pill" id="s" placeholder="Tìm kiếm bệnh nhân...">
+                                            <input type="submit" id="searchsubmit" value="Search" class="btn btn-primary rounded-pill" onclick="submitForm()"><i class="fas fa-search"></i>
                                         </div>
                                     </form>
                                 </div>
-                                
+
                             </div>
 
                             <div class="p-4">
@@ -81,6 +81,13 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather.min.js"></script>
         <script src="assets/js/app.js"></script>
+        <script>
+            function submitForm() {
+                document.getElementById("searchform").submit();
+            }
+        </script>
+
+
     </body>
 
 </html>

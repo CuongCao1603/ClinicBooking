@@ -497,7 +497,7 @@ public class AppointmentDAO {
         return list;
     }
 
-     public void Booking(int doctor_id, int patient_id, String staff, String date, String time, String description, String status, double fee, String payment) throws SQLException, IOException {
+    public void Booking(int doctor_id, int patient_id, String staff, String date, String time, String description, String status, double fee, String payment) throws SQLException, IOException {
         String sql = "INSERT INTO `appointments` (`doctor_id`, `patient_id`, `staff`, `date`, `time`, `description`, `status`, `fee`, `payment`) \n"
                 + "VALUES (?, ?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, ?, ?, ?)";
         try {
@@ -548,12 +548,13 @@ public class AppointmentDAO {
         } catch (Exception e) {
         }
     }
-    
-     public List<Appointment> getAppointmentByPatient(int doctor_id, int patient_id) throws SQLException, IOException {
+
+    public List<Appointment> getAppointmentByPatient(int doctor_id, int patient_id) throws SQLException, IOException {
         List<Appointment> list = new ArrayList<>();
         String sql = "select a.date,a.time,a.status from appointments a inner join patient p\n"
                 + "on a.patient_id = p.patient_id \n"
                 + "where a.doctor_id = ? and p.patient_id = ? ORDER BY a.date ASC";
+
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -570,6 +571,6 @@ public class AppointmentDAO {
             }
         }
         return list;
-     }
+    }
 
 }

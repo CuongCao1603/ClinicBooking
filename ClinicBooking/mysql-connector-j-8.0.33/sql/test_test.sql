@@ -23,7 +23,7 @@ SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, pati
                 INNER JOIN users ON patient.username = users.username INNER JOIN (
                 SELECT patient_id AS pid , MAX(date) AS pdate FROM appointments GROUP BY patient_id
                 ) AS a ON a.pid = appointments.patient_id 
-                WHERE appointments.doctor_id = 19 AND users.email LIKE '%9%'
+                WHERE appointments.doctor_id = 19 AND users.name LIKE '%g%'
 -- getAllAppointment(int id)
     SELECT a.appointment_id, p.patient_id,  u.name, a.date, a.time, a.status from appointments a
                 INNER JOIN patient p ON a.patient_id = p.patient_id

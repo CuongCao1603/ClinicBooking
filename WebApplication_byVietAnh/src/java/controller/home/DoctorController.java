@@ -55,6 +55,7 @@ public class DoctorController extends HttpServlet {
 
         String url = null;
         List<Doctor> getdoctor = null;
+        List<Patient> patients = null;
         ArrayList<Doctor> doctorall = new ArrayList<>();
 
         try {
@@ -142,27 +143,28 @@ public class DoctorController extends HttpServlet {
 // mypatient      
 // Câu hỏi: Mục đích của việc hiển thị bảng bệnh nhân là gì 
 
-            if(action.endsWith("searchpatient")){
-                String search = request.getParameter("search");
-                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-                
-                List<Patient> patient = doctordao.search(doctor_id, search);
-                
-                request.setAttribute("patient", patient);
-                
-                request.getRequestDispatcher("mypatients.jsp").forward(request, response);
-            }
+
             
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 // Lấy ra id của bác sĩ Oanh = 19 
 
-                List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
+                patients = patientdao.getPatientByDoctor(doctor_id);
                 // truyền id vào
 
                 request.setAttribute("patients", patients);
 
                 request.getRequestDispatcher("mypatients.jsp").forward(request, response);
+            }
+
+            if(action.equals("searchpatient")){
+                String search = request.getParameter("search");
+                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
+                
+                 patients = patientdao.search(doctor_id, search);
+                
+                url = "doctor?action=searchpatient&search=" + search;
+                
             }
 // mymatient detail   
             if (action.equals("mypatientdetail")) {
@@ -170,7 +172,7 @@ public class DoctorController extends HttpServlet {
                 
                 int patient_id = Integer.parseInt(request.getParameter("id"));
                 
-                Patient patients = patientdao.getPatientbyid(patient_id);
+                patients = patientdao.getPatientbyid(patient_id);
                 List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByPatient(doctor_id, patient_id);
                 
                 request.setAttribute("patients", patients);

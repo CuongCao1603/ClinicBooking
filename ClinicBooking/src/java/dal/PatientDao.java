@@ -202,7 +202,7 @@ public class PatientDao {
                 + "inner join users on patient.username = users.username inner join (\n"
                 + "select patient_id as pid , max(date) as pdate from appointments group by patient_id\n"
                 + ") as a on a.pid = appointments.patient_id where appointments.doctor_id = ?";
-
+// 
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql1);

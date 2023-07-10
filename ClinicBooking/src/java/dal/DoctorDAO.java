@@ -707,6 +707,9 @@ public class DoctorDAO {
                 + "WHERE a.doctor_id = ?\n"
                 + "group by a.appointment_id, p.patient_id, u.name,a.date, a.time,a.status\n"
                 + "order by CAST(a.date AS DATETIME) + CAST(a.time AS DATETIME) desc";
+        // Hàm CAST() để chuyển đổi dữ liệu 
+        // Ví dụ về một giá trị DATETIME có thể là '2023-06-21 14:30:00'
+        //,đại diện cho ngày 21/06/2023 và thời gian 14:30:00.
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
