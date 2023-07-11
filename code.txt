@@ -1,0 +1,21 @@
+Mục đích của bảng patient trong chức năng của doctor
+
+            String s = request.getParameter("s");
+Lấy giá trị của tham số "s" từ đối tượng request và gán cho biến s 
+Phương thức getParameter được sử dụng để truy xuất các tham số truyền qua URL hoặc form.
+
+            String s1 = request.getAttribute("s1");
+Phương thức getAttribute được sử dụng để truy xuất các thuộc tính được đặt trước đó trong đối tượng request
+
+            String ss = session.getAttribute("ss");
+Phương thức getAttribute được sử dụng để truy xuất các thuộc tính được đặt trước đó trong đối tượng session.
+
+            String ss2 = null;
+            request.setAttribute("ss2", ss2);
+Dòng này đặt giá trị ss vào thuộc tính có tên "ss" trong đối tượng request. Phương thức setAttribute được sử dụng để đặt giá trị cho một thuộc tính trong đối tượng request.
+
+            request.getAttribute(ss2);
+Phương thức setAttribute được sử dụng để đặt giá trị cho một thuộc tính trong đối tượng request
+
+
+
