@@ -156,18 +156,16 @@ public class DoctorController extends HttpServlet {
             
             
             // Vanh
-            if(action.equals("search")){
-                String text = request.getParameter("txt");
-                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-                patientlist = patientdao.search(doctor_id, text);
-                
-                url = "doctor?action=mypatient&txt=" + text;         
-                request.setAttribute("patientlist", patientlist);
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+//            if(action.equals("search")){
+//                String text = request.getParameter("txt");
+//                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
+//                patientlist = patientdao.search(doctor_id, text);
+//                
+//                url = "doctor?action=mypatient&txt=" + text;         
+//                request.setAttribute("patientlist", patientlist);
+//                request.getRequestDispatcher(url).forward(request, response);
+//            }
             
-            // Thầy hỏi là làm sao người dùng vào đc bảng patient. Cần xem lại booking 
-            // để vừa lưu lịch hẹn đồng thơi lưu luôn vào bảng patient 
             
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());

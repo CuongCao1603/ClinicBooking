@@ -21,7 +21,6 @@ import java.util.List;
 import model.Account;
 import model.Appointment;
 import model.Patient;
-import model.Setting;
 
 /**
  *
@@ -33,7 +32,7 @@ public class PatientDao {
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
-    
+
     public List<Patient> getAllPatient() throws SQLException, IOException {
         List<Patient> list = new ArrayList<>();
         String sql = "select p.patient_id,u.username,u.name,u.gender,p.DOB,p.status from doctris_system.patient p\n"
@@ -55,6 +54,7 @@ public class PatientDao {
         return list;
 
     }
+
     public List<Patient> getListByPage(List<Patient> list,
             int start, int end) {
         ArrayList<Patient> arr = new ArrayList<>();
@@ -63,7 +63,6 @@ public class PatientDao {
         }
         return arr;
     }
-
 
     public Patient getPatientByUsername(String username) throws SQLException, IOException {
         String sql = "select  u.img, u.username,u.name,u.email,u.gender,u.phone,p.patient_id,p.DOB,p.address,p.status from patient p inner join users u \n"
@@ -138,13 +137,13 @@ public class PatientDao {
             }
         }
     }
-    
+
     public List<Patient> getPatientByName(String name) throws SQLException, IOException {
         List<Patient> list = new ArrayList<>();
-        String sql = "select p.patient_id,u.username,u.name,u.gender,p.DOB,p.status from doctris_system.patient p\n" +
-"                inner join doctris_system.users u\n" +
-"                on p.username = u.username\n" +
-"                WHERE u.name LIKE N'%"+name+"%'";
+        String sql = "select p.patient_id,u.username,u.name,u.gender,p.DOB,p.status from doctris_system.patient p\n"
+                + "                inner join doctris_system.users u\n"
+                + "                on p.username = u.username\n"
+                + "                WHERE u.name LIKE N'%" + name + "%'";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -162,24 +161,23 @@ public class PatientDao {
         return list;
 
     }
-    
-        
-    public int CountPatient(){
+
+    public int CountPatient() {
         int count = 0;
         String sql = "select count(*) from patient";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 count = rs.getInt(1);
             }
         } catch (Exception e) {
         }
         return count;
     }
-    
-    public int getPatientIDByUsername(String username){
+
+    public int getPatientIDByUsername(String username) {
         int patient_id = 0;
         String sql = "select patient_id from patient  where username = ?";
         try {
@@ -187,14 +185,14 @@ public class PatientDao {
             ps = connection.prepareStatement(sql);
             ps.setString(1, username);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 patient_id = rs.getInt(1);
             }
         } catch (Exception e) {
         }
         return patient_id;
     }
-    
+
     public List<Patient> getPatientByDoctor(int doctor_id) throws SQLException, IOException {
         List<Patient> list = new ArrayList<>();
         String sql1 = "select distinct users.img, users.name, users.phone, users.email,patient.DOB,patient.patient_id ,a.pdate as lastbooking from appointments \n"
@@ -202,7 +200,7 @@ public class PatientDao {
                 + "inner join users on patient.username = users.username inner join (\n"
                 + "select patient_id as pid , max(date) as pdate from appointments group by patient_id\n"
                 + ") as a on a.pid = appointments.patient_id where appointments.doctor_id = ?";
-// 
+
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql1);
@@ -226,7 +224,7 @@ public class PatientDao {
                 } else {
                     base64Image = "default";
                 }
-                Account a = new Account(base64Image, rs.getString(2), rs.getInt(3), false , rs.getString(4));
+                Account a = new Account(base64Image, rs.getString(2), rs.getInt(3), false, rs.getString(4));
                 Appointment ap = new Appointment(rs.getDate(7), null, null);
                 list.add(new Patient(a, rs.getDate(5), rs.getInt(6), ap));
             }
@@ -238,53 +236,7 @@ public class PatientDao {
         }
         return list;
     }
-    
-        public List<Patient> search(int doctor_id, String keyword) throws SQLException, IOException {
-        List<Patient> searchResults = new ArrayList<>();
-        String sql = "SELECT DISTINCT users.name, users.phone, users.email, a.pdate, patient.DOB, patient.patient_id AS lastbooking FROM appointments "
-                + "INNER JOIN patient ON appointments.patient_id = patient.patient_id "
-                + "INNER JOIN users ON patient.username = users.username INNER JOIN ("
-                + "SELECT patient_id AS pid , MAX(date) AS pdate FROM appointments GROUP BY patient_id"
-                + ") AS a ON a.pid = appointments.patient_id "
-                + "WHERE appointments.doctor_id = ? AND users.email LIKE ?";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            ps.setInt(1, doctor_id);
-            ps.setString(2, "%" + keyword + "%");
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                 String base64Image = null;
-                Blob blob = rs.getBlob(1);
-                if (blob != null) {
-                    InputStream inputStream = blob.getBinaryStream();
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    byte[] buffer = new byte[4096];
-                    int bytesRead = -1;
-                    while ((bytesRead = inputStream.read(buffer)) != -1) {
-                        outputStream.write(buffer, 0, bytesRead);
-                    }
-                    byte[] imageBytes = outputStream.toByteArray();
-                    base64Image = Base64.getEncoder().encodeToString(imageBytes);
-                    inputStream.close();
-                    outputStream.close();
-                } else {
-                    base64Image = "default";
-                }
-                Account a = new Account(base64Image, rs.getString(2), rs.getInt(3), false , rs.getString(4));
-                Appointment ap = new Appointment(rs.getDate(7), null, null);
-                searchResults.add(new Patient(a, rs.getDate(5), rs.getInt(6), ap));
-            }
-        } catch (SQLException e) {
-            // Handle the exception
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-        return searchResults;
-    }
-    
+
     public Patient getPatientbyid(int patient_id) throws SQLException, IOException {
         String sql = "SELECT u.name,u.email,u.phone,u.gender,p.DOB FROM users u inner join patient p\n"
                 + "on u.username = p.username\n"
@@ -305,6 +257,33 @@ public class PatientDao {
             }
         }
         return null;
+    }
+
+    public void addPatient(String username, int role_id, boolean status, String address, String dob) throws SQLException {
+        String sql = "INSERT INTO `doctris_system`.`patient`\n"
+                + "(`username`,\n"
+                + "`role_id`,\n"
+                + "`status`,\n"
+                + "`address`,\n"
+                + "`DOB`)\n"
+                + "VALUES\n"
+                + "(?,?,?,?,?);";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setInt(2, role_id);
+            ps.setBoolean(3, status);
+            ps.setString(4, address);
+            ps.setString(5, dob);
+           
+            ps.executeUpdate();
+        } catch (Exception e) {
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
 
 }
