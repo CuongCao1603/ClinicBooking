@@ -114,9 +114,7 @@ public class BlogController extends HttpServlet {
                 request.setAttribute("num", num);
                 request.setAttribute("categories", categories);
                 request.setAttribute("blogs", blogs);
-
-
-
+                request.setAttribute("listblog", listblog);
                 request.getRequestDispatcher("blogList.jsp").forward(request, response);
             }
             

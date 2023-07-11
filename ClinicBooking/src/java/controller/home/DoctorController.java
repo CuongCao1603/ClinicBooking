@@ -49,7 +49,6 @@ public class DoctorController extends HttpServlet {
         PatientDao patientdao = new PatientDao();
         DoctorDAO doctordao = new DoctorDAO();
         String url = null;
-        List<Patient> patientlist = null;
         List<Doctor> getdoctor = null;
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("user");
@@ -153,48 +152,32 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("doctor", doctorlist);
                 request.getRequestDispatcher("doctor.jsp").forward(request, response);
             }
-            
-            
-            // Vanh
-//            if(action.equals("search")){
-//                String text = request.getParameter("txt");
-//                int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
-//                patientlist = patientdao.search(doctor_id, text);
-//                
-//                url = "doctor?action=mypatient&txt=" + text;         
-//                request.setAttribute("patientlist", patientlist);
-//                request.getRequestDispatcher(url).forward(request, response);
-//            }
-            
-            
+
             if (action.equals("mypatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 List<Patient> patients = patientdao.getPatientByDoctor(doctor_id);
-                request.setAttribute("patients", patients);// set biến patients vào thuộc tính có tên "patients" 
+                request.setAttribute("patients", patients);
                 request.getRequestDispatcher("mypatients.jsp").forward(request, response);
             }
-            
+
             if (action.equals("detailpatient")) {
                 int doctor_id = doctordao.getDoctorIDByUsername(user.getUsername());
                 int patient_id = Integer.parseInt(request.getParameter("id"));
 
                 Patient patients = patientdao.getPatientbyid(patient_id);
-                
                 List<model.Appointment> appointmentlist = appointmentdao.getAppointmentByPatient(doctor_id, patient_id);
-                //  là một danh sách (List) các đối tượng Appointment
-                request.setAttribute("patients", patients); 
+
+                request.setAttribute("patients", patients);
                 request.setAttribute("appointmentlist", appointmentlist);
 
                 request.getRequestDispatcher("mypatientdetails.jsp").forward(request, response);
             }
-            
-            
+
             if (action.equals("myappointment")) {
                 List<Appointment> getAppointment = doctordao.getAllAppointment(doctordao.getDoctorIDByUsername(user.getUsername()));
-                  
-                int page, numperpage = 3;
-                int size = getAppointment.size(); // size = 5 
-                int num = (size % 3 == 0 ? (size / 3) : ((size / 3)) + 1); // num = 2
+                int page, numperpage = 8;
+                int size = getAppointment.size();
+                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);
                 String xpage = request.getParameter("page");
                 if (xpage == null) {
                     page = 1;
@@ -210,14 +193,7 @@ public class DoctorController extends HttpServlet {
                 request.setAttribute("AppointmentList", AppointmentList);
                 request.getRequestDispatcher("myappointment.jsp").forward(request, response);
             }
-            
 
-            
-            
-            
-            
-            
-            
             if (action.equals("myappointmentdetail")) {
                 Appointment a = doctordao.getAppointmentDetail(Integer.parseInt(request.getParameter("id")));
                 request.setAttribute("a", a);

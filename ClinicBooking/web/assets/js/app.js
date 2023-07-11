@@ -33,8 +33,6 @@ window.onload = function loader() {
     activateSidebarMenu();
 }
 
-
-// code click colum of table
 $('th').click(function(){
     var table = $(this).parents('table').eq(0)
     var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))

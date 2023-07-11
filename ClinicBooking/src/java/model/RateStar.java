@@ -9,7 +9,11 @@ import java.sql.Timestamp;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author Khuong Hung
+=======
+ * @author doans
+>>>>>>> Stashed changes
  */
 public class RateStar {
 

@@ -9,7 +9,11 @@ import java.sql.Date;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author Trung
+=======
+ * @author doans
+>>>>>>> Stashed changes
  */
 public class Patient {
 
@@ -48,13 +52,6 @@ public class Patient {
         this.address = address;
         this.status = status;
     }
-
-    public Patient(int patient_id, Date DOB) {
-        this.patient_id = patient_id;
-        this.DOB = DOB;
-    }
-    
-    
 
     public Patient(Account account, int patient_id, Date DOB, boolean status) {
         this.account = account;

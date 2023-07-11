@@ -81,9 +81,9 @@ public class PatientManage extends HttpServlet {
             }
             
             if (patientlist != null) {
-                int page, numperpage = 2;
+                int page, numperpage = 8;
                 int size = patientlist.size();
-                int num = (size % 2 == 0 ? (size / 2) : ((size / 2)) + 1);//so trang
+                int num = (size % 8 == 0 ? (size / 8) : ((size / 8)) + 1);//so trang
                 String xpage = request.getParameter("page");
                 if (xpage == null) {
                     page = 1;
