@@ -1,4 +1,5 @@
 /*
+<<<<<<< Updated upstream
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,28 +14,42 @@ import java.sql.SQLException;
 import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
+=======
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package controller.admin;
+
+import dal.DoctorDAO;
+import dal.AppointmentDAO;
+import jakarta.servlet.ServletException;
+>>>>>>> Stashed changes
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-<<<<<<< HEAD:WebApplication1/src/java/controller/admin/DoctorManage.java
+<<<<<<< Updated upstream
 import model.*;
-=======
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import model.Doctor;
-import model.Setting;
-import java.sql.Date;
-import model.RateStar;
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/controller/admin/DoctorManage.java
 
 /**
  *
  * @author Khuong Hung
  */
 @MultipartConfig(maxFileSize = 16177216)
+=======
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import model.Doctor;
+import model.RateStar;
+import model.Setting;
+
+/**
+ *
+ * @author doans
+ */
+>>>>>>> Stashed changes
 public class DoctorManage extends HttpServlet {
 
     /**
@@ -52,24 +67,23 @@ public class DoctorManage extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         DoctorDAO doctordao = new DoctorDAO();
-        AppointmentDAO appointmentdao = new AppointmentDAO();
         String action = request.getParameter("action");
         List<Doctor> doctorlist = null;
+<<<<<<< Updated upstream
         AppointmentDAO appointmentdao = new AppointmentDAO();
+=======
+>>>>>>> Stashed changes
         String url = null;
         String alert = null;
         String message = null;
         List<Setting> specialitylist = null;
         try {
+<<<<<<< Updated upstream
             specialitylist = doctordao.getSpeciality();
             if (action.equals("all")) {
                 url = "doctormanage?action=all";
                 doctorlist = doctordao.getAllDoctor();
-<<<<<<< HEAD:WebApplication1/src/java/controller/admin/DoctorManage.java
             }
-=======
-            }          
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/controller/admin/DoctorManage.java
             if(action.equals("filter")){
                 String gender = request.getParameter("gender");
                 String speciality = request.getParameter("speciality");
@@ -78,25 +92,27 @@ public class DoctorManage extends HttpServlet {
                 if(gender.equals("all") && speciality.equals("all")){
                     response.sendRedirect("doctormanage?action=all");
                 }else if(gender.equals("all")){
-<<<<<<< HEAD:WebApplication1/src/java/controller/admin/DoctorManage.java
                      doctorlist = doctordao.getAllDoctorByGender(gender);
                 }else if(speciality.equals("all")){
                     doctorlist = doctordao.getAllDoctorBySpeciality(speciality);
-=======
-                    doctorlist = doctordao.getAllDoctorBySpeciality(speciality);
-                }else if(speciality.equals("all")){
-                    doctorlist = doctordao.getAllDoctorByGender(gender);
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:src/java/controller/admin/DoctorManage.java
                 }else{
                     doctorlist = doctordao.getAllDoctorByFilter(gender, speciality);
                 }
                 url = "doctormanage?action=filter&gender=" + gender + "&speciality=" + speciality;
             }
             if(action.equals("search")){
+=======
+            if (action.equals("all")) {
+                url = "doctormanage?action=all";
+                doctorlist = doctordao.getAllDoctor();
+            }          
+            if (action.equals("search")) {
+>>>>>>> Stashed changes
                 String text = request.getParameter("txt");
                 doctorlist = doctordao.Search(text);
                 url = "doctormanage?action=search&txt=" + text;
             }
+<<<<<<< Updated upstream
             if(action.equals("detail")){
                 int doctor_id = Integer.parseInt(request.getParameter("id"));
                 Doctor doctor = new Doctor();
@@ -140,6 +156,8 @@ public class DoctorManage extends HttpServlet {
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("doctormanage?action=detail&id=" + doctor_id).forward(request, response);
             }
+=======
+>>>>>>> Stashed changes
             if (doctorlist != null) {
                 int page, numperpage = 8;
                 int type = 0;
@@ -163,7 +181,11 @@ public class DoctorManage extends HttpServlet {
                 request.setAttribute("speciality", specialitylist);
                 request.getRequestDispatcher("admin/doctor.jsp").forward(request, response);
             }
+<<<<<<< Updated upstream
         } catch (IOException | SQLException | ServletException e) {
+=======
+        } catch (IOException | SQLException e) {
+>>>>>>> Stashed changes
             System.out.println(e);
         }
     }
@@ -207,4 +229,8 @@ public class DoctorManage extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

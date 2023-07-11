@@ -1,6 +1,6 @@
 <%-- 
-    Document   : booking_success
-    Created on : Mar 10, 2022, 10:57:06 PM
+    Document   : 500
+    Created on : Feb 20, 2022, 9:03:43 PM
     Author     : Khuong Hung
 --%>
 
@@ -18,9 +18,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-7 col-md-10 text-center">
-                        <img src="assets/images/gif/bookingsuccess.gif" class="img-fluid" alt="">
-                        <br><br><br><br>
-                        <h3 class="mb-4">Lịch hẹn đã được khởi tạo thành công.</h3>
+                        <img src="assets/images/svg/500.svg" class="img-fluid" alt="">
+                        <h3 class="mb-4">Đã xảy ra sự cố nghiêm trọng.</h3>
                         <a href="home" class="btn btn-primary mt-2">Quay lại trang chủ</a>
                     </div>
                 </div>
@@ -34,5 +33,4 @@
     </body>
 
 </html>
-
 

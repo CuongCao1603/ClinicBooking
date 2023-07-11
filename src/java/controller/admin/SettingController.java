@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author doans
+ * @author Khuong Hung
  */
 public class SettingController extends HttpServlet {
 

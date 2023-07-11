@@ -156,7 +156,7 @@ public class BlogManage extends HttpServlet {
                     inputImage = null;
                 }
 
-                blogDB.AddBlog(category_id, title, inputImage, brief, describe, featured, username, status);
+                blogDB.AddBlog(category_id, title, inputImage, describe, featured, username, status);
 
                 alert = "success";
                 message = "Thêm mới thành công";
@@ -186,7 +186,7 @@ public class BlogManage extends HttpServlet {
                 boolean featured = Boolean.parseBoolean(request.getParameter("featured"));
                 boolean status = Boolean.parseBoolean(request.getParameter("status"));
 
-                blogDB.UpdateBlog(category_id, title, brief, describe, featured, status, blog_id);
+                blogDB.UpdateBlog(category_id, title, describe, featured, status, blog_id);
                 alert = "success";
                 message = "Sửa thành công";
                 request.setAttribute("alert", alert);

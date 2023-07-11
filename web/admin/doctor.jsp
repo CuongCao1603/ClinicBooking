@@ -1,7 +1,12 @@
 <%-- 
     Document   : doctor
+<<<<<<< Updated upstream
     Created on : Feb 8, 2022, 12:13:02 AM
     Author     : Khuong Hung
+=======
+    Created on : May 29, 2023, 7:57:35 AM
+    Author     : doans
+>>>>>>> Stashed changes
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -36,7 +41,11 @@
                                     </div> 
                                 </div>
                             </div>
+<<<<<<< Updated upstream
                             <div class="col-md-7">
+=======
+<!--                            <div class="col-md-7">
+>>>>>>> Stashed changes
                                 <form action="doctormanage?action=filter" method="POST" onSubmit="document.getElementById('submit').disabled = true;">
                                     <div class="justify-content-md-end row">
                                         <div class="col-md-5 row align-items-center">
@@ -69,7 +78,11 @@
                                         </div>
                                     </div>
                                 </form>
+<<<<<<< Updated upstream
                             </div>
+=======
+                            </div>-->
+>>>>>>> Stashed changes
                         </div>
 
                         <div class="row">
@@ -146,8 +159,9 @@
 
     </body>
 
-<<<<<<< HEAD:WebApplication1/build/web/admin/doctor.jsp
+<<<<<<< Updated upstream
 </html>
 =======
 </html>
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/admin/doctor.jsp
+
+>>>>>>> Stashed changes

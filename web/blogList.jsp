@@ -91,7 +91,7 @@
                                         <li class="page-item ${i==page?"active":""}"><a class="page-link" href="blogs?action=Category_service&page=${i}">${i}</a></li>
                                         </c:if>
                                         <c:if test="${requestScope.type == 0}">
-                                        <li class="page-item ${i==page?"active":""}"><a class="page-link" href="blogs?page=${i}">${i}</a></li>
+                                        <li class="page-item ${i==page?"active":""}"><a class="page-link" href="blogs?action=all&page=${i}">${i}</a></li>
                                         </c:if>
                                 </c:forEach>
                             </ul>

@@ -49,6 +49,7 @@ public class UserController extends HttpServlet {
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
         UserDAO userdao = new UserDAO();
+        PatientDao patientdao=new PatientDao();
         Account user = (Account) session.getAttribute("user");
         String alert = null;
         String message = null;
@@ -137,6 +138,7 @@ public class UserController extends HttpServlet {
                 } else {
                     Role r = new Role(role_id);
                     userdao.Register(email, EncodeData.enCode(password), username, role_id, name, phone, gender, status);
+                    patientdao.addPatient(username,role_id,status,"Hà Nam","2000-03-16");
                     Account a = new Account(username, r, EncodeData.enCode(enpassword), fullname, gender, phone, email, img, status);
 
                     session.setAttribute("register", a);
@@ -152,7 +154,7 @@ public class UserController extends HttpServlet {
                 userdao.UpdateProfile(username, name, phone, gender);
                 Account a = new Account(username, user.getRole(), name, gender, phone, user.getEmail(), user.getImg(), user.isStatus());
                 session.setAttribute("user", a);
-                request.setAttribute("updatesuccess", "Thông tin đã được cập nhật!");
+                            request.setAttribute("updatesuccess", "Thông tin đã được cập nhật!");
                 response.sendRedirect("user?action=profile");
             }
 

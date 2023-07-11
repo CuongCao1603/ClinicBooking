@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author Khuong Hung
+ * @author doans
  */
 public class Doctor {
     Setting setting;
@@ -46,6 +46,7 @@ public class Doctor {
         this.position = position;
     }
 
+<<<<<<< Updated upstream
     public Doctor(Setting setting, int doctor_id, int role_id, String doctor_name, Account account, boolean gender, Date DOB, int phone, String description, boolean status, String img, RateStar rateStar, double fee, String position) {
         this.setting = setting;
         this.doctor_id = doctor_id;
@@ -71,6 +72,8 @@ public class Doctor {
         this.img = img;
     }
 
+=======
+>>>>>>> Stashed changes
     public Doctor(Setting setting, int doctor_id, String doctor_name, boolean gender, boolean status) {
         this.setting = setting;
         this.doctor_id = doctor_id;
@@ -83,6 +86,7 @@ public class Doctor {
         this.doctor_name = doctor_name;
     }
 
+<<<<<<< Updated upstream
     public Doctor(int doctor_id, String doctor_name) {
         this.doctor_id = doctor_id;
         this.doctor_name = doctor_name;
@@ -94,14 +98,19 @@ public class Doctor {
         this.img = img;
     }
 
+=======
+>>>>>>> Stashed changes
     public Setting getSetting() {
         return setting;
     }
 
+<<<<<<< Updated upstream
     public void setSettingdetails(Setting settingdetails) {
         this.setting = setting;
     }
 
+=======
+>>>>>>> Stashed changes
     public int getDoctor_id() {
         return doctor_id;
     }

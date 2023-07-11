@@ -7,7 +7,11 @@ package model;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author Khuong Hung
+=======
+ * @author doans
+>>>>>>> Stashed changes
  */
 public class Account {
 

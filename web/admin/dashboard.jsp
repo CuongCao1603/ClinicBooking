@@ -1,12 +1,7 @@
 <%-- 
     Document   : dashboard
-<<<<<<< HEAD:WebApplication1/build/web/admin/dashboard.jsp
-    Created on : Jun 12, 2023, 9:42:44 AM
-    Author     : doans
-=======
     Created on : Mar 1, 2022, 10:29:15 PM
     Author     : Khuong Hung
->>>>>>> b7aa3a68f581d7db9a7618459bff303e9b500346:web/admin/dashboard.jsp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

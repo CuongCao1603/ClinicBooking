@@ -13,6 +13,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import dal.SettingDAO;
+import jakarta.servlet.ServletException;
 import model.*;
 import java.util.ArrayList;
 import model.Blog;
@@ -40,57 +42,58 @@ public class BlogController extends HttpServlet {
         String action = request.getParameter("action");
         BlogDAO blogDB = new BlogDAO();
         try {
-            if (action == null) {
-
+            if (action.equals("all")) {
                 ArrayList<Blog> blogs = blogDB.getActiveBlogs();
+                
                 ArrayList<Category_Blog> categories = blogDB.getCategories();
-
+                
+                ArrayList<Blog> featured_blogs = blogDB.getBlogsByFeatured();
+                
                 //phân trang
-                int page, numPerPage = 6;
-                int blogSize = blogs.size();
-                int numPages = (blogSize % numPerPage == 0 ? (blogSize / numPerPage) : ((blogSize / numPerPage)) + 1);
-                String xPage = request.getParameter("page");
-                if (xPage == null) {
+                int page, numperpage = 6;
+                int type = 0;
+                int size = blogs.size();
+                int num = (size % 6 == 0 ? (size / 6) : ((size / 6)) + 1);//so trang
+                String xpage = request.getParameter("page");
+                if (xpage == null) {
                     page = 1;
                 } else {
-                    page = Integer.parseInt(xPage);
+                    page = Integer.parseInt(xpage);
                 }
-                int start = (page - 1) * numPerPage;
-                int end = Math.min(page * numPerPage, blogSize);
-                ArrayList<Blog> blogList = blogDB.getListByPage(blogs, start, end);
-                request.setAttribute("type", 0);
+                int start, end;
+                start = (page - 1) * numperpage;
+                end = Math.min(page * numperpage, size);
+                ArrayList<Blog> listblog = blogDB.getListByPage(blogs, start, end);
+                request.setAttribute("type", type);
                 request.setAttribute("page", page);
-                request.setAttribute("numPages", numPages);
+                request.setAttribute("num", num);
                 request.setAttribute("categories", categories);
                 request.setAttribute("blogs", blogs);
-                request.setAttribute("blogList", blogList);
+                request.setAttribute("featured_blogs", featured_blogs);
+                request.setAttribute("listblog", listblog);
                 request.getRequestDispatcher("blogList.jsp").forward(request, response);
             }
-
+            
             if (action.equals("detail")) {
                 int id = Integer.parseInt(request.getParameter("blog_id"));
-
+                
                 Blog blog = blogDB.getBlog(id);
                 request.setAttribute("blog", blog);
-
+                
                 ArrayList<Category_Blog> categories = blogDB.getCategories();
                 request.setAttribute("categories", categories);
-
+                
                 ArrayList<Blog> featured_blogs = blogDB.getBlogsByFeatured();
                 request.setAttribute("featured_blogs", featured_blogs);
-
+                
                 request.getRequestDispatcher("blogDetail.jsp").forward(request, response);
             }
-
+            
             if (action.equals("search")) {
                 String content = request.getParameter("content");
-
+                
                 ArrayList<Blog> blogs = blogDB.search(content);
                 request.setAttribute("blogs", blogs);
-
-                ArrayList<Blog> featured_blogs = blogDB.getBlogsByFeatured();
-                request.setAttribute("featured_blogs", featured_blogs);
-
                 ArrayList<Category_Blog> categories = blogDB.getCategories();
                 int page, numperpage = 6;
                 int type = 0;
@@ -111,19 +114,17 @@ public class BlogController extends HttpServlet {
                 request.setAttribute("num", num);
                 request.setAttribute("categories", categories);
                 request.setAttribute("blogs", blogs);
-                request.setAttribute("listblog", listblog);
+
+
+
                 request.getRequestDispatcher("blogList.jsp").forward(request, response);
             }
-
+            
             if (action.equals("category")) {
                 int id = Integer.parseInt(request.getParameter("id"));
-
+                
                 ArrayList<Blog> blogs = blogDB.getBlogsByCategory(id);
                 request.setAttribute("blogs", blogs);
-
-                ArrayList<Blog> featured_blogs = blogDB.getBlogsByFeatured();
-                request.setAttribute("featured_blogs", featured_blogs);
-
                 ArrayList<Category_Blog> categories = blogDB.getCategories();
                 int page, numperpage = 6;
                 int type = 0;
@@ -147,7 +148,12 @@ public class BlogController extends HttpServlet {
                 request.setAttribute("listblog", listblog);
                 request.getRequestDispatcher("blogList.jsp").forward(request, response);
             }
-
+            
+            
+            
+            
+            
+            
         } catch (IOException | ServletException e) {
             System.out.println(e);
         }

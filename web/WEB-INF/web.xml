@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<<<<<<< Updated upstream
     <filter>
         <filter-name>Authentication</filter-name>
         <filter-class>filter.Authentication</filter-class>
@@ -23,11 +24,21 @@
     <servlet>
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.home.HomeController</servlet-class>
+=======
+    <servlet>
+        <servlet-name>AccountController</servlet-name>
+        <servlet-class>controller.AccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controller.HomeController</servlet-class>
+>>>>>>> Stashed changes
     </servlet>
     <servlet>
         <servlet-name>DoctorManage</servlet-name>
         <servlet-class>controller.admin.DoctorManage</servlet-class>
     </servlet>
+<<<<<<< Updated upstream
     <servlet>
         <servlet-name>DoctorController</servlet-name>
         <servlet-class>controller.home.DoctorController</servlet-class>
@@ -96,6 +107,8 @@
         <servlet-name>AccountManage</servlet-name>
         <servlet-class>controller.admin.AccountManage</servlet-class>
     </servlet>
+=======
+>>>>>>> Stashed changes
     <servlet-mapping>
         <servlet-name>AccountController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -108,6 +121,7 @@
         <servlet-name>DoctorManage</servlet-name>
         <url-pattern>/doctormanage</url-pattern>
     </servlet-mapping>
+<<<<<<< Updated upstream
     <servlet-mapping>
         <servlet-name>DoctorController</servlet-name>
         <url-pattern>/doctor</url-pattern>
@@ -176,10 +190,13 @@
         <servlet-name>AccountManage</servlet-name>
         <url-pattern>/account</url-pattern>
     </servlet-mapping>
+=======
+>>>>>>> Stashed changes
     <session-config>
         <session-timeout>
             30
         </session-timeout>
+<<<<<<< Updated upstream
         <error-page>
             <error-code>404</error-code>
             <location>/404.jsp</location>
@@ -200,4 +217,7 @@
         <error-code>500</error-code>
         <location>/500.jsp</location>
     </error-page>
+=======
+    </session-config>
+>>>>>>> Stashed changes
 </web-app>
